@@ -1,0 +1,33 @@
+1 VERSIONINFO
+FILEVERSION 0,1,0,665
+PRODUCTVERSION 0,1,0,0
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "Comments", "\000"
+   VALUE "CompanyName", "\000"
+   VALUE "FileDescription", "Computer controlled Transistor Tester\000"
+   VALUE "FileVersion", "0.1.0.665\000"
+   VALUE "InternalName", "\000"
+   VALUE "LegalCopyright", "(C)2010 Pozsár Zsolt\000"
+   VALUE "LegalTrademarks", "\000"
+   VALUE "OriginalFilename", "ctt.exe\000"
+   VALUE "ProductName", "\000"
+   VALUE "ProductVersion", "0.1.0.0\000"
+  }
+ }
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 0x0409, 0x04E4
+ }
+}
+
+#define RT_MANIFEST  24
+#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
+#define ISOLATIONAWARE_MANIFEST_RESOURCE_ID 2
+#define ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID 3
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "ctt.manifest"
+MAINICON ICON "ctt.ico"
