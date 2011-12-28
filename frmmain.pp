@@ -119,13 +119,17 @@ type
     MenuItem23: TMenuItem;
     MenuItem24: TMenuItem;
     MenuItem25: TMenuItem;
-    MenuItem26: TMenuItem;
     MenuItem27: TMenuItem;
     MenuItem28: TMenuItem;
     MenuItem29: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem30: TMenuItem;
     MenuItem31: TMenuItem;
+    MenuItem32: TMenuItem;
+    MenuItem33: TMenuItem;
+    MenuItem34: TMenuItem;
+    MenuItem35: TMenuItem;
+    MenuItem36: TMenuItem;
     MenuItem37: TMenuItem;
     MenuItem38: TMenuItem;
     MenuItem39: TMenuItem;
@@ -160,9 +164,7 @@ type
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton10: TToolButton;
-    ToolButton11: TToolButton;
     ToolButton12: TToolButton;
-    ToolButton13: TToolButton;
     ToolButton14: TToolButton;
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
@@ -209,11 +211,13 @@ type
     procedure MenuItem22Click(Sender: TObject);
     procedure MenuItem23Click(Sender: TObject);
     procedure MenuItem24Click(Sender: TObject);
+    procedure MenuItem25Click(Sender: TObject);
     procedure MenuItem26Click(Sender: TObject);
     procedure MenuItem27Click(Sender: TObject);
     procedure MenuItem28Click(Sender: TObject);
     procedure MenuItem30Click(Sender: TObject);
     procedure MenuItem31Click(Sender: TObject);
+    procedure MenuItem34Click(Sender: TObject);
     procedure MenuItem38Click(Sender: TObject);
     procedure MenuItem39Click(Sender: TObject);
     procedure MenuItem40Click(Sender: TObject);
@@ -765,7 +769,9 @@ begin
         if SaveDialog1.Execute=false then exit;
         profilefilename:= SaveDialog1.FileName;
         i:=length(profilefilename);
-        if profilefilename[i-3]+profilefilename[i-2]+profilefilename[i-1]+profilefilename[i]<>'.pro' then profilefilename:=profilefilename+'.pro';
+        if profilefilename[i-3]+profilefilename[i-2]+profilefilename[i-1]+
+          profilefilename[i]<>'.pro'
+          then profilefilename:=profilefilename+'.pro';
         fsplit(profilefilename,tdir,tname,textn);
         if FSearch(tname+textn,tdir)<>'' then
         if MessageDlg(MESSAGE09,mtConfirmation, [mbYes, mbNo],0)=mrNo then exit;
@@ -978,14 +984,9 @@ begin
   end;
 end;
 
-// search update
+// print result
 procedure TForm1.MenuItem20Click(Sender: TObject);
 begin
-  if searchupdate=true then
-  begin
-    showmessage(MESSAGE05);
-    StatusBar1.Panels.Items[3].Text:=' '+MESSAGE05;
-  end else showmessage(MESSAGE22);
 end;
 
 // quit
@@ -995,7 +996,7 @@ begin
 end;
 
 //-- View menu -----------------------------------------------------------------
-// Toggle grid
+// toggle grid
 procedure TForm1.MenuItem38Click(Sender: TObject);
 begin
   grid:=not grid;
@@ -1004,7 +1005,7 @@ begin
   writetodisplay;
 end;
 
-// Toggle header
+// toggle header
 procedure TForm1.MenuItem39Click(Sender: TObject);
 begin
   header:=not header;
@@ -1013,7 +1014,7 @@ begin
   writetodisplay;
 end;
 
-// Refresh display
+// refresh display
 procedure TForm1.MenuItem43Click(Sender: TObject);
 begin
   writetodisplay;
@@ -1050,7 +1051,24 @@ begin
   PageControl1.ActivePageIndex:=3;
 end;
 
-// Preferences
+// -- Configuration menu -------------------------------------------------------
+// online registration
+procedure TForm1.MenuItem25Click(Sender: TObject);
+begin
+
+end;
+
+// set serial number
+procedure TForm1.MenuItem34Click(Sender: TObject);
+begin
+  Form3.ShowModal;
+  if commonproc.r=false
+  then StatusBar1.Panels.Items[0].Text:=' '+MESSAGE01
+  else StatusBar1.Panels.Items[0].Text:=' '+MESSAGE02;
+  savecfg;
+end;
+
+// settings
 procedure TForm1.MenuItem26Click(Sender: TObject);
 begin
   Form4.ShowModal;
@@ -1092,13 +1110,16 @@ begin
 end;
 
 // Set serial number
+
 procedure TForm1.MenuItem5Click(Sender: TObject);
 begin
-  Form3.ShowModal;
-  if commonproc.r=false
-  then StatusBar1.Panels.Items[0].Text:=' '+MESSAGE01
-  else StatusBar1.Panels.Items[0].Text:=' '+MESSAGE02;
-  savecfg;
+  if searchupdate=true then
+  begin
+    showmessage(MESSAGE05);
+    StatusBar1.Panels.Items[3].Text:=' '+MESSAGE05;
+  end else showmessage(MESSAGE22);
+
+
 end;
 
 // On-line registration

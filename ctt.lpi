@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="7"/>
+    <Version Value="9"/>
     <General>
       <MainUnit Value="0"/>
-      <TargetFileExt Value=""/>
       <Title Value="CTT Transistor tester"/>
-      <Icon Value="0"/>
       <UseXPManifest Value="True"/>
-      <ActiveEditorIndexAtStart Value="5"/>
+      <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <i18n>
       <EnableI18N Value="True"/>
@@ -16,13 +15,13 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <CurrentMajorRevNr Value="1"/>
-      <CurrentBuildNr Value="665"/>
-      <ProjectVersion Value="0.1.0.0"/>
-      <FileDescription Value="Computer controlled Transistor Tester"/>
-      <LegalCopyright Value="(C)2010 Pozsár Zsolt"/>
-      <OriginalFilename Value="ctt.exe"/>
+      <MinorVersionNr Value="1"/>
+      <BuildNr Value="665"/>
+      <StringTable FileDescription="Computer controlled Transistor Tester" LegalCopyright="(C)2010 Pozsár Zsolt" OriginalFilename="ctt.exe" ProductVersion="0.1.0.0"/>
     </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="default" Default="True"/>
+    </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
       <IgnoreBinaries Value="False"/>
@@ -49,11 +48,13 @@
         <Filename Value="ctt.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ctt"/>
-        <CursorPos X="1" Y="3"/>
-        <TopLine Value="1"/>
         <EditorIndex Value="2"/>
-        <UsageCount Value="104"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="3"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="frmmain.pp"/>
@@ -61,11 +62,13 @@
         <ComponentName Value="Form1"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmmain"/>
-        <CursorPos X="14" Y="6"/>
-        <TopLine Value="6"/>
         <EditorIndex Value="0"/>
-        <UsageCount Value="104"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="889"/>
+        <CursorPos X="26" Y="1151"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="frmabout.pp"/>
@@ -73,11 +76,13 @@
         <ComponentName Value="Form2"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmabout"/>
-        <CursorPos X="1" Y="3"/>
-        <TopLine Value="1"/>
         <EditorIndex Value="4"/>
-        <UsageCount Value="103"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="3"/>
+        <UsageCount Value="105"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="frmserial.pp"/>
@@ -85,20 +90,24 @@
         <ComponentName Value="Form3"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmserial"/>
-        <CursorPos X="1" Y="3"/>
-        <TopLine Value="1"/>
         <EditorIndex Value="3"/>
-        <UsageCount Value="103"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="3"/>
+        <UsageCount Value="105"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="commonproc.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="commonproc"/>
-        <CursorPos X="73" Y="227"/>
-        <TopLine Value="227"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <UsageCount Value="101"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="39"/>
+        <CursorPos X="11" Y="72"/>
+        <UsageCount Value="103"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -107,32 +116,35 @@
         <ComponentName Value="Form4"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmpref"/>
-        <CursorPos X="1" Y="3"/>
-        <TopLine Value="1"/>
         <EditorIndex Value="7"/>
-        <UsageCount Value="99"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="3"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value=""/>
-        <UsageCount Value="10"/>
         <SyntaxHighlighter Value="None"/>
+        <UsageCount Value="10"/>
       </Unit6>
       <Unit7>
         <Filename Value="synapse/synaip.pas"/>
         <UnitName Value="synaip"/>
-        <CursorPos X="1" Y="1"/>
         <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="14"/>
       </Unit7>
       <Unit8>
         <Filename Value="demodata.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="demodata"/>
-        <CursorPos X="1" Y="3"/>
-        <TopLine Value="1"/>
         <EditorIndex Value="6"/>
-        <UsageCount Value="34"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="3"/>
+        <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -141,142 +153,149 @@
         <ComponentName Value="Form5"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmdetails"/>
-        <CursorPos X="69" Y="59"/>
-        <TopLine Value="53"/>
         <EditorIndex Value="1"/>
-        <UsageCount Value="25"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="53"/>
+        <CursorPos X="69" Y="59"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit9>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="frmmain.pp"/>
-        <Caret Line="326" Column="54" TopLine="314"/>
+        <Filename Value="frmdetails.pp"/>
+        <Caret Line="62" Column="7" TopLine="40"/>
       </Position1>
       <Position2>
-        <Filename Value="frmmain.pp"/>
-        <Caret Line="601" Column="1" TopLine="577"/>
+        <Filename Value="frmdetails.pp"/>
+        <Caret Line="64" Column="27" TopLine="46"/>
       </Position2>
       <Position3>
         <Filename Value="frmdetails.pp"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="63" Column="53" TopLine="46"/>
       </Position3>
       <Position4>
-        <Filename Value="frmmain.pp"/>
-        <Caret Line="599" Column="3" TopLine="596"/>
+        <Filename Value="frmdetails.pp"/>
+        <Caret Line="59" Column="18" TopLine="46"/>
       </Position4>
       <Position5>
         <Filename Value="commonproc.pp"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="188" Column="1" TopLine="166"/>
       </Position5>
       <Position6>
-        <Filename Value="commonproc.pp"/>
-        <Caret Line="145" Column="67" TopLine="133"/>
+        <Filename Value="frmdetails.pp"/>
+        <Caret Line="66" Column="53" TopLine="49"/>
       </Position6>
       <Position7>
         <Filename Value="frmmain.pp"/>
-        <Caret Line="20" Column="43" TopLine="1"/>
+        <Caret Line="6" Column="14" TopLine="1"/>
       </Position7>
       <Position8>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="39" Column="1" TopLine="16"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="753" Column="3" TopLine="747"/>
       </Position8>
       <Position9>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="38" Column="1" TopLine="15"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="754" Column="3" TopLine="748"/>
       </Position9>
       <Position10>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="43" Column="1" TopLine="19"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="753" Column="3" TopLine="747"/>
       </Position10>
       <Position11>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="44" Column="1" TopLine="20"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="754" Column="3" TopLine="748"/>
       </Position11>
       <Position12>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="45" Column="1" TopLine="21"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="755" Column="3" TopLine="749"/>
       </Position12>
       <Position13>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="46" Column="1" TopLine="22"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="756" Column="3" TopLine="750"/>
       </Position13>
       <Position14>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="47" Column="1" TopLine="23"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="757" Column="3" TopLine="751"/>
       </Position14>
       <Position15>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="48" Column="1" TopLine="24"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="756" Column="3" TopLine="750"/>
       </Position15>
       <Position16>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="49" Column="1" TopLine="25"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="755" Column="3" TopLine="749"/>
       </Position16>
       <Position17>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="50" Column="1" TopLine="26"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="754" Column="3" TopLine="748"/>
       </Position17>
       <Position18>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="51" Column="1" TopLine="27"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="755" Column="3" TopLine="749"/>
       </Position18>
       <Position19>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="52" Column="1" TopLine="28"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="756" Column="3" TopLine="750"/>
       </Position19>
       <Position20>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="51" Column="1" TopLine="28"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="755" Column="3" TopLine="749"/>
       </Position20>
       <Position21>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="50" Column="1" TopLine="27"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="754" Column="3" TopLine="748"/>
       </Position21>
       <Position22>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="51" Column="1" TopLine="27"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="855" Column="3" TopLine="852"/>
       </Position22>
       <Position23>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="50" Column="1" TopLine="27"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="865" Column="3" TopLine="862"/>
       </Position23>
       <Position24>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="57" Column="1" TopLine="33"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="875" Column="3" TopLine="872"/>
       </Position24>
       <Position25>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="62" Column="7" TopLine="40"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="901" Column="3" TopLine="898"/>
       </Position25>
       <Position26>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="64" Column="27" TopLine="46"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="986" Column="1" TopLine="982"/>
       </Position26>
       <Position27>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="63" Column="53" TopLine="46"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="1107" Column="1" TopLine="1097"/>
       </Position27>
       <Position28>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="59" Column="18" TopLine="46"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="1064" Column="1" TopLine="1037"/>
       </Position28>
       <Position29>
-        <Filename Value="commonproc.pp"/>
-        <Caret Line="188" Column="1" TopLine="166"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="1056" Column="3" TopLine="1054"/>
       </Position29>
       <Position30>
-        <Filename Value="frmdetails.pp"/>
-        <Caret Line="66" Column="53" TopLine="49"/>
+        <Filename Value="frmmain.pp"/>
+        <Caret Line="1060" Column="1" TopLine="1059"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
-    <Version Value="8"/>
+    <Version Value="9"/>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir)/"/>
-      <OtherUnitFiles Value="synapse/;convert/"/>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="synapse;convert"/>
     </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <UseAnsiStrings Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
     <Linking>
       <Debugging>
         <UseLineInfoUnit Value="False"/>

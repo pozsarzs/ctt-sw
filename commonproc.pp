@@ -58,6 +58,18 @@ const
 {$ENDIF}
   VERSION='0.1';
   HOMEPAGE='http://www.pozsarzs.hu';
+  APPNAME='power_supplies';
+  EMAIL='pozsarzs@gmail.com';
+  FB_PAGE='http://www.facebook.com/cheapapps';
+  HOMEPAGE='http://www.pozsarzs.hu';
+  PRJ_HOMEPAGE='http://www.cheapapps-series.info';
+  VERSION='0.2.1';
+  CFN=APPNAME+'.ini';
+  HFN=APPNAME+'.his';
+ {$IFDEF WIN32}
+  CSIDL_PROFILE=40;
+  SHGFP_TYPE_CURRENT=0;
+ {$ENDIF}
 
 function getexepath: string;
 function getlang: string;
