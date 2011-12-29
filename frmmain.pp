@@ -12,7 +12,7 @@ interface
 uses
   Classes, SysUtils, process, FileUtil, LResources, Forms, Controls, Graphics,
   Dialogs, Menus, ComCtrls, ExtCtrls, StdCtrls, Spin, ExtDlgs, Grids, Buttons,
-  dos,
+  DOM, dos,
   // my forms
   frmabout, frmserial, frmpref, frmdetails,
   // my units
@@ -116,6 +116,7 @@ type
     MenuItem23: TMenuItem;
     MenuItem24: TMenuItem;
     MenuItem25: TMenuItem;
+    MenuItem26: TMenuItem;
     MenuItem27: TMenuItem;
     MenuItem28: TMenuItem;
     MenuItem29: TMenuItem;
@@ -132,6 +133,7 @@ type
     MenuItem39: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem40: TMenuItem;
+    MenuItem41: TMenuItem;
     MenuItem42: TMenuItem;
     MenuItem43: TMenuItem;
     MenuItem44: TMenuItem;
@@ -212,6 +214,7 @@ type
     procedure MenuItem28Click(Sender: TObject);
     procedure MenuItem30Click(Sender: TObject);
     procedure MenuItem31Click(Sender: TObject);
+    procedure MenuItem33Click(Sender: TObject);
     procedure MenuItem34Click(Sender: TObject);
     procedure MenuItem36Click(Sender: TObject);
     procedure MenuItem38Click(Sender: TObject);
@@ -238,8 +241,11 @@ var
   i: byte;
   profilefilename: string;
   profilename: string;
+  recentfiles: array[0..4] of string;
   s: string;
   tdir,tname,textn: shortstring;
+
+procedure AddToRecentFiles(filename: string);
 
 Resourcestring
   MESSAGE01='Demo';
@@ -287,6 +293,46 @@ Resourcestring
 implementation
 
 { TForm1 }
+
+procedure AddToRecentFiles(filename: string);
+var
+  subItem, Item: TMenuItem;
+  c, cc: byte;
+  exist: boolean;
+  rep: string;
+  label onlyload;
+begin
+  if filename='#' then goto onlyload;
+  exist:=false;
+  for c:=0 to 4 do
+    if recentfiles[c]=filename then begin exist:=true; break; end;
+  if exist=false
+  then
+    begin
+      for cc:=4 downto 1 do recentfiles[cc]:=recentfiles[cc-1];
+      recentfiles[0]:=filename;
+    end
+  else
+  begin
+    for cc:=c downto 1 do
+      recentfiles[cc]:=recentfiles[cc-1];
+    recentfiles[0]:=filename;
+  end;
+  onlyload:
+  with Form1 do
+  begin
+    MenuItem26.Enabled:=true;
+    MainMenu1.Items[0].Items[3].Clear;
+    for c:=0 to 4 do
+      if recentfiles[c]<>'' then
+      begin
+        SubItem:= TMenuItem.Create(MainMenu1);
+        SubItem.Caption:=recentfiles[c];
+        SubItem.OnClick:=MenuItem33.OnClick;
+        MainMenu1.Items[0].Items[3].Add(SubItem);
+      end;
+  end;
+end;
 
 // -- Events -------------------------------------------------------------------
 // on create event
@@ -446,7 +492,6 @@ end;
 // on change events
 procedure TForm1.Edit2Change(Sender: TObject);
 begin
-  if changedprofile=false then Form1.Caption:=Form1.Caption+' *';
   changedprofile:=true;
 end;
 
@@ -458,7 +503,6 @@ begin
   {$IFDEF WIN32}
   Image1.Picture.LoadFromFile(exepath+'packages\'+lowercase(ComboBox2.Items.ValueFromIndex[ComboBox2.ItemIndex]+'.png'));
   {$ENDIF}
-  if changedprofile=false then Form1.Caption:=Form1.Caption+' *';
   changedprofile:=true;
 end;
 
@@ -814,7 +858,7 @@ begin
     begin
       if profilename='' then
       begin
-        Form1.SaveDialog1.InitialDir:=userdir;
+        Form1.SaveDialog1.InitialDir:=datadir;
         Form1.SaveDialog1.Title:=MESSAGE07;
         Form1.SaveDialog1.Filename:=Form1.Edit2.Text+'.pro';
         Form1.SaveDialog1.Filter:=MESSAGE08;
@@ -858,13 +902,16 @@ begin
   SelectFile;
   ComboBox2Change(Sender);
   changedprofile:=false;
+  AddToRecentFiles(Opendialog1.FileName);
 end;
 
 // open my profile
 procedure TForm1.MenuItem27Click(Sender: TObject);
 begin
-  OpenDialog1.InitialDir:=userdir;
+  OpenDialog1.InitialDir:=datadir;
   OpenDialog1.Title:=MESSAGE24;
+  OpenDialog1.Filter:=MESSAGE08;
+  OpenDialog1.FilterIndex:=0;
   SelectFile;
   ComboBox2Change(Sender);
   changedprofile:=false;
@@ -875,7 +922,7 @@ procedure TForm1.MenuItem16Click(Sender: TObject);
 begin
   if profilename='' then
   begin
-    SaveDialog1.InitialDir:=userdir;
+    SaveDialog1.InitialDir:=datadir;
     SaveDialog1.Title:=MESSAGE07;
     SaveDialog1.Filename:=Edit2.Text+'.pro';
     SaveDialog1.Filter:=MESSAGE08;
@@ -899,7 +946,7 @@ end;
 // save profile as
 procedure TForm1.MenuItem28Click(Sender: TObject);
 begin
-  SaveDialog1.InitialDir:=userdir;
+  SaveDialog1.InitialDir:=datadir;
   SaveDialog1.Title:=MESSAGE07;
   SaveDialog1.Filename:=Edit2.Text+'.pro';
   SaveDialog1.Filter:=MESSAGE08;
@@ -924,12 +971,7 @@ procedure TForm1.MenuItem30Click(Sender: TObject);
 var
   filename: string;
 begin
-  {$IFDEF LINUX}
-  SaveDialog1.InitialDir:=userdir+'..';
-  {$ENDIF}
-  {$IFDEF WIN32}
-  SaveDialog1.InitialDir:=userdir+'..\..';
-  {$ENDIF}
+  SaveDialog1.InitialDir:=datadir;
   SaveDialog1.Title:=MESSAGE28;
   SaveDialog1.Filename:=Edit2.Text+'.bmp';
   SaveDialog1.Filter:=MESSAGE30;
@@ -955,12 +997,7 @@ procedure TForm1.MenuItem31Click(Sender: TObject);
 var
   filename: string;
 begin
-  {$IFDEF LINUX}
-  SaveDialog1.InitialDir:=userdir+'..';
-  {$ENDIF}
-  {$IFDEF WIN32}
-  SaveDialog1.InitialDir:=userdir+'..\..';
-  {$ENDIF}
+  SaveDialog1.InitialDir:=datadir;
   SaveDialog1.Title:=MESSAGE29;
   SaveDialog1.Filename:=Edit2.Text+'.txt';
   SaveDialog1.Filter:=MESSAGE31;
@@ -979,6 +1016,58 @@ begin
   except
     showmessage(MESSAGE32);
   end;
+end;
+
+// load recent file
+procedure TForm1.MenuItem33Click(Sender: TObject);
+var
+  RecentFilesMenuItem: TMenuItem;
+  Child: TDOMNode;
+  j: byte;
+  mr: longint;
+begin
+  RecentFilesMenuItem:=TMenuItem(Sender);
+  if changedprofile=true then
+  begin
+    mr:=MessageDlg(MESSAGE11,mtConfirmation, [mbYes, mbNo, mbCancel],0);
+    if mr=2 then exit;
+    if mr=6 then
+    begin
+      if profilename='' then
+      begin
+        Form1.SaveDialog1.InitialDir:=datadir;
+        Form1.SaveDialog1.Title:=MESSAGE07;
+        Form1.SaveDialog1.Filename:=Form1.Edit2.Text+'.pro';
+        Form1.SaveDialog1.Filter:=MESSAGE08;
+        Form1.SaveDialog1.FilterIndex:=0;
+        if Form1.SaveDialog1.Execute=false then exit;
+        profilefilename:= Form1.SaveDialog1.FileName;
+        i:=length(profilefilename);
+        if profilefilename[i-3]+profilefilename[i-2]+profilefilename[i-1]+profilefilename[i]<>'.pro' then profilefilename:=profilefilename+'.pro';
+        fsplit(profilefilename,tdir,tname,textn);
+        if FSearch(tname+textn,tdir)<>'' then
+        if MessageDlg(MESSAGE09,mtConfirmation, [mbYes, mbNo],0)=mrNo then exit;
+        if length(profilefilename)=0 then exit;
+        if saveprofile(profilefilename)=false then exit;
+        end else if saveprofile(profilefilename)=false then exit;
+      end;
+    end;
+    profilefilename:=RecentFilesMenuItem.Caption;
+    if loadprofile(profilefilename)=false then
+    begin
+      showmessage(MESSAGE25);
+      exit;
+    end;
+    Form1.Panel1.Caption:='0 ';
+    Form1.Panel2.Caption:='0 ';
+    Form1.Panel3.Caption:='0 ';
+    Form1.Panel4.Caption:='0 ';
+    Form1.Panel5.Caption:='0 ';
+    cleardisplay(6);
+    cleardisplay(7);
+    Form1.Caption:='CTT - '+profilename;
+    ComboBox2Change(Sender);
+    changedprofile:=false;
 end;
 
 // print result

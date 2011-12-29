@@ -1232,6 +1232,7 @@ object Form1: TForm1
       end
       object MenuItem33: TMenuItem
         Caption = '-'
+        OnClick = MenuItem33Click
       end
       object MenuItem17: TMenuItem
         Caption = '&Open profile'
@@ -1355,6 +1356,12 @@ object Form1: TForm1
           ImageIndex = 2
           ShortCut = 24655
           OnClick = MenuItem27Click
+        end
+      end
+      object MenuItem26: TMenuItem
+        Caption = 'Open recent file'
+        Enabled = False
+        object MenuItem41: TMenuItem
         end
       end
       object MenuItem16: TMenuItem

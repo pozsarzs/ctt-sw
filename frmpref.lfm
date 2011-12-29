@@ -204,8 +204,17 @@ object Form4: TForm4
     ChildSizing.ControlsPerLine = 1
     TabOrder = 8
   end
+  object Button3: TButton
+    Left = 8
+    Height = 25
+    Top = 156
+    Width = 75
+    Caption = 'Default'
+    OnClick = Button3Click
+    TabOrder = 9
+  end
   object OpenDialog1: TOpenDialog
-    left = 8
+    left = 184
     top = 152
   end
 end

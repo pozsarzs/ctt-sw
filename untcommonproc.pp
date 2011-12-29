@@ -34,6 +34,7 @@ var
   tmpdir: string;                                // directory of temporary files
   t: text;                                         // general text file variable
   userdir: string;                                          // users's directory
+  datadir: string;                                     // users's data directory
   username: string[30];                              // user's registration name
 const
   packages: array[0..4] of string=('emitter','base','collector','package','none');
@@ -74,7 +75,7 @@ function SHGetFolderPath(hwndOwner: HWND; nFolder: Integer; hToken: THandle;
 {$ENDIF}
 
 Resourcestring
-  MESSAGE01='Missing default configuration file!';
+  MESSAGE01='Missing configuration file!';
   MESSAGE02='Cannot write the user''s configuration file!';
   MESSAGE03='Please check browser application setting!';
   MESSAGE04='Please check mailer application setting!';
@@ -504,9 +505,9 @@ end;
 procedure crk;
 begin
   r:=false;
-  if FSearch('reg.key',exepath)<>''then
+  if FSearch('reg.key',datadir)<>''then
   begin
-    username:=checkregkey(exepath+'reg.key', serialnumber);
+    username:=checkregkey(datadir+'reg.key', serialnumber);
     if (username='!') or (username=' ') then r:=false else r:=true;
   end;
 end;
@@ -515,38 +516,23 @@ end;
 procedure loadcfg;
 var
   ini: TINIFile;
-  conffile: byte;
 begin
-  conffile:=0;
-  if FSearch(CFN,exepath)<>'' then conffile:=1;
-  if FSearch(CFN,userdir)<>'' then conffile:=2;
-  case conffile of
-    1: ini:=TIniFile.Create(exepath+CFN);
-    2: ini:=TIniFile.Create(userdir+CFN);
-  else
-    begin
-     showmessage(MESSAGE01);
-     halt(1);
-    end;
-  end;
-  showmessage(inttostr(conffile));
+  ini:=TIniFile.Create(userdir+CFN);
   try
     serialnumber:=ini.ReadString('General','SerialNumber','');
     displaycolor:=ini.ReadString('General','DisplayColor','blue');
-    showmessage(ini.FileName);
-    showmessage(displaycolor);
-//    s:=ini.ReadString('General','BaseAddress','');
-//    baseaddress:=s[1];
+    s:=ini.ReadString('General','BaseAddress','1');
     offline:=ini.ReadBool('General','OffLineMode',false);
     browserapp:=ini.ReadString('Applications','Browser','');
     mailerapp:=ini.ReadString('Applications','Mailer','');
+    baseaddress:=s[1];
+    if (baseaddress<>'1') and (baseaddress<>'2') and (baseaddress<>'3')
+    then baseaddress:='1';
     ini.Free;
   except
     ShowMessage(MESSAGE01);
     halt(1);
   end;
-  if (baseaddress<>'1') and (baseaddress<>'2') and (baseaddress<>'3')
-  then baseaddress:='1';
 end;
 
 // make user's directory
@@ -575,12 +561,16 @@ begin
   {$IFDEF LINUX}
   tmpdir:='/tmp/';
   userdir:=getenvironmentvariable('HOME');
+  datadir:=userdir+'/CTT/';
+  {$I-}mkdir(datadir);{$I+} ioresult;
   userdir:=userdir+'/.'+APPNAME+'/';
   {$I-}mkdir(userdir);{$I+} ioresult;
   {$ENDIF}
   {$IFDEF WIN32}
   tmpdir:=getwindowstemp;
   userdir:=getuserprofile;
+  datadir:=userdir+'\CTT\';
+  {$I-}mkdir(datadir);{$I+} ioresult;
   userdir:=userdir+'\Application data\';
   {$I-}mkdir(userdir);{$I+} ioresult;
   userdir:=userdir+APPNAME+'\';
@@ -617,12 +607,7 @@ var
 // I use alternative solution for save configuration, because INIFiles unit has
 // got some bugs.
 begin
-  {$IFDEF LINUX}
-  assignfile(ini,userdir+'/'+CFN);
-  {$ENDIF}
-  {$IFDEF WIN32}
   assignfile(ini,userdir+CFN);
-  {$ENDIF}
   try
     rewrite(ini);
     writeln(ini,'; '+appname+' v'+version);

@@ -21,6 +21,7 @@ type
     Bevel2: TBevel;
     Button1: TButton;
     Button2: TButton;
+    Button3: TButton;
     Button4: TButton;
     Button5: TButton;
     CheckBox1: TCheckBox;
@@ -34,6 +35,7 @@ type
     RadioGroup1: TRadioGroup;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -90,6 +92,21 @@ end;
 procedure TForm4.Button2Click(Sender: TObject);
 begin
   Close;
+end;
+
+// set default values
+procedure TForm4.Button3Click(Sender: TObject);
+begin
+  {$IFDEF LINUX}
+  Edit1.Text:='xdg-open';
+  Edit2.Text:='xdg-email';
+  {$ENDIF}
+  {$IFDEF WIN32}
+  Edit1.Text:='rundll32.exe url.dll,FileProtocolHandler';
+  Edit2.Text:='rundll32.exe url.dll,FileProtocolHandler mailto:';
+  {$ENDIF}   CheckBox1.Checked:=offline;
+  ComboBox1.ItemIndex:=0;
+  RadioGroup1.ItemIndex:=4;
 end;
 
 // browse buttons

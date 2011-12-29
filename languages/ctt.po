@@ -1,6 +1,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+msgid "pin-out:"
+msgstr ""
+
 #: frmabout.message01
 msgid "Demo mode,"
 msgstr ""
@@ -525,6 +528,10 @@ msgstr ""
 msgid "&On-line registration"
 msgstr ""
 
+#: TFORM1.MENUITEM26.CAPTION
+msgid "Open recent file"
+msgstr ""
+
 #: TFORM1.MENUITEM27.CAPTION
 msgid "&My profiles..."
 msgstr ""
@@ -840,6 +847,10 @@ msgctxt "TFORM4.BUTTON2.CAPTION"
 msgid "&Cancel"
 msgstr ""
 
+#: TFORM4.BUTTON3.CAPTION
+msgid "Default"
+msgstr ""
+
 #: TFORM4.BUTTON4.CAPTION
 msgctxt "TFORM4.BUTTON4.CAPTION"
 msgid "..."
@@ -929,7 +940,7 @@ msgid "*Ucemax [V]:"
 msgstr ""
 
 #: untcommonproc.message01
-msgid "Missing default configuration file!"
+msgid "Missing configuration file!"
 msgstr ""
 
 #: untcommonproc.message02
