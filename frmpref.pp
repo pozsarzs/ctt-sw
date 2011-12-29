@@ -25,6 +25,7 @@ type
     Button4: TButton;
     Button5: TButton;
     CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
     ComboBox1: TComboBox;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -72,6 +73,7 @@ begin
   Edit1.Text:=browserapp;
   Edit2.Text:=mailerapp;
   CheckBox1.Checked:=offline;
+  CheckBox2.Checked:=savehistory;
   case untcommonproc.baseaddress of
     '1': ComboBox1.ItemIndex:=0;
     '2': ComboBox1.ItemIndex:=1;
@@ -104,7 +106,9 @@ begin
   {$IFDEF WIN32}
   Edit1.Text:='rundll32.exe url.dll,FileProtocolHandler';
   Edit2.Text:='rundll32.exe url.dll,FileProtocolHandler mailto:';
-  {$ENDIF}   CheckBox1.Checked:=offline;
+  {$ENDIF}
+  CheckBox1.Checked:=false;
+  CheckBox2.Checked:=true;
   ComboBox1.ItemIndex:=0;
   RadioGroup1.ItemIndex:=4;
 end;
@@ -146,6 +150,7 @@ begin
   untcommonproc.browserapp:=Edit1.Text;
   untcommonproc.mailerapp:=Edit2.Text;
   untcommonproc.offline:=CheckBox1.Checked;
+  untcommonproc.savehistory:=CheckBox2.Checked;
   case ComboBox1.ItemIndex of
     0: baseaddress:='1';
     1: baseaddress:='2';

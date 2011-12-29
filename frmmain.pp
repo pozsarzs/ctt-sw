@@ -458,6 +458,7 @@ begin
   StringGrid1.Cells[2,0]:=MESSAGE15;
   Screen.Cursors[1] := LoadCursorFromLazarusResource('haircross');
   randomize;
+  if savehistory=true then loadhis;
 end;
 
 // on close query event;
@@ -486,6 +487,7 @@ begin
       end else if saveprofile(profilefilename)=false then exit;
     end;
   end;
+  if savehistory=true then savehis;
   canclose:=true;
 end;
 

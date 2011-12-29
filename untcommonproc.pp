@@ -29,6 +29,7 @@ var
   mdata: array[1..206] of string;                               // measured data
   offline: boolean;                                             // off-line mode
   r: boolean;                                                    // registration
+  savehistory: boolean;                                     // save load history
   serialnumber: string;                                  // user's serial number
   s: string;                                          // general string variable
   tmpdir: string;                                // directory of temporary files
@@ -47,6 +48,7 @@ const
 {$ENDIF}
   APPNAME='ctt';
   CFN=APPNAME+'.ini';
+  HFN=APPNAME+'.his';
   EMAIL='pozsarzs@gmail.com';
   FB_PAGE='http://www.facebook.com/pages/CTT-tranzisztor-teszter/330609976956881';
   HOMEPAGE='http://www.pozsarzs.hu';
@@ -61,12 +63,14 @@ function searchupdate: boolean;
 procedure cleardisplay(m: byte);
 procedure crk;
 procedure loadcfg;
+procedure savecfg;
 procedure makeuserdir;
 procedure runbrowser(url: string);
 procedure runmailer(adr: string);
-procedure savecfg;
 procedure setdisplaycolors;
 procedure writetodisplay;
+procedure loadhis;
+procedure savehis;
 
 {$IFDEF WIN32}
 function SHGetFolderPath(hwndOwner: HWND; nFolder: Integer; hToken: THandle;
@@ -523,6 +527,7 @@ begin
     displaycolor:=ini.ReadString('General','DisplayColor','blue');
     s:=ini.ReadString('General','BaseAddress','1');
     offline:=ini.ReadBool('General','OffLineMode',false);
+    savehistory:=ini.ReadBool('General','SaveHistory',true);
     browserapp:=ini.ReadString('Applications','Browser','');
     mailerapp:=ini.ReadString('Applications','Mailer','');
     baseaddress:=s[1];
@@ -532,6 +537,34 @@ begin
   except
     ShowMessage(MESSAGE01);
     halt(1);
+  end;
+end;
+
+// save configuration
+procedure savecfg;
+var
+  ini: textfile;
+// I use alternative solution for save configuration, because INIFiles unit has
+// got some bugs.
+begin
+  assignfile(ini,userdir+CFN);
+  try
+    rewrite(ini);
+    writeln(ini,'; '+appname+' v'+version);
+    writeln(ini,'');
+    writeln(ini,'[General]');
+    writeln(ini,'BaseAddress='+baseaddress);
+    writeln(ini,'DisplayColor='+displaycolor);
+    writeln(ini,'SerialNumber=',serialnumber);
+    write(ini,'OffLineMode=');if offline=true then writeln(ini,'1') else writeln(ini,'0');
+    write(ini,'SaveHistory=');if savehistory=true then writeln(ini,'1') else writeln(ini,'0');
+    writeln(ini,'');
+    writeln(ini,'[Applications]');
+    writeln(ini,'Browser=',browserapp);
+    writeln(ini,'Mailer=',mailerapp);
+    closefile(ini);
+  except
+    ShowMessage(MESSAGE02);
   end;
 end;
 
@@ -597,33 +630,6 @@ begin
     Form1.Process2.Execute;
   except
     ShowMessage(MESSAGE04);
-  end;
-end;
-
-// save configuration
-procedure savecfg;
-var
-  ini: textfile;
-// I use alternative solution for save configuration, because INIFiles unit has
-// got some bugs.
-begin
-  assignfile(ini,userdir+CFN);
-  try
-    rewrite(ini);
-    writeln(ini,'; '+appname+' v'+version);
-    writeln(ini,'');
-    writeln(ini,'[General]');
-    writeln(ini,'BaseAddress='+baseaddress);
-    writeln(ini,'DisplayColor='+displaycolor);
-    writeln(ini,'SerialNumber=',serialnumber);
-    write(ini,'OffLineMode=');if offline=true then writeln(ini,'1') else writeln(ini,'0');
-    writeln(ini,'');
-    writeln(ini,'[Applications]');
-    writeln(ini,'Browser=',browserapp);
-    writeln(ini,'Mailer=',mailerapp);
-    closefile(ini);
-  except
-    ShowMessage(MESSAGE02);
   end;
 end;
 
@@ -764,5 +770,40 @@ begin
   until b=205;
 end;
 
+// Load history
+procedure loadhis;
+var
+  his: TINIFile;
+begin
+  his:=TIniFile.Create(userdir+HFN);
+  try
+    for b:=0 to 4 do
+      recentfiles[b]:=his.ReadString('History','RecentFile'+inttostr(b),'');
+    his.Free;
+  except
+  end;
+  AddToRecentFiles('#');
+end;
+
+
+// Save history
+procedure savehis;
+var
+  his: textfile;
+// I use alternative solution for save configuration, because INIFiles unit has
+// got some bugs.
+begin
+  assignfile(his,userdir+HFN);
+  try
+    rewrite(his);
+    writeln(his,'; '+APPNAME+' v'+VERSION);
+    writeln(his,'');
+    writeln(his,'[History]');
+      for b:=0 to 4 do
+        writeln(his,'RecentFile'+inttostr(b)+'='+recentfiles[b]);
+    closefile(his);
+  except
+  end;
+end;
 end.
 

@@ -84,7 +84,7 @@ LazarusResources.Add('TForm4','FORMDATA',[
   +'t'#2#14#3'Top'#2'8'#5'Width'#2'W'#7'Caption'#6#19'Mailer application:'#11'P'
   +'arentColor'#8#0#0#6'TBevel'#6'Bevel1'#4'Left'#2#8#6'Height'#2#2#3'Top'#3#148
   +#0#5'Width'#3#168#1#5'Shape'#7#9'bsTopLine'#0#0#6'TLabel'#6'Label3'#4'Left'#3
-  +#240#0#6'Height'#2#14#3'Top'#2's'#5'Width'#2#25#7'Caption'#6#5'Port:'#11'Par'
+  +#240#0#6'Height'#2#14#3'Top'#2'u'#5'Width'#2#25#7'Caption'#6#5'Port:'#11'Par'
   +'entColor'#8#0#0#7'TButton'#7'Button1'#4'Left'#3'e'#1#6'Height'#2#25#3'Top'#3
   +#156#0#5'Width'#2'K'#7'Caption'#6#4'&Set'#7'OnClick'#7#12'Button1Click'#8'Ta'
   +'bOrder'#2#6#0#0#7'TButton'#7'Button2'#4'Left'#3#16#1#6'Height'#2#25#3'Top'#3
@@ -92,13 +92,13 @@ LazarusResources.Add('TForm4','FORMDATA',[
   +'ton2Click'#8'TabOrder'#2#5#0#0#5'TEdit'#5'Edit1'#4'Left'#2'p'#6'Height'#2#21
   +#3'Top'#2#24#5'Width'#3#8#1#8'TabOrder'#2#0#0#0#5'TEdit'#5'Edit2'#4'Left'#2
   +'p'#6'Height'#2#21#3'Top'#2'H'#5'Width'#3#8#1#8'TabOrder'#2#2#0#0#9'TCheckBo'
-  +'x'#9'CheckBox1'#4'Left'#2'x'#6'Height'#2#17#3'Top'#2'n'#5'Width'#2'Q'#7'Cap'
+  +'x'#9'CheckBox1'#4'Left'#2'x'#6'Height'#2#17#3'Top'#2'i'#5'Width'#2'Q'#7'Cap'
   +'tion'#6#12'Offline mode'#8'TabOrder'#2#4#0#0#7'TButton'#7'Button4'#4'Left'#3
   +#128#1#6'Height'#2#21#3'Top'#2#24#5'Width'#2'('#7'Caption'#6#3'...'#7'OnClic'
   +'k'#7#12'Button4Click'#8'TabOrder'#2#1#0#0#7'TButton'#7'Button5'#4'Left'#3
   +#128#1#6'Height'#2#21#3'Top'#2'H'#5'Width'#2'('#7'Caption'#6#3'...'#7'OnClic'
   +'k'#7#12'Button5Click'#8'TabOrder'#2#3#0#0#9'TComboBox'#9'ComboBox1'#4'Left'
-  +#3#24#1#6'Height'#2#21#3'Top'#2'k'#5'Width'#2'L'#10'ItemHeight'#2#13#9'ItemI'
+  +#3#24#1#6'Height'#2#21#3'Top'#2'q'#5'Width'#2'L'#10'ItemHeight'#2#13#9'ItemI'
   +'ndex'#2#0#13'Items.Strings'#1#6#4'378H'#6#4'278H'#6#4'3BCH'#0#5'Style'#7#14
   +'csDropDownList'#8'TabOrder'#2#7#4'Text'#6#4'378H'#0#0#11'TRadioGroup'#11'Ra'
   +'dioGroup1'#4'Left'#2#8#6'Height'#3#137#0#3'Top'#2#8#5'Width'#2'd'#8'AutoFil'
@@ -110,5 +110,7 @@ LazarusResources.Add('TForm4','FORMDATA',[
   +'eftToRightThenTopToBottom'#27'ChildSizing.ControlsPerLine'#2#1#8'TabOrder'#2
   +#8#0#0#7'TButton'#7'Button3'#4'Left'#2#8#6'Height'#2#25#3'Top'#3#156#0#5'Wid'
   +'th'#2'K'#7'Caption'#6#7'Default'#7'OnClick'#7#12'Button3Click'#8'TabOrder'#2
-  +#9#0#0#11'TOpenDialog'#11'OpenDialog1'#4'left'#3#184#0#3'top'#3#152#0#0#0#0
+  +#9#0#0#9'TCheckBox'#9'CheckBox2'#4'Left'#2'x'#6'Height'#2#17#3'Top'#2'|'#5'W'
+  +'idth'#2'P'#7'Caption'#6#12'Save history'#8'TabOrder'#2#10#0#0#11'TOpenDialo'
+  +'g'#11'OpenDialog1'#4'left'#3#184#0#3'top'#3#152#0#0#0#0
 ]);

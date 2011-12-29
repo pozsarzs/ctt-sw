@@ -865,6 +865,10 @@ msgstr ""
 msgid "Offline mode"
 msgstr ""
 
+#: TFORM4.CHECKBOX2.CAPTION
+msgid "Save history"
+msgstr ""
+
 #: TFORM4.COMBOBOX1.TEXT
 msgid "378H"
 msgstr ""
