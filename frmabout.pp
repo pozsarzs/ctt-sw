@@ -11,7 +11,9 @@ unit frmabout;
 interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, commonproc;
+  StdCtrls, ExtCtrls,
+  //my units
+  untcommonproc;
 type
   { TForm2 }
   TForm2 = class(TForm)
@@ -56,21 +58,22 @@ implementation
 // on show event
 procedure TForm2.FormShow(Sender: TObject);
 begin
-  Label1.Caption:='CTT v'+commonproc.VERSION;
-  Label4.Caption:=commonproc.HOMEPAGE;
-  Label4.Enabled:=not commonproc.offline;
-  Label5.Enabled:=not commonproc.offline;
+  Label1.Caption:='CTT v'+untcommonproc.VERSION;
+  Label4.Caption:=untcommonproc.HOMEPAGE;
+  Label5.Caption:=untcommonproc.EMAIL;
+  Label4.Enabled:=not untcommonproc.offline;
+  Label5.Enabled:=not untcommonproc.offline;
   Label8.Font.Color:=clRed;
   Label10.Font.Color:=clRed;
   Label8.Caption:=MESSAGE01;
   Label10.Caption:=MESSAGE02;
-  if (commonproc.username<>'!') and (commonproc.username<>'')
+  if (untcommonproc.username<>'!') and (untcommonproc.username<>'')
   then
   begin
     Label8.Font.Color:=clWindowText;
     Label10.Font.Color:=clWindowText;
-    Label8.Caption:=commonproc.username;
-    Label10.Caption:=commonproc.serialnumber;
+    Label8.Caption:=untcommonproc.username;
+    Label10.Caption:=untcommonproc.serialnumber;
   end;
 end;
 

@@ -6,27 +6,15 @@
 { +--------------------------------------------------------------------------+ }
 { ************  This file is not public, contents trade secret! ************** }
 
-{
- Mode	Operation	Output data		Input data
- -----------------------------------------------------------------------------
- Mode0	Stand-by	-			-
- Mode1	BUce		N/P;Pwr			BUce
- Mode2	BBcb		N/P;Pwr			BUcb
- Mode3	Ieb0		N/P;Pwr			Ieb0
- Mode4	Icb0		N/P;Pwr			Icb0
- Mode5	Ice0		N/P;Pwr			Ice0
- Mode6	Charact.	N/P;Pwr;Uce;Ubem	20xIb,Ube
- Mode7	Charact.	N/P;Pwr;Uce;5xIb	20xIb,Ube; 5x20xIc,Uce
- Mode8	Selection	N/P;Pwr;?
-}
-
-unit commonproc; 
+unit untcommonproc;
 {$MODE OBJFPC}{$H-}
 interface
 uses
   {$IFDEF WIN32}Windows,{$ENDIF}
-  Classes, SysUtils, LResources, Dialogs, GraphUtil, dos, chkregkey, httpsend,
-  convert, Graphics;
+  Classes, SysUtils, LResources, Dialogs, GraphUtil, Graphics, dos, httpsend,
+  convert,
+  // my units
+  untchkregkey;
 var
   baseaddress: char;                                             // base address
   b: byte;                                              // general byte variable
@@ -50,26 +38,18 @@ var
 const
   packages: array[0..4] of string=('emitter','base','collector','package','none');
 
-{$I demodata.pp}
+{$I incdemodata.pp}
 
 {$IFDEF WIN32}
   CSIDL_PROFILE=40;
   SHGFP_TYPE_CURRENT=0;
 {$ENDIF}
-  VERSION='0.1';
-  HOMEPAGE='http://www.pozsarzs.hu';
-  APPNAME='power_supplies';
-  EMAIL='pozsarzs@gmail.com';
-  FB_PAGE='http://www.facebook.com/cheapapps';
-  HOMEPAGE='http://www.pozsarzs.hu';
-  PRJ_HOMEPAGE='http://www.cheapapps-series.info';
-  VERSION='0.2.1';
+  APPNAME='ctt';
   CFN=APPNAME+'.ini';
-  HFN=APPNAME+'.his';
- {$IFDEF WIN32}
-  CSIDL_PROFILE=40;
-  SHGFP_TYPE_CURRENT=0;
- {$ENDIF}
+  EMAIL='pozsarzs@gmail.com';
+  FB_PAGE='http://www.facebook.com/pages/CTT-tranzisztor-teszter/330609976956881';
+  HOMEPAGE='http://www.pozsarzs.hu';
+  VERSION='0.1';
 
 function getexepath: string;
 function getlang: string;
@@ -238,10 +218,10 @@ var
 begin
   swapvectors;
   {$IFDEF LINUX}
-    exec(exepath+'ctt-backend','m'+mode+' '+polarity+' '+data1+' '+data2+' '+data3+' '+data4+' '+data5+' '+data6);
+    exec(exepath+APPNAME+'-backend','m'+mode+' '+polarity+' '+data1+' '+data2+' '+data3+' '+data4+' '+data5+' '+data6);
   {$ENDIF}
   {$IFDEF WIN32}
-    exec(exepath+'ctt-backend.exe','m'+mode+' '+polarity+' '+data1+' '+data2+' '+data3+' '+data4+' '+data5+' '+data6);
+    exec(exepath+APPNAME+'-backend.exe','m'+mode+' '+polarity+' '+data1+' '+data2+' '+data3+' '+data4+' '+data5+' '+data6);
   {$ENDIF}
   swapvectors;
   if doserror<>0 then
@@ -342,7 +322,7 @@ begin
   rewrite(t);
     write(t,'# +'); for b:=4 to 79 do write(t,'-'); writeln(t,'+');
   writeln(t,'# | CTT v0.1 * Transistor tester                                               |');
-  writeln(t,'# | Copyright (C) 2010-2011 Pozsar Zsolt <info@pozsarzs.hu>                    |');
+  writeln(t,'# | Copyright (C) 2010-2012 Pozsar Zsolt <pozsarzs@gmail.com>                  |');
   writeln(t,'# | *.pro                                                                      |');
   writeln(t,'# | Transistor profile                                                         |');
   write(t,'# +'); for b:=4 to 79 do write(t,'-'); writeln(t,'+');
@@ -386,7 +366,7 @@ begin
     txt:=TStringList.Create;
     with THTTPSend.Create do
     begin
-      if HttpGetText(HOMEPAGE+'/ctt/update/prog_version.txt', txt) then
+      if HttpGetText(HOMEPAGE+'/upgrade/'+APPNAME+'/prog_version.txt', txt) then
       try
         newversion:=txt.Strings[0];
         if VERSION<>newversion then searchupdate:=true else searchupdate:=false;
@@ -607,7 +587,7 @@ begin
   {$IFDEF LINUX}
   tmpdir:='/tmp/';
   userdir:=getenvironmentvariable('HOME');
-  userdir:=userdir+'/.ctt/';
+  userdir:=userdir+'/.'+APPNAME+'/';
   {$I-}mkdir(userdir);{$I+} ioresult;
   {$ENDIF}
   {$IFDEF WIN32}
@@ -615,7 +595,7 @@ begin
   userdir:=getuserprofile;
   userdir:=userdir+'\Application data\';
   {$I-}mkdir(userdir);{$I+} ioresult;
-  userdir:=userdir+'ctt\';
+  userdir:=userdir+APPNAME+'\';
   {$I-}mkdir(userdir);{$I+} ioresult;
   {$ENDIF}
 end;

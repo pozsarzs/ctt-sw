@@ -1978,6 +1978,7 @@ object Form1: TForm1
           0000000000000000000000000000000000000000000000000000
         }
         ImageIndex = 16
+        OnClick = MenuItem36Click
       end
     end
     object MenuItem3: TMenuItem
@@ -2189,7 +2190,6 @@ object Form1: TForm1
           E3D9FCF5E596FDF8ED38FEFEFE03000000000000000000000000
         }
         ImageIndex = 7
-        OnClick = MenuItem14Click
         object MenuItem6: TMenuItem
           Caption = '&Homepage'
           Bitmap.Data = {
@@ -2229,6 +2229,7 @@ object Form1: TForm1
             E2FFE6E3E5FFE5E0E2FFE7E2E4FFE6E1E3FFE7E2E4FFE7E2E4FF
           }
           ImageIndex = 24
+          OnClick = MenuItem6Click
         end
         object MenuItem8: TMenuItem
           Caption = '&Facebook page'
@@ -2269,6 +2270,7 @@ object Form1: TForm1
             7CFFD29677FFD49677FFD59679FFD69D82FFDAAA92DA00000000
           }
           ImageIndex = 21
+          OnClick = MenuItem8Click
         end
       end
       object MenuItem13: TMenuItem

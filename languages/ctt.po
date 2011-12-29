@@ -1,0 +1,962 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "pin-out:"
+msgstr ""
+
+#: frmabout.message01
+msgid "Demo mode,"
+msgstr ""
+
+#: frmabout.message02
+msgid "registration required!"
+msgstr ""
+
+#: frmdetails.message01
+msgid "Minimum value is 4 uA for \"Auto value\""
+msgstr ""
+
+#: frmmain.message01
+msgid "Demo"
+msgstr ""
+
+#: frmmain.message02
+msgid "Full"
+msgstr ""
+
+#: frmmain.message03
+msgid "Off-line"
+msgstr ""
+
+#: frmmain.message04
+msgid "On-line"
+msgstr ""
+
+#: frmmain.message05
+msgid "New version is available. Please visit CTT's homepage!"
+msgstr ""
+
+#: frmmain.message06
+msgctxt "frmmain.message06"
+msgid "Open original profile"
+msgstr ""
+
+#: frmmain.message07
+msgid "Save profile as"
+msgstr ""
+
+#: frmmain.message08
+msgid "Profile files (*.pro)|*.pro|"
+msgstr ""
+
+#: frmmain.message09
+msgid "File is exist. Replace?"
+msgstr ""
+
+#: frmmain.message10
+msgctxt "frmmain.message10"
+msgid "new profile"
+msgstr ""
+
+#: frmmain.message11
+msgid "Save recent profile?"
+msgstr ""
+
+#: frmmain.message12
+msgid "Num"
+msgstr ""
+
+#: frmmain.message13
+msgid "h21E"
+msgstr ""
+
+#: frmmain.message14
+msgid "Box"
+msgstr ""
+
+#: frmmain.message15
+msgid "Compartment of the sorting box"
+msgstr ""
+
+#: frmmain.message16
+msgid "emitter"
+msgstr ""
+
+#: frmmain.message17
+msgid "base"
+msgstr ""
+
+#: frmmain.message18
+msgid "collector"
+msgstr ""
+
+#: frmmain.message19
+msgid "shield/metal package"
+msgstr ""
+
+#: frmmain.message20
+msgid "none"
+msgstr ""
+
+#: frmmain.message21
+msgctxt "frmmain.message21"
+msgid "Missing files! Please reinstall CTT!"
+msgstr ""
+
+#: frmmain.message22
+msgid "There is not newer version!"
+msgstr ""
+
+#: frmmain.message23
+msgctxt "frmmain.message23"
+msgid "(description)"
+msgstr ""
+
+#: frmmain.message24
+msgid "Open own profile"
+msgstr ""
+
+#: frmmain.message25
+msgid "Profile load error, creating a new one"
+msgstr ""
+
+#: frmmain.message26
+msgid "(unknown)"
+msgstr ""
+
+#: frmmain.message27
+msgid "Invalid or missing hardware key!"
+msgstr ""
+
+#: frmmain.message28
+msgctxt "frmmain.message28"
+msgid "Save result in BMP format"
+msgstr ""
+
+#: frmmain.message29
+msgctxt "frmmain.message29"
+msgid "Save result in TXT format"
+msgstr ""
+
+#: frmmain.message30
+msgid "Bitmap files (*.bmp)|*.bmp|"
+msgstr ""
+
+#: frmmain.message31
+msgid "Text files (*.txt)|*.txt|"
+msgstr ""
+
+#: frmmain.message32
+msgid "Cannot save this file!"
+msgstr ""
+
+#: frmmain.message33
+msgid "Connect a transistor to tester and press OK!"
+msgstr ""
+
+#: frmmain.message34
+msgid "Put it to this compartment: #"
+msgstr ""
+
+#: frmmain.message35
+msgid "Set aside..."
+msgstr ""
+
+#: frmmain.message36
+msgid "X: "
+msgstr ""
+
+#: frmmain.message37
+msgid "Y: "
+msgstr ""
+
+#: frmmain.message38
+msgid "resolution: "
+msgstr ""
+
+#: frmmain.message39
+msgid "marker: "
+msgstr ""
+
+#: frmmain.message40
+msgid "Bipolar transistor input characteristic"
+msgstr ""
+
+#: frmmain.message41
+msgid "Bipolar transistor output characteristic"
+msgstr ""
+
+#: frmpref.message01
+msgid "Select browser application"
+msgstr ""
+
+#: frmpref.message02
+msgid "Select mailer application"
+msgstr ""
+
+#: frmpref.message03
+msgid "executables|*.exe|all files|*.*"
+msgstr ""
+
+#: frmpref.message04
+msgid "all files|*.*"
+msgstr ""
+
+#: frmpref.message05
+msgid "white"
+msgstr ""
+
+#: frmpref.message06
+msgid "yellow"
+msgstr ""
+
+#: frmpref.message07
+msgid "red"
+msgstr ""
+
+#: frmpref.message08
+msgid "green"
+msgstr ""
+
+#: frmpref.message09
+msgid "blue"
+msgstr ""
+
+#: frmpref.message10
+msgid "black"
+msgstr ""
+
+#: frmserial.message01
+msgid "Wrong serial number!"
+msgstr ""
+
+#: TFORM1.BITBTN6.CAPTION
+msgctxt "TFORM1.BITBTN6.CAPTION"
+msgid "&Clear"
+msgstr ""
+
+#: TFORM1.BITBTN7.CAPTION
+msgctxt "TFORM1.BITBTN7.CAPTION"
+msgid "&Clear"
+msgstr ""
+
+#: TFORM1.BUTTON1.CAPTION
+msgctxt "TFORM1.BUTTON1.CAPTION"
+msgid "&Start"
+msgstr ""
+
+#: TFORM1.BUTTON10.CAPTION
+msgctxt "TFORM1.BUTTON10.CAPTION"
+msgid "&Start"
+msgstr ""
+
+#: TFORM1.BUTTON11.CAPTION
+msgctxt "TFORM1.BUTTON11.CAPTION"
+msgid "&Clear"
+msgstr ""
+
+#: TFORM1.BUTTON2.CAPTION
+msgctxt "TFORM1.BUTTON2.CAPTION"
+msgid "Start"
+msgstr ""
+
+#: TFORM1.BUTTON3.CAPTION
+msgctxt "TFORM1.BUTTON3.CAPTION"
+msgid "Start"
+msgstr ""
+
+#: TFORM1.BUTTON4.CAPTION
+msgctxt "TFORM1.BUTTON4.CAPTION"
+msgid "Start"
+msgstr ""
+
+#: TFORM1.BUTTON5.CAPTION
+msgctxt "TFORM1.BUTTON5.CAPTION"
+msgid "Start"
+msgstr ""
+
+#: TFORM1.BUTTON6.CAPTION
+msgctxt "TFORM1.BUTTON6.CAPTION"
+msgid "Start"
+msgstr ""
+
+#: TFORM1.BUTTON7.CAPTION
+msgctxt "TFORM1.BUTTON7.CAPTION"
+msgid "&Start"
+msgstr ""
+
+#: TFORM1.BUTTON8.CAPTION
+msgctxt "TFORM1.BUTTON8.CAPTION"
+msgid "&Details..."
+msgstr ""
+
+#: TFORM1.BUTTON9.CAPTION
+msgctxt "TFORM1.BUTTON9.CAPTION"
+msgid "&Details..."
+msgstr ""
+
+#: TFORM1.COMBOBOX1.TEXT
+msgid "NPN"
+msgstr ""
+
+#: TFORM1.EDIT1.TEXT
+msgctxt "TFORM1.EDIT1.TEXT"
+msgid "(description)"
+msgstr ""
+
+#: TFORM1.EDIT2.TEXT
+msgctxt "TFORM1.EDIT2.TEXT"
+msgid "new profile"
+msgstr ""
+
+#: TFORM1.FORM1.CAPTION
+msgid "CTT - new profile"
+msgstr ""
+
+#: TFORM1.GROUPBOX1.CAPTION
+msgid "BUce"
+msgstr ""
+
+#: TFORM1.GROUPBOX2.CAPTION
+msgid "BUcb"
+msgstr ""
+
+#: TFORM1.GROUPBOX3.CAPTION
+msgid "Ieb0"
+msgstr ""
+
+#: TFORM1.GROUPBOX4.CAPTION
+msgid "Icb0"
+msgstr ""
+
+#: TFORM1.GROUPBOX5.CAPTION
+msgid "Ice0"
+msgstr ""
+
+#: TFORM1.LABEL1.CAPTION
+msgid "Type:"
+msgstr ""
+
+#: TFORM1.LABEL10.CAPTION
+msgid "Pin #5:"
+msgstr ""
+
+#: TFORM1.LABEL11.CAPTION
+msgid "Pin #3:"
+msgstr ""
+
+#: TFORM1.LABEL12.CAPTION
+msgid "Pin #4:"
+msgstr ""
+
+#: TFORM1.LABEL14.CAPTION
+msgid "Package &"
+msgstr ""
+
+#: TFORM1.LABEL15.CAPTION
+msgid "Pin #6:"
+msgstr ""
+
+#: TFORM1.LABEL17.CAPTION
+msgid "Pin #7:"
+msgstr ""
+
+#: TFORM1.LABEL18.CAPTION
+msgid "Warning!"
+msgstr ""
+
+#: TFORM1.LABEL19.CAPTION
+msgid "This measurement can destroy the transistor!"
+msgstr ""
+
+#: TFORM1.LABEL2.CAPTION
+msgid "Pin #1:"
+msgstr ""
+
+#: TFORM1.LABEL20.CAPTION
+msgctxt "TFORM1.LABEL20.CAPTION"
+msgid "V"
+msgstr ""
+
+#: TFORM1.LABEL21.CAPTION
+msgctxt "TFORM1.LABEL21.CAPTION"
+msgid "V"
+msgstr ""
+
+#: TFORM1.LABEL22.CAPTION
+msgctxt "TFORM1.LABEL22.CAPTION"
+msgid "uA"
+msgstr ""
+
+#: TFORM1.LABEL23.CAPTION
+msgctxt "TFORM1.LABEL23.CAPTION"
+msgid "uA"
+msgstr ""
+
+#: TFORM1.LABEL24.CAPTION
+msgctxt "TFORM1.LABEL24.CAPTION"
+msgid "uA"
+msgstr ""
+
+#: TFORM1.LABEL25.CAPTION
+msgid "Breakdown voltage"
+msgstr ""
+
+#: TFORM1.LABEL26.CAPTION
+msgid "Reverse current"
+msgstr ""
+
+#: TFORM1.LABEL27.CAPTION
+msgid "%"
+msgstr ""
+
+#: TFORM1.LABEL28.CAPTION
+msgid "Tolerance:"
+msgstr ""
+
+#: TFORM1.LABEL29.CAPTION
+msgid "Measure voltage: 100V"
+msgstr ""
+
+#: TFORM1.LABEL3.CAPTION
+msgid "Uceo [V]:"
+msgstr ""
+
+#: TFORM1.LABEL30.CAPTION
+msgid "Measure voltage: 6V"
+msgstr ""
+
+#: TFORM1.LABEL4.CAPTION
+msgid "Ucbo [V]:"
+msgstr ""
+
+#: TFORM1.LABEL5.CAPTION
+msgid "Ico [A]:"
+msgstr ""
+
+#: TFORM1.LABEL6.CAPTION
+msgid "Uebo [V]:"
+msgstr ""
+
+#: TFORM1.LABEL7.CAPTION
+msgid "Pd [W]:"
+msgstr ""
+
+#: TFORM1.LABEL8.CAPTION
+msgid "Polarity"
+msgstr ""
+
+#: TFORM1.LABEL9.CAPTION
+msgid "Pin #2:"
+msgstr ""
+
+#: TFORM1.MENUITEM1.CAPTION
+msgid "&File"
+msgstr ""
+
+#: TFORM1.MENUITEM10.CAPTION
+msgid "&Software help"
+msgstr ""
+
+#: TFORM1.MENUITEM11.CAPTION
+msgid "H&ardware help"
+msgstr ""
+
+#: TFORM1.MENUITEM12.CAPTION
+msgctxt "TFORM1.MENUITEM12.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM13.CAPTION
+msgctxt "TFORM1.MENUITEM13.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM14.CAPTION
+msgid "CTT on  &Internet"
+msgstr ""
+
+#: TFORM1.MENUITEM15.CAPTION
+msgctxt "TFORM1.MENUITEM15.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM16.CAPTION
+msgctxt "TFORM1.MENUITEM16.CAPTION"
+msgid "&Save profile"
+msgstr ""
+
+#: TFORM1.MENUITEM17.CAPTION
+msgid "&Open profile"
+msgstr ""
+
+#: TFORM1.MENUITEM18.CAPTION
+msgctxt "TFORM1.MENUITEM18.CAPTION"
+msgid "&New profile"
+msgstr ""
+
+#: TFORM1.MENUITEM19.CAPTION
+msgctxt "TFORM1.MENUITEM19.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM2.CAPTION
+msgid "&Operation"
+msgstr ""
+
+#: TFORM1.MENUITEM20.CAPTION
+msgid "&Print result..."
+msgstr ""
+
+#: TFORM1.MENUITEM21.CAPTION
+msgid "O&riginal profiles..."
+msgstr ""
+
+#: TFORM1.MENUITEM22.CAPTION
+msgid "&Parameters"
+msgstr ""
+
+#: TFORM1.MENUITEM23.CAPTION
+msgid "&Base characteristic"
+msgstr ""
+
+#: TFORM1.MENUITEM24.CAPTION
+msgid "&Pair select"
+msgstr ""
+
+#: TFORM1.MENUITEM25.CAPTION
+msgid "&On-line registration"
+msgstr ""
+
+#: TFORM1.MENUITEM27.CAPTION
+msgid "&My profiles..."
+msgstr ""
+
+#: TFORM1.MENUITEM28.CAPTION
+msgid "Save profile &as..."
+msgstr ""
+
+#: TFORM1.MENUITEM29.CAPTION
+msgid "Save &result"
+msgstr ""
+
+#: TFORM1.MENUITEM3.CAPTION
+msgid "&Help"
+msgstr ""
+
+#: TFORM1.MENUITEM30.CAPTION
+msgctxt "TFORM1.MENUITEM30.CAPTION"
+msgid "as &picture (BMP)"
+msgstr ""
+
+#: TFORM1.MENUITEM31.CAPTION
+msgid "as te&xt (TXT)"
+msgstr ""
+
+#: TFORM1.MENUITEM32.CAPTION
+msgid "&Configuration"
+msgstr ""
+
+#: TFORM1.MENUITEM33.CAPTION
+msgctxt "TFORM1.MENUITEM33.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM34.CAPTION
+msgid "Set se&rial number..."
+msgstr ""
+
+#: TFORM1.MENUITEM35.CAPTION
+msgctxt "TFORM1.MENUITEM35.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM36.CAPTION
+msgid "&Settings..."
+msgstr ""
+
+#: TFORM1.MENUITEM37.CAPTION
+msgid "&View"
+msgstr ""
+
+#: TFORM1.MENUITEM38.CAPTION
+msgctxt "TFORM1.MENUITEM38.CAPTION"
+msgid "Toggle &grid"
+msgstr ""
+
+#: TFORM1.MENUITEM39.CAPTION
+msgctxt "TFORM1.MENUITEM39.CAPTION"
+msgid "Toggle &header"
+msgstr ""
+
+#: TFORM1.MENUITEM4.CAPTION
+msgid "&Quit"
+msgstr ""
+
+#: TFORM1.MENUITEM40.CAPTION
+msgid "&Collector characteristic"
+msgstr ""
+
+#: TFORM1.MENUITEM42.CAPTION
+msgctxt "TFORM1.MENUITEM42.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM1.MENUITEM43.CAPTION
+msgid "Re&fresh displays"
+msgstr ""
+
+#: TFORM1.MENUITEM44.CAPTION
+msgid "&Clear all display"
+msgstr ""
+
+#: TFORM1.MENUITEM5.CAPTION
+msgid "&Search new version"
+msgstr ""
+
+#: TFORM1.MENUITEM6.CAPTION
+msgid "&Homepage"
+msgstr ""
+
+#: TFORM1.MENUITEM7.CAPTION
+msgid "On-line &bugreport"
+msgstr ""
+
+#: TFORM1.MENUITEM8.CAPTION
+msgid "&Facebook page"
+msgstr ""
+
+#: TFORM1.MENUITEM9.CAPTION
+msgid "&About..."
+msgstr ""
+
+#: TFORM1.PANEL1.CAPTION
+msgctxt "TFORM1.PANEL1.CAPTION"
+msgid "0 "
+msgstr ""
+
+#: TFORM1.PANEL2.CAPTION
+msgctxt "TFORM1.PANEL2.CAPTION"
+msgid "0 "
+msgstr ""
+
+#: TFORM1.PANEL3.CAPTION
+msgctxt "TFORM1.PANEL3.CAPTION"
+msgid "0 "
+msgstr ""
+
+#: TFORM1.PANEL4.CAPTION
+msgctxt "TFORM1.PANEL4.CAPTION"
+msgid "0 "
+msgstr ""
+
+#: TFORM1.PANEL5.CAPTION
+msgctxt "TFORM1.PANEL5.CAPTION"
+msgid "0 "
+msgstr ""
+
+#: TFORM1.TABSHEET1.CAPTION
+msgid "Parameters"
+msgstr ""
+
+#: TFORM1.TABSHEET2.CAPTION
+msgctxt "TFORM1.TABSHEET2.CAPTION"
+msgid "Base characteristic"
+msgstr ""
+
+#: TFORM1.TABSHEET3.CAPTION
+msgid "Pair select"
+msgstr ""
+
+#: TFORM1.TABSHEET4.CAPTION
+msgctxt "TFORM1.TABSHEET4.CAPTION"
+msgid "Collector characteristic"
+msgstr ""
+
+#: TFORM1.TOOLBAR1.CAPTION
+msgid "ToolBar1"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON1.CAPTION
+msgctxt "TFORM1.TOOLBUTTON1.CAPTION"
+msgid "&New profile"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON1.HINT
+msgid "Create new profile"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON10.CAPTION
+msgctxt "TFORM1.TOOLBUTTON10.CAPTION"
+msgid "Toggle &grid"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON10.HINT
+msgid "Toggle grid"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON12.CAPTION
+msgid "ToolButton12"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON14.CAPTION
+msgid "Re&fresh"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON14.HINT
+msgid "Refresh displays"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON2.CAPTION
+msgid "&Original profiles"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON2.HINT
+msgctxt "TFORM1.TOOLBUTTON2.HINT"
+msgid "Open original profile"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON3.CAPTION
+msgid "&My profiles"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON3.HINT
+msgid "Open my profile"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON4.CAPTION
+msgctxt "TFORM1.TOOLBUTTON4.CAPTION"
+msgid "&Save profile"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON4.HINT
+msgid "Save profile"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON5.CAPTION
+msgctxt "TFORM1.TOOLBUTTON5.CAPTION"
+msgid "as &picture (BMP)"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON5.HINT
+msgctxt "TFORM1.TOOLBUTTON5.HINT"
+msgid "Save result in BMP format"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON6.CAPTION
+msgid "as data (TXT)"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON6.HINT
+msgctxt "TFORM1.TOOLBUTTON6.HINT"
+msgid "Save result in TXT format"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON7.CAPTION
+msgid "ToolButton7"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON8.CAPTION
+msgid "ToolButton8"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON9.CAPTION
+msgctxt "TFORM1.TOOLBUTTON9.CAPTION"
+msgid "Toggle &header"
+msgstr ""
+
+#: TFORM1.TOOLBUTTON9.HINT
+msgid "Toggle header"
+msgstr ""
+
+#: TFORM2.BUTTON1.CAPTION
+msgid "Close"
+msgstr ""
+
+#: TFORM2.FORM2.CAPTION
+msgid "About"
+msgstr ""
+
+#: TFORM2.LABEL11.CAPTION
+msgid "Copyright (C) 2010-2012 Pozsár Zsolt"
+msgstr ""
+
+#: TFORM2.LABEL2.CAPTION
+msgid "Computer controlled transistor tester"
+msgstr ""
+
+#: TFORM2.LABEL3.CAPTION
+msgid "Homepage:"
+msgstr ""
+
+#: TFORM2.LABEL6.CAPTION
+msgid "E-mail:"
+msgstr ""
+
+#: TFORM2.LABEL7.CAPTION
+msgid "Name:"
+msgstr ""
+
+#: TFORM2.LABEL9.CAPTION
+msgid "Serial:"
+msgstr ""
+
+#: TFORM3.BUTTON1.CAPTION
+msgctxt "TFORM3.BUTTON1.CAPTION"
+msgid "&Set"
+msgstr ""
+
+#: TFORM3.BUTTON3.CAPTION
+msgctxt "TFORM3.BUTTON3.CAPTION"
+msgid "&Cancel"
+msgstr ""
+
+#: TFORM3.BUTTON4.CAPTION
+msgid "Button4"
+msgstr ""
+
+#: TFORM3.FORM3.CAPTION
+msgid "Set serial"
+msgstr ""
+
+#: TFORM3.LABEL1.CAPTION
+msgid "Your serial number:"
+msgstr ""
+
+#: TFORM3.STATICTEXT1.CAPTION
+msgctxt "TFORM3.STATICTEXT1.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM3.STATICTEXT2.CAPTION
+msgctxt "TFORM3.STATICTEXT2.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFORM4.BUTTON1.CAPTION
+msgctxt "TFORM4.BUTTON1.CAPTION"
+msgid "&Set"
+msgstr ""
+
+#: TFORM4.BUTTON2.CAPTION
+msgctxt "TFORM4.BUTTON2.CAPTION"
+msgid "&Cancel"
+msgstr ""
+
+#: TFORM4.BUTTON4.CAPTION
+msgctxt "TFORM4.BUTTON4.CAPTION"
+msgid "..."
+msgstr ""
+
+#: TFORM4.BUTTON5.CAPTION
+msgctxt "TFORM4.BUTTON5.CAPTION"
+msgid "..."
+msgstr ""
+
+#: TFORM4.CHECKBOX1.CAPTION
+msgid "Offline mode"
+msgstr ""
+
+#: TFORM4.COMBOBOX1.TEXT
+msgid "378H"
+msgstr ""
+
+#: TFORM4.FORM4.CAPTION
+msgid "Preferences"
+msgstr ""
+
+#: TFORM4.LABEL1.CAPTION
+msgid "Browser application:"
+msgstr ""
+
+#: TFORM4.LABEL2.CAPTION
+msgid "Mailer application:"
+msgstr ""
+
+#: TFORM4.LABEL3.CAPTION
+msgid "Port:"
+msgstr ""
+
+#: TFORM4.RADIOGROUP1.CAPTION
+msgid "Display color"
+msgstr ""
+
+#: TFORM5.CAPTION
+msgid "Details"
+msgstr ""
+
+#: TFORM5.CHECKBOX1.CAPTION
+msgid "Auto value"
+msgstr ""
+
+#: TFORM5.GROUPBOX1.CAPTION
+msgctxt "TFORM5.GROUPBOX1.CAPTION"
+msgid "Base characteristic"
+msgstr ""
+
+#: TFORM5.GROUPBOX2.CAPTION
+msgctxt "TFORM5.GROUPBOX2.CAPTION"
+msgid "Collector characteristic"
+msgstr ""
+
+#: TFORM5.LABEL1.CAPTION
+msgid "Uce [V]:"
+msgstr ""
+
+#: TFORM5.LABEL2.CAPTION
+msgid "*Ibmax [uA]:"
+msgstr ""
+
+#: TFORM5.LABEL3.CAPTION
+msgid "Ib1 [uA]:"
+msgstr ""
+
+#: TFORM5.LABEL4.CAPTION
+msgid "* At measure, CTT increments it from zero to maximal value."
+msgstr ""
+
+#: TFORM5.LABEL5.CAPTION
+msgid "Ib2 [uA]:"
+msgstr ""
+
+#: TFORM5.LABEL6.CAPTION
+msgid "Ib3 [uA]:"
+msgstr ""
+
+#: TFORM5.LABEL7.CAPTION
+msgid "Ib4 [uA]:"
+msgstr ""
+
+#: TFORM5.LABEL8.CAPTION
+msgid "*Ucemax [V]:"
+msgstr ""
+
+#: untcommonproc.message01
+msgid "Missing default configuration file!"
+msgstr ""
+
+#: untcommonproc.message02
+msgid "Cannot write the user's configuration file!"
+msgstr ""
+
+#: untcommonproc.message03
+msgid "Please check browser application setting!"
+msgstr ""
+
+#: untcommonproc.message04
+msgid "Please check mailer application setting!"
+msgstr ""
+
+#: untcommonproc.message05
+msgctxt "untcommonproc.message05"
+msgid "Missing files! Please reinstall CTT!"
+msgstr ""
+
+#: untcommonproc.message06
+msgid "Do not use foreign hardware key!"
+msgstr ""
+
+#: untcommonproc.message07
+msgid "Cannot write temporary file!"
+msgstr ""
+

@@ -11,7 +11,9 @@ unit frmpref;
 interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, commonproc;
+  StdCtrls, ExtCtrls,
+  // my units
+  untcommonproc;
 type
   { TForm4 }
   TForm4 = class(TForm)
@@ -68,7 +70,7 @@ begin
   Edit1.Text:=browserapp;
   Edit2.Text:=mailerapp;
   CheckBox1.Checked:=offline;
-  case commonproc.baseaddress of
+  case untcommonproc.baseaddress of
     '1': ComboBox1.ItemIndex:=0;
     '2': ComboBox1.ItemIndex:=1;
     '3': ComboBox1.ItemIndex:=2;
@@ -81,7 +83,7 @@ begin
   RadioGroup1.Items.Add(MESSAGE09);
   RadioGroup1.Items.Add(MESSAGE10);
   for count:=0 to 5 do
-    if commonproc.displaycolor=colors[count] then RadioGroup1.ItemIndex:=count;
+    if untcommonproc.displaycolor=colors[count] then RadioGroup1.ItemIndex:=count;
 end;
 
 // cancel button
@@ -124,9 +126,9 @@ end;
 // set button
 procedure TForm4.Button1Click(Sender: TObject);
 begin
-  commonproc.browserapp:=Edit1.Text;
-  commonproc.mailerapp:=Edit2.Text;
-  commonproc.offline:=CheckBox1.Checked;
+  untcommonproc.browserapp:=Edit1.Text;
+  untcommonproc.mailerapp:=Edit2.Text;
+  untcommonproc.offline:=CheckBox1.Checked;
   case ComboBox1.ItemIndex of
     0: baseaddress:='1';
     1: baseaddress:='2';
@@ -137,7 +139,7 @@ begin
     1: baseaddress:='2';
     2: baseaddress:='3';
   end;
-  commonproc.displaycolor:=colors[RadioGroup1.ItemIndex];
+  untcommonproc.displaycolor:=colors[RadioGroup1.ItemIndex];
   setdisplaycolors;
   savecfg;
   Close;

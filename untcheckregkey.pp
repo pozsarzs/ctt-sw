@@ -6,7 +6,7 @@
 { +--------------------------------------------------------------------------+ }
 { ************  This file is not public, contents trade secret! ************** }
 
-unit chkregkey;
+unit untcheckregkey;
 interface
 var
   c1: integer;

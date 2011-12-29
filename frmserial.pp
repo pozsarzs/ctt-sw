@@ -11,7 +11,9 @@ unit frmserial;
 interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, commonproc;
+  StdCtrls, ExtCtrls,
+  // my units
+  untcommonproc;
 type
   { TForm3 }
   TForm3 = class(TForm)
@@ -50,7 +52,7 @@ begin
   Edit1.Clear;
   Edit2.Clear;
   Edit3.Clear;
-  commonproc.username:='!';
+  untcommonproc.username:='!';
   Close;
 end;
 

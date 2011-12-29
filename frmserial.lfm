@@ -9,7 +9,7 @@ object Form3: TForm3
   Caption = 'Set serial'
   ClientHeight = 96
   ClientWidth = 237
-  LCLVersion = '0.9.28.2'
+  LCLVersion = '0.9.30'
   object Bevel1: TBevel
     Left = 8
     Height = 8
@@ -21,16 +21,15 @@ object Form3: TForm3
     Left = 8
     Height = 14
     Top = 8
-    Width = 114
+    Width = 94
     Caption = 'Your serial number:'
     ParentColor = False
   end
   object Edit1: TEdit
     Left = 8
-    Height = 23
+    Height = 21
     Top = 24
     Width = 60
-    AutoSelect = True
     CharCase = ecUppercase
     MaxLength = 6
     OnChange = Edit1Change
@@ -38,10 +37,9 @@ object Form3: TForm3
   end
   object Edit2: TEdit
     Left = 88
-    Height = 23
+    Height = 21
     Top = 24
     Width = 60
-    AutoSelect = True
     CharCase = ecUppercase
     MaxLength = 6
     OnChange = Edit1Change
@@ -49,10 +47,9 @@ object Form3: TForm3
   end
   object Edit3: TEdit
     Left = 168
-    Height = 23
+    Height = 21
     Top = 24
     Width = 60
-    AutoSelect = True
     CharCase = ecUppercase
     MaxLength = 6
     OnChange = Edit1Change

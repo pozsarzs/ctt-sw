@@ -6,20 +6,17 @@
 { +--------------------------------------------------------------------------+ }
 { ************  This file is not public, contents trade secret! ************** }
 
-{
- Halt codes:
- ~~~~~~~~~~~
-    1: missing file
-    2: cannot read/write temporary file
-}
-
 unit frmmain;
 {$mode objfpc}{$H+}
 interface
 uses
   Classes, SysUtils, process, FileUtil, LResources, Forms, Controls, Graphics,
   Dialogs, Menus, ComCtrls, ExtCtrls, StdCtrls, Spin, ExtDlgs, Grids, Buttons,
-  frmabout, frmserial, frmpref, frmdetails, commonproc, dos;
+  dos,
+  // my forms
+  frmabout, frmserial, frmpref, frmdetails,
+  // my units
+  untcommonproc;
 type
   { TForm1 }
   TForm1 = class(TForm)
@@ -203,7 +200,6 @@ type
     procedure Image3MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
-    procedure MenuItem14Click(Sender: TObject);
     procedure MenuItem16Click(Sender: TObject);
     procedure MenuItem18Click(Sender: TObject);
     procedure MenuItem20Click(Sender: TObject);
@@ -212,12 +208,12 @@ type
     procedure MenuItem23Click(Sender: TObject);
     procedure MenuItem24Click(Sender: TObject);
     procedure MenuItem25Click(Sender: TObject);
-    procedure MenuItem26Click(Sender: TObject);
     procedure MenuItem27Click(Sender: TObject);
     procedure MenuItem28Click(Sender: TObject);
     procedure MenuItem30Click(Sender: TObject);
     procedure MenuItem31Click(Sender: TObject);
     procedure MenuItem34Click(Sender: TObject);
+    procedure MenuItem36Click(Sender: TObject);
     procedure MenuItem38Click(Sender: TObject);
     procedure MenuItem39Click(Sender: TObject);
     procedure MenuItem40Click(Sender: TObject);
@@ -227,6 +223,7 @@ type
     procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure MenuItem7Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
     procedure MenuItem9Click(Sender: TObject);
     procedure TabSheet1Show(Sender: TObject);
   private
@@ -305,18 +302,18 @@ begin
   header:=true; ToolButton9.Down:=grid;
   for b:=1 to 206 do mdata[b]:='0';
   // default
-  commonproc.g1xdiv:=100;       // x: 100mV/div
-  commonproc.g1ydiv:=50;        // y: 50uA/div
-  commonproc.g1xpix:=commonproc.g1xdiv/25;
-  commonproc.g1ypix:=commonproc.g1ydiv/25;
-  commonproc.g2xdiv:=1000;      // x: 1000mV/div
-  commonproc.g2ydiv:=100;       // y: 100mA/div
-  commonproc.g2xpix:=commonproc.g2xdiv/25;
-  commonproc.g2ypix:=commonproc.g2ydiv/25;
+  untcommonproc.g1xdiv:=100;       // x: 100mV/div
+  untcommonproc.g1ydiv:=50;        // y: 50uA/div
+  untcommonproc.g1xpix:=untcommonproc.g1xdiv/25;
+  untcommonproc.g1ypix:=untcommonproc.g1ydiv/25;
+  untcommonproc.g2xdiv:=1000;      // x: 1000mV/div
+  untcommonproc.g2ydiv:=100;       // y: 100mA/div
+  untcommonproc.g2xpix:=untcommonproc.g2xdiv/25;
+  untcommonproc.g2ypix:=untcommonproc.g2ydiv/25;
   setdisplaycolors;
   if (Application.Params[1]='-o') or (Application.Params[1]='--offline')
-  then commonproc.offline:=true;
-  if commonproc.offline=true
+  then untcommonproc.offline:=true;
+  if untcommonproc.offline=true
   then StatusBar1.Panels.Items[1].Text:=' '+MESSAGE03
   else StatusBar1.Panels.Items[1].Text:=' '+MESSAGE04;
   MenuItem6.Enabled:=not offline;
@@ -324,10 +321,10 @@ begin
   MenuItem14.Enabled:=not offline;
   MenuItem20.Enabled:=not offline;
   crk;
-  if commonproc.r=false
+  if untcommonproc.r=false
   then StatusBar1.Panels.Items[0].Text:=' '+MESSAGE01
   else StatusBar1.Panels.Items[0].Text:=' '+MESSAGE02;
-  case commonproc.baseaddress of
+  case untcommonproc.baseaddress of
     '1': StatusBar1.Panels.Items[2].Text:=' 378H';
     '2': StatusBar1.Panels.Items[2].Text:=' 278H';
     '3': StatusBar1.Panels.Items[2].Text:=' 3BCH';
@@ -710,7 +707,7 @@ begin
       begin
         StringGrid1.RowCount:=StringGrid1.RowCount+1;
         StringGrid1.Cells[0,count]:=inttostr(count);
-        StringGrid1.Cells[1,count]:=commonproc.mdata[6];
+        StringGrid1.Cells[1,count]:=untcommonproc.mdata[6];
         inputdata:=strtoint(mdata[6]);
         minvalue:=inputdata-inputdata*Spinedit1.Value/100;
         maxvalue:=inputdata+inputdata*Spinedit1.Value/100;
@@ -1055,31 +1052,35 @@ end;
 // online registration
 procedure TForm1.MenuItem25Click(Sender: TObject);
 begin
-
+  if lang='hu' then
+    runbrowser(HOMEPAGE+'/ctt/registration_hu.php')
+  else
+    runbrowser(HOMEPAGE+'/ctt/registration_en.php')
 end;
 
 // set serial number
 procedure TForm1.MenuItem34Click(Sender: TObject);
 begin
   Form3.ShowModal;
-  if commonproc.r=false
+  if untcommonproc.r=false
   then StatusBar1.Panels.Items[0].Text:=' '+MESSAGE01
   else StatusBar1.Panels.Items[0].Text:=' '+MESSAGE02;
   savecfg;
 end;
 
 // settings
-procedure TForm1.MenuItem26Click(Sender: TObject);
+procedure TForm1.MenuItem36Click(Sender: TObject);
 begin
   Form4.ShowModal;
-  if commonproc.offline=true
+  if untcommonproc.offline=true
   then StatusBar1.Panels.Items[1].Text:=' '+MESSAGE03
   else StatusBar1.Panels.Items[1].Text:=' '+MESSAGE04;
+  MenuItem5.Enabled:=not offline;
   MenuItem6.Enabled:=not offline;
   MenuItem7.Enabled:=not offline;
-  MenuItem14.Enabled:=not offline;
-  MenuItem20.Enabled:=not offline;
-  case commonproc.baseaddress of
+  MenuItem8.Enabled:=not offline;
+  MenuItem25.Enabled:=not offline;
+  case untcommonproc.baseaddress of
     '1': StatusBar1.Panels.Items[2].Text:=' 378H';
     '2': StatusBar1.Panels.Items[2].Text:=' 278H';
     '3': StatusBar1.Panels.Items[2].Text:=' 3BCH';
@@ -1087,30 +1088,37 @@ begin
 end;
 
 // -- Help menu ----------------------------------------------------------------
-// Software help
+// software help
 procedure TForm1.MenuItem10Click(Sender: TObject);
 begin
 {$IFDEF LINUX}
-  runbrowser(exepath+'help/'+lang+'/index.html');
+  if FSearch('help/'+lang+'.html',exepath)<>''
+  then runbrowser(exepath+'help/'+lang+'/index.html')
+  else runbrowser(exepath+'help/en/index.html');
 {$ENDIF}
 {$IFDEF WIN32}
-  runbrowser(exepath+'help\'+lang+'\index.html');
+  if FSearch('help\'+lang+'.html',exepath)<>''
+  then runbrowser(exepath+'help\'+lang+'\index.html')
+  else runbrowser(exepath+'help\en\index.html');
 {$ENDIF}
 end;
 
-// Hardware help
+// hardware help
 procedure TForm1.MenuItem11Click(Sender: TObject);
 begin
-{$IFDEF LINUX}
-  runbrowser(exepath+'help/'+lang+'/index.html');
-{$ENDIF}
-{$IFDEF WIN32}
-  runbrowser(exepath+'help\'+lang+'\index.html');
-{$ENDIF}
+  {$IFDEF LINUX}
+    if FSearch('help/'+lang+'.html',exepath)<>''
+    then runbrowser(exepath+'help/'+lang+'/hardware.html')
+    else runbrowser(exepath+'help/en/hardware.html');
+  {$ENDIF}
+  {$IFDEF WIN32}
+    if FSearch('help\'+lang+'.html',exepath)<>''
+    then runbrowser(exepath+'help\'+lang+'\hardware.html')
+    else runbrowser(exepath+'help\en\hardware.html');
+  {$ENDIF}
 end;
 
-// Set serial number
-
+// search new version
 procedure TForm1.MenuItem5Click(Sender: TObject);
 begin
   if searchupdate=true then
@@ -1118,39 +1126,30 @@ begin
     showmessage(MESSAGE05);
     StatusBar1.Panels.Items[3].Text:=' '+MESSAGE05;
   end else showmessage(MESSAGE22);
-
-
 end;
 
-// On-line registration
-procedure TForm1.MenuItem6Click(Sender: TObject);
-begin
-{$IFDEF LINUX}
-  runbrowser(exepath+'help/'+lang+'/index.html');
-{$ENDIF}
-{$IFDEF WIN32}
-  runbrowser(exepath+'help\'+lang+'\index.html');
-{$ENDIF}
-end;
-
-// See homepage
-procedure TForm1.MenuItem14Click(Sender: TObject);
-begin
-  runbrowser(commonproc.HOMEPAGE);
-end;
-
-// Send bugreport
+// send bugreport
 procedure TForm1.MenuItem7Click(Sender: TObject);
 begin
-{$IFDEF LINUX}
-  runbrowser(exepath+'help/'+lang+'/index.html');
-{$ENDIF}
-{$IFDEF WIN32}
-  runbrowser(exepath+'help\'+lang+'\index.html');
-{$ENDIF}
+  if lang='hu' then
+    runbrowser(HOMEPAGE+'/ctt/bugreport_hu.php')
+  else
+    runbrowser(HOMEPAGE+'/ctt/bugreport_en.php')
 end;
 
-// About
+// open homepage
+procedure TForm1.MenuItem6Click(Sender: TObject);
+begin
+  runbrowser(untcommonproc.HOMEPAGE);
+end;
+
+// open FB page
+procedure TForm1.MenuItem8Click(Sender: TObject);
+begin
+  runbrowser(untcommonproc.FB_PAGE);
+end;
+
+// about
 procedure TForm1.MenuItem9Click(Sender: TObject);
 begin
   Form2.ShowModal;

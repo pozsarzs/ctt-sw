@@ -73,13 +73,12 @@ object Form2: TForm2
   }
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '0.9.28.2'
+  LCLVersion = '0.9.30'
   object Label1: TLabel
     Left = 8
-    Height = 21
+    Height = 1
     Top = 8
-    Width = 79
-    Caption = 'CTT v0.1'
+    Width = 1
     Font.Height = -16
     Font.Name = 'Sans'
     Font.Style = [fsBold]
@@ -88,26 +87,25 @@ object Form2: TForm2
   end
   object Label2: TLabel
     Left = 8
-    Height = 15
+    Height = 14
     Top = 32
-    Width = 236
+    Width = 179
     Caption = 'Computer controlled transistor tester'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 8
-    Height = 15
+    Height = 14
     Top = 128
-    Width = 73
+    Width = 56
     Caption = 'Homepage:'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 88
-    Height = 15
+    Height = 1
     Top = 128
-    Width = 142
-    Caption = 'http://www.pozsarzs.hu'
+    Width = 1
     Font.Color = clBlue
     ParentColor = False
     ParentFont = False
@@ -117,10 +115,9 @@ object Form2: TForm2
   end
   object Label5: TLabel
     Left = 88
-    Height = 15
+    Height = 1
     Top = 144
-    Width = 110
-    Caption = 'info@pozsarzs.hu'
+    Width = 1
     Font.Color = clBlue
     ParentColor = False
     ParentFont = False
@@ -130,9 +127,9 @@ object Form2: TForm2
   end
   object Label6: TLabel
     Left = 8
-    Height = 15
+    Height = 14
     Top = 144
-    Width = 42
+    Width = 33
     Caption = 'E-mail:'
     ParentColor = False
   end
@@ -145,32 +142,32 @@ object Form2: TForm2
   end
   object Label7: TLabel
     Left = 16
-    Height = 15
+    Height = 14
     Top = 80
-    Width = 41
+    Width = 32
     Caption = 'Name:'
     ParentColor = False
   end
   object Label8: TLabel
     Left = 88
-    Height = 17
+    Height = 1
     Top = 80
-    Width = 11
+    Width = 1
     ParentColor = False
   end
   object Label9: TLabel
     Left = 16
-    Height = 15
+    Height = 14
     Top = 96
-    Width = 40
+    Width = 31
     Caption = 'Serial:'
     ParentColor = False
   end
   object Label10: TLabel
     Left = 88
-    Height = 17
+    Height = 1
     Top = 96
-    Width = 138
+    Width = 1
     ParentColor = False
   end
   object Bevel2: TBevel
@@ -182,10 +179,10 @@ object Form2: TForm2
   end
   object Label11: TLabel
     Left = 8
-    Height = 15
+    Height = 14
     Top = 48
-    Width = 235
-    Caption = 'Copyright (C) 2010-2011 Pozsár Zsolt'
+    Width = 182
+    Caption = 'Copyright (C) 2010-2012 Pozsár Zsolt'
     ParentColor = False
   end
   object Button1: TButton
