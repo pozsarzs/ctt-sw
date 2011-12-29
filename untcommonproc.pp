@@ -11,8 +11,8 @@ unit untcommonproc;
 interface
 uses
   {$IFDEF WIN32}Windows,{$ENDIF}
-  Classes, SysUtils, LResources, Dialogs, GraphUtil, Graphics, dos, httpsend,
-  convert,
+  Classes, SysUtils, LResources, Dialogs, GraphUtil, Graphics, INIFiles, dos,
+  httpsend, convert,
   // my units
   untchkregkey;
 var
@@ -514,51 +514,39 @@ end;
 // load configuration
 procedure loadcfg;
 var
+  ini: TINIFile;
   conffile: byte;
 begin
   conffile:=0;
-  {$IFDEF LINUX}
-  if FSearch('ctt.conf',exepath)<>''then conffile:=1;
-  if FSearch('cttrc',userdir)<>''then conffile:=2;
-  {$ENDIF}
-  {$IFDEF WIN32}
-  if FSearch('ctt.cfg',exepath)<>''then conffile:=3;
-  if FSearch('cttrc',userdir)<>''then conffile:=4;
-  {$ENDIF}
+  if FSearch(CFN,exepath)<>'' then conffile:=1;
+  if FSearch(CFN,userdir)<>'' then conffile:=2;
   case conffile of
-    1: assignfile(t,exepath+'ctt.conf');
-    2: assignfile(t,userdir+'cttrc');
-    3: assignfile(t,exepath+'ctt.cfg');
-    4: assignfile(t,userdir+'cttrc');
+    1: ini:=TIniFile.Create(exepath+CFN);
+    2: ini:=TIniFile.Create(userdir+CFN);
   else
     begin
      showmessage(MESSAGE01);
      halt(1);
     end;
   end;
+  showmessage(inttostr(conffile));
   try
-    reset(t);
-    browserapp:='';
-    mailerapp:='';
-    serialnumber:='';
-    displaycolor:='';
-    repeat
-      readln(t,s);
-      if s[1]+s[2]+s[3]='WB=' then for b:=4 to length(s) do browserapp:=browserapp+s[b];
-      if s[1]+s[2]+s[3]='MC=' then for b:=4 to length(s) do mailerapp:=mailerapp+s[b];
-      if s[1]+s[2]+s[3]='DC=' then for b:=4 to length(s) do displaycolor:=displaycolor+s[b];
-      if s[1]+s[2]+s[3]='SN=' then for b:=4 to length(s) do serialnumber:=serialnumber+s[b];
-      if s[1]+s[2]+s[3]='BA=' then baseaddress:=s[4];
-      if (baseaddress<>'1') and (baseaddress<>'2') and (baseaddress<>'3')
-      then baseaddress:='1';
-      if s[1]+s[2]+s[3]='OM=' then
-        if s[4]='1' then offline:=true else offline:=false;
-    until(eof(t));
-    closefile(t);
+    serialnumber:=ini.ReadString('General','SerialNumber','');
+    displaycolor:=ini.ReadString('General','DisplayColor','blue');
+    showmessage(ini.FileName);
+    showmessage(displaycolor);
+//    s:=ini.ReadString('General','BaseAddress','');
+//    baseaddress:=s[1];
+    offline:=ini.ReadBool('General','OffLineMode',false);
+    browserapp:=ini.ReadString('Applications','Browser','');
+    mailerapp:=ini.ReadString('Applications','Mailer','');
+    ini.Free;
   except
-    showmessage(MESSAGE01);
+    ShowMessage(MESSAGE01);
     halt(1);
   end;
+  if (baseaddress<>'1') and (baseaddress<>'2') and (baseaddress<>'3')
+  then baseaddress:='1';
 end;
 
 // make user's directory
@@ -624,30 +612,34 @@ end;
 
 // save configuration
 procedure savecfg;
+var
+  ini: textfile;
+// I use alternative solution for save configuration, because INIFiles unit has
+// got some bugs.
 begin
   {$IFDEF LINUX}
-  assignfile(t,userdir+'/cttrc');
+  assignfile(ini,userdir+'/'+CFN);
   {$ENDIF}
   {$IFDEF WIN32}
-  assignfile(t,userdir+'cttrc');
+  assignfile(ini,userdir+CFN);
   {$ENDIF}
-  {$I-}
-  rewrite(t);
-    write(t,'# +'); for b:=4 to 79 do write(t,'-'); writeln(t,'+');
-  writeln(t,'# | CTT v0.1 * Transistor tester                                               |');
-  writeln(t,'# | Copyright (C) 2010-2011 Pozsar Zsolt <info@pozsarzs.hu>                    |');
-  writeln(t,'# | cttrc                                                                      |');
-  writeln(t,'# | User''s configuration file                                                  |');
-  write(t,'# +'); for b:=4 to 79 do write(t,'-'); writeln(t,'+');
-  writeln(t,'WB='+browserapp);
-  writeln(t,'MC='+mailerapp);
-  writeln(t,'SN='+serialnumber);
-  writeln(t,'BA='+baseaddress);
-  writeln(t,'DC='+displaycolor);
-  write(t,'OM='); if offline=true then writeln(t,'1') else writeln(t,'0');
-  closefile(t);
-  {$I+}
-  if ioresult<>0 then ShowMessage(MESSAGE02);
+  try
+    rewrite(ini);
+    writeln(ini,'; '+appname+' v'+version);
+    writeln(ini,'');
+    writeln(ini,'[General]');
+    writeln(ini,'BaseAddress='+baseaddress);
+    writeln(ini,'DisplayColor='+displaycolor);
+    writeln(ini,'SerialNumber=',serialnumber);
+    write(ini,'OffLineMode=');if offline=true then writeln(ini,'1') else writeln(ini,'0');
+    writeln(ini,'');
+    writeln(ini,'[Applications]');
+    writeln(ini,'Browser=',browserapp);
+    writeln(ini,'Mailer=',mailerapp);
+    closefile(ini);
+  except
+    ShowMessage(MESSAGE02);
+  end;
 end;
 
 // set display colors
