@@ -1449,7 +1449,7 @@ object Form1: TForm1
         OnClick = MenuItem28Click
       end
       object MenuItem29: TMenuItem
-        Caption = 'Save &result'
+        Caption = 'Save actual &diagram'
         Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
@@ -1575,7 +1575,8 @@ object Form1: TForm1
         Caption = '-'
       end
       object MenuItem20: TMenuItem
-        Caption = '&Print result...'
+        Caption = '&Print actual diagram...'
+        Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000FFFFFF00FFFF

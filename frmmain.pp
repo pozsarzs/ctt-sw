@@ -275,8 +275,8 @@ Resourcestring
   MESSAGE25='Profile load error, creating a new one';
   MESSAGE26='(unknown)';
   MESSAGE27='Invalid or missing hardware key!';
-  MESSAGE28='Save result in BMP format';
-  MESSAGE29='Save result in TXT format';
+  MESSAGE28='Save actual diagram in BMP format';
+  MESSAGE29='Save actual diagram in TXT format';
   MESSAGE30='Bitmap files (*.bmp)|*.bmp|';
   MESSAGE31='Text files (*.txt)|*.txt|';
   MESSAGE32='Cannot save this file!';
@@ -289,6 +289,7 @@ Resourcestring
   MESSAGE39='marker: ';
   MESSAGE40='Bipolar transistor input characteristic';
   MESSAGE41='Bipolar transistor output characteristic';
+  MESSAGE42='new diagram';
 
 implementation
 
@@ -514,11 +515,13 @@ begin
   if (PageControl1.ActivePageIndex=1) or
      (PageControl1.ActivePageIndex=2) then
   begin
+    MenuItem20.Enabled:=true;
     MenuItem29.Enabled:=true;
     ToolButton5.Enabled:=true;
     ToolButton6.Enabled:=true;
   end else
   begin
+    MenuItem20.Enabled:=false;
     MenuItem29.Enabled:=false;
     ToolButton5.Enabled:=false;
     ToolButton6.Enabled:=false
@@ -975,7 +978,7 @@ var
 begin
   SaveDialog1.InitialDir:=datadir;
   SaveDialog1.Title:=MESSAGE28;
-  SaveDialog1.Filename:=Edit2.Text+'.bmp';
+  SaveDialog1.Filename:=MESSAGE42+'.bmp';
   SaveDialog1.Filter:=MESSAGE30;
   SaveDialog1.FilterIndex:=0;
   if SaveDialog1.Execute=false then exit;
@@ -1001,7 +1004,7 @@ var
 begin
   SaveDialog1.InitialDir:=datadir;
   SaveDialog1.Title:=MESSAGE29;
-  SaveDialog1.Filename:=Edit2.Text+'.txt';
+  SaveDialog1.Filename:=MESSAGE42+'.txt';
   SaveDialog1.Filter:=MESSAGE31;
   SaveDialog1.FilterIndex:=0;
   if SaveDialog1.Execute=false then exit;

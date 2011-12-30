@@ -130,12 +130,12 @@ msgstr ""
 
 #: frmmain.message28
 msgctxt "frmmain.message28"
-msgid "Save result in BMP format"
+msgid "Save actual diagram in BMP format"
 msgstr ""
 
 #: frmmain.message29
 msgctxt "frmmain.message29"
-msgid "Save result in TXT format"
+msgid "Save actual diagram in TXT format"
 msgstr ""
 
 #: frmmain.message30
@@ -184,6 +184,10 @@ msgstr ""
 
 #: frmmain.message41
 msgid "Bipolar transistor output characteristic"
+msgstr ""
+
+#: frmmain.message42
+msgid "new diagram"
 msgstr ""
 
 #: frmpref.message01
@@ -505,7 +509,7 @@ msgid "&Operation"
 msgstr ""
 
 #: TFORM1.MENUITEM20.CAPTION
-msgid "&Print result..."
+msgid "&Print actual diagram..."
 msgstr ""
 
 #: TFORM1.MENUITEM21.CAPTION
@@ -541,7 +545,7 @@ msgid "Save profile &as..."
 msgstr ""
 
 #: TFORM1.MENUITEM29.CAPTION
-msgid "Save &result"
+msgid "Save actual &diagram"
 msgstr ""
 
 #: TFORM1.MENUITEM3.CAPTION
