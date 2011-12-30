@@ -466,13 +466,8 @@ begin
     halt(1);
   end;
   ComboBox2.Sorted:=true;
-  Combobox2.ItemIndex:=0;
-  {$IFDEF LINUX}
-  Image1.Picture.LoadFromFile(exepath+'packages/'+lowercase(ComboBox2.Items.ValueFromIndex[ComboBox2.ItemIndex]+'.png'));
-  {$ENDIF}
-  {$IFDEF WIN32}
-  Image1.Picture.LoadFromFile(exepath+'packages\'+lowercase(ComboBox2.Items.ValueFromIndex[ComboBox2.ItemIndex]+'.png'));
-  {$ENDIF}
+  Image1.Canvas.Brush.Color:=clWhite;
+  Image1.Canvas.FillRect(0, 0, Image1.Width, Image1.Height);
   Combobox3.Items.Add(MESSAGE16);
   Combobox3.Items.Add(MESSAGE17);
   Combobox3.Items.Add(MESSAGE18);

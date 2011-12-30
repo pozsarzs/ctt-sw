@@ -14,7 +14,7 @@ uses
   Classes, SysUtils, LResources, Dialogs, GraphUtil, Graphics, INIFiles, dos,
   httpsend, convert,
   // my units
-  untchkregkey;
+  untcheckregkey;
 var
   baseaddress: char;                                             // base address
   b: byte;                                              // general byte variable
