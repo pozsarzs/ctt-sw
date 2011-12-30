@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 392
+  Left = 173
   Height = 671
-  Top = -3
+  Top = 42
   Width = 721
   ActiveControl = Edit2
   BorderIcons = [biSystemMenu, biMinimize]
@@ -261,9 +261,9 @@ object Form1: TForm1
     Height = 605
     Top = 24
     Width = 737
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 17
     object TabSheet1: TTabSheet
       Caption = 'Parameters'
@@ -798,8 +798,8 @@ object Form1: TForm1
     end
     object TabSheet2: TTabSheet
       Caption = 'Base characteristic'
-      ClientHeight = 572
-      ClientWidth = 733
+      ClientHeight = 579
+      ClientWidth = 729
       OnShow = TabSheet1Show
       object Bevel4: TBevel
         Left = 8
@@ -857,8 +857,8 @@ object Form1: TForm1
     end
     object TabSheet4: TTabSheet
       Caption = 'Collector characteristic'
-      ClientHeight = 572
-      ClientWidth = 733
+      ClientHeight = 579
+      ClientWidth = 729
       OnShow = TabSheet1Show
       object Bevel5: TBevel
         Left = 8
@@ -3209,5 +3209,9 @@ object Form1: TForm1
       55F7285F87FB4988BDFB428DBCC12D77B322FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00
     }
+  end
+  object PrintDialog1: TPrintDialog
+    left = 571
+    top = 381
   end
 end

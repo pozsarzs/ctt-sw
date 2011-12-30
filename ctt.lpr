@@ -27,7 +27,7 @@
 program ctt;
 {$MODE OBJFPC}{$H+}
 uses
-  Interfaces, Forms, LResources, DefaultTranslator,
+  Interfaces, Forms, DefaultTranslator, printer4lazarus,
   // my forms
   frmabout,  frmmain, frmserial, frmpref, frmdetails,
   // my units
@@ -42,7 +42,6 @@ begin
     halt(0);
   end;
   Application.Title:='CTT Transistor tester';
-  {$I ctt.lrs}
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);

@@ -10,9 +10,10 @@ unit frmmain;
 {$mode objfpc}{$H+}
 interface
 uses
+ {$IFDEF LINUX} Types, {$ENDIF}{$IFDEF WIN32} Windows, {$ENDIF}
   Classes, SysUtils, process, FileUtil, LResources, Forms, Controls, Graphics,
   Dialogs, Menus, ComCtrls, ExtCtrls, StdCtrls, Spin, ExtDlgs, Grids, Buttons,
-  DOM, dos,
+  PrintersDlgs, Printers, DOM, dos,
   // my forms
   frmabout, frmserial, frmpref, frmdetails,
   // my units
@@ -150,6 +151,7 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
+    PrintDialog1: TPrintDialog;
     Process1: TProcess;
     Process2: TProcess;
     SaveDialog1: TSaveDialog;
@@ -231,6 +233,12 @@ type
     procedure TabSheet1Show(Sender: TObject);
   private
     { private declarations }
+    procedure DrawGraphic(X,Y,AWidth,AHeight:Integer; Graphic: TGraphic);
+    function CM(Avalue: Double; VertRes:boolean=true): Integer;
+    function MM(AValue: Double; VertRes:boolean=true): Integer;
+    function Inch(AValue: Double; VertRes:boolean=true): Integer;
+    function Per(AValue: Double; VertRes:boolean=true): Integer;
+    procedure CenterText(const X,Y: Integer; const AText: string);
   public
     { public declarations }
   end;
@@ -290,6 +298,8 @@ Resourcestring
   MESSAGE40='Bipolar transistor input characteristic';
   MESSAGE41='Bipolar transistor output characteristic';
   MESSAGE42='new diagram';
+  MESSAGE43='Print error!';
+  MESSAGE44='Print actual diagram';
 
 implementation
 
@@ -333,6 +343,57 @@ begin
         MainMenu1.Items[0].Items[3].Add(SubItem);
       end;
   end;
+end;
+
+procedure TForm1.DrawGraphic(X, Y, AWidth, Aheight: Integer; Graphic: TGraphic);
+var
+  Ratio: Double;
+begin
+  if (AWidth<=0) or (AHeight<=0) then
+  begin
+    if Graphic.Width=0 then ratio := 1 else ratio := Graphic.Height/Graphic.Width;
+    if AWidth<=0 then AWidth := round(AHeight/ratio) else
+      if AHeight<=0 then AHeight := round(AWidth * ratio);
+  end;
+  if (AWidth>0) and (AHeight>0)
+  then Printer.Canvas.StretchDraw(Bounds(X,Y,AWidth,AHeight), Graphic);
+end;
+
+function TForm1.CM(Avalue: Double; VertRes: boolean=true): Integer;
+begin
+  result := MM(AValue*10, vertRes);
+end;
+
+function TForm1.MM(AValue: Double; VertRes:boolean=true): Integer;
+begin
+  if VertRes then
+    result := Round(AValue*Printer.YDPI/25.4)
+  else
+    result := Round(AValue*Printer.XDPI/25.4);
+end;
+
+function TForm1.Inch(AValue: Double; VertRes:boolean=true): Integer;
+begin
+  if VertRes then
+    result := Round(AValue*Printer.YDPI)
+  else
+    result := Round(AValue*Printer.XDPI);
+end;
+
+function TForm1.Per(AValue: Double; VertRes:boolean=true): Integer;
+begin
+  if VertRes then
+    result := Round(AValue*Printer.PageHeight/100)
+  else
+    result := Round(AValue*Printer.PageWidth/100);
+end;
+
+procedure TForm1.CenterText(const X, Y: Integer; const AText: string);
+var
+  Sz: TSize;
+begin
+  Sz := Printer.Canvas.TextExtent(AText);
+  Printer.Canvas.TextOut(X - Sz.cx div 2, Y - Sz.cy div 2, AText);
 end;
 
 // -- Events -------------------------------------------------------------------
@@ -1077,7 +1138,90 @@ end;
 
 // print result
 procedure TForm1.MenuItem20Click(Sender: TObject);
+var
+  Pic: TPicture;
+  x1, x2, y1, y2: integer;
+  rx1, rx2, ry1, ry2: integer;
+  i: integer;
 begin
+  Printer.Orientation:=poLandscape;
+  x1:=cm(1);
+  x2:=Printer.PageWidth-mm(5);
+  y1:=cm(2);
+  y2:=Printer.PageHeight-cm(1);
+  PrintDialog1.Title:=MESSAGE44;
+  if PrintDialog1.Execute then
+  try
+    Printer.Title:=MESSAGE44;
+    Printer.BeginDoc;
+    Printer.Canvas.Font.Color:=clBlack;
+    Printer.Canvas.Font.Size:=12;
+    Printer.Canvas.Font.Bold:=true;
+    Printer.Canvas.Pen.Color:=clBlack;
+    Printer.canvas.Pen.Width:=2;
+    if PageControl1.ActivePageIndex=1 then
+    begin
+      CenterText(Printer.PageWidth div 2, y1,MESSAGE40+' ('+Edit2.Text+')');
+      Pic:=TPicture.Create;
+      Pic.Bitmap.Height:=Image2.Picture.Bitmap.Height;
+      Pic.Bitmap.Width:=Image2.Picture.Width;
+      Pic.Bitmap.Canvas.Pen.Color:=clBlack;
+      Pic.Bitmap.Canvas.Pen.Width:=2;
+      Pic.Bitmap.Canvas.Rectangle(1,1,Pic.Bitmap.Width,Pic.Bitmap.Height);
+      // grid / text
+      with Pic.Bitmap do
+      begin
+        Clear;
+        Width:=Form1.Image2.Width;
+        Height:=Form1.Image2.Height;
+        Canvas.Brush.Color:= bg;
+        Canvas.FillRect(0,0,Form1.Image2.Width,Form1.Image2.Height);
+        if header=true then
+        begin
+          Canvas.Font.Size:=8;
+          Canvas.Font.Color:=fg;
+          Canvas.TextOut(8,2,MESSAGE36);
+          Canvas.TextOut(8,14,MESSAGE37);
+          Canvas.TextOut(23,2,'Ube');
+          Canvas.TextOut(23,14,'Ib');
+          Canvas.TextOut(58,2,MESSAGE38+inttostr(g1xdiv)+' mV/div');
+          Canvas.TextOut(58,14,MESSAGE38+inttostr(g1ydiv)+' uA/div');
+        end;
+        if grid=true then
+        begin
+          Canvas.Pen.Width:=1;
+          i:=ry2;
+          repeat
+            Canvas.Line(rx1,i,rx2,i);
+            i:=i-25;
+          until i=ry1-25;
+          i:=rx1;
+          repeat
+            Canvas.Line(i,ry1,i,ry2);
+            i:=i+25;
+          until i=rx2+25;
+        end;
+      end;
+
+
+
+
+
+
+
+      DrawGraphic(x1+mm(35), y1+cm(1), mm(205), 0, Pic.Graphic);
+      Pic.Free;
+    end;
+    Printer.Canvas.Pen.Color:=clBlack;
+    Printer.canvas.Pen.Width:=2;
+    Printer.Canvas.Line(x1, y2-38,x2,y2-38);
+    Printer.Canvas.Font.Size:=10;
+    Printer.Canvas.TextOut(x1,y2-25,UpperCase(APPNAME)+' v'+VERSION+' (C)2010-2012 Pozsár Zsolt <http://www.pozsarzs.hu>');
+    Printer.EndDoc;
+  except
+    Printer.Abort;
+    MessageDlg(MESSAGE43,mtError,[mbOk],0);
+  end;
 end;
 
 // quit

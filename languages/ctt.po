@@ -190,6 +190,14 @@ msgstr ""
 msgid "new diagram"
 msgstr ""
 
+#: frmmain.message43
+msgid "Print error!"
+msgstr ""
+
+#: frmmain.message44
+msgid "Print actual diagram"
+msgstr ""
+
 #: frmpref.message01
 msgid "Select browser application"
 msgstr ""
