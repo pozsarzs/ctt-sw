@@ -63,8 +63,8 @@ LazarusResources.Add('TForm1','FORMDATA',[
   +'N'#6#3'PNP'#0#8'OnChange'#7#11'Edit2Change'#5'Style'#7#14'csDropDownList'#8
   +'TabOrder'#2#7#4'Text'#6#3'NPN'#0#0#12'TPageControl'#12'PageControl1'#4'Left'
   +#3#184#0#6'Height'#3']'#2#3'Top'#2#24#5'Width'#3#225#2#10'ActivePage'#7#9'Ta'
-  +'bSheet2'#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#8'akBottom'#0#8'TabInd'
-  +'ex'#2#1#8'TabOrder'#2#17#0#9'TTabSheet'#9'TabSheet1'#7'Caption'#6#10'Parame'
+  +'bSheet1'#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#8'akBottom'#0#8'TabInd'
+  +'ex'#2#0#8'TabOrder'#2#17#0#9'TTabSheet'#9'TabSheet1'#7'Caption'#6#10'Parame'
   ,'ters'#12'ClientHeight'#3'C'#2#11'ClientWidth'#3#217#2#6'OnShow'#7#13'TabShe'
   +'et1Show'#0#6'TBevel'#6'Bevel2'#4'Left'#2#8#6'Height'#2#10#3'Top'#3#235#0#5
   +'Width'#3#8#2#5'Align'#7#8'alCustom'#5'Shape'#7#9'bsTopLine'#0#0#6'TLabel'#7

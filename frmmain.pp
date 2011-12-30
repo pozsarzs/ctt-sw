@@ -1143,7 +1143,23 @@ var
   x1, x2, y1, y2: integer;
   rx1, rx2, ry1, ry2: integer;
   i: integer;
+
+procedure printgraph(xpix,ypix,a1,a2,a3,a4: single);
+var
+  xx1, yy1, xx2, yy2: longint;
 begin
+  xx1:=trunc(a1/xpix)+8;
+  yy1:=trunc(((a2/ypix)-387)*-1)-8;
+  xx2:=trunc(a3/xpix)+8;
+  yy2:=trunc(((a4/ypix)-387)*-1)-8;
+  Pic.Bitmap.Canvas.Pen.Color:=clBlack;
+  Pic.Bitmap.Canvas.Pen.Width:=2;
+  Pic.Bitmap.Canvas.Line(xx1,yy1,xx2,yy2);
+end;
+
+begin
+  rx1:=8; ry1:=29;
+  rx2:=508;ry2:=379;
   Printer.Orientation:=poLandscape;
   x1:=cm(1);
   x2:=Printer.PageWidth-mm(5);
@@ -1158,7 +1174,7 @@ begin
     Printer.Canvas.Font.Size:=12;
     Printer.Canvas.Font.Bold:=true;
     Printer.Canvas.Pen.Color:=clBlack;
-    Printer.canvas.Pen.Width:=2;
+    Printer.canvas.Pen.Width:=1;
     if PageControl1.ActivePageIndex=1 then
     begin
       CenterText(Printer.PageWidth div 2, y1,MESSAGE40+' ('+Edit2.Text+')');
@@ -1166,20 +1182,15 @@ begin
       Pic.Bitmap.Height:=Image2.Picture.Bitmap.Height;
       Pic.Bitmap.Width:=Image2.Picture.Width;
       Pic.Bitmap.Canvas.Pen.Color:=clBlack;
-      Pic.Bitmap.Canvas.Pen.Width:=2;
+      Pic.Bitmap.Canvas.Pen.Width:=1;
       Pic.Bitmap.Canvas.Rectangle(1,1,Pic.Bitmap.Width,Pic.Bitmap.Height);
       // grid / text
       with Pic.Bitmap do
       begin
-        Clear;
-        Width:=Form1.Image2.Width;
-        Height:=Form1.Image2.Height;
-        Canvas.Brush.Color:= bg;
-        Canvas.FillRect(0,0,Form1.Image2.Width,Form1.Image2.Height);
         if header=true then
         begin
           Canvas.Font.Size:=8;
-          Canvas.Font.Color:=fg;
+          Canvas.Font.Color:=clBlack;
           Canvas.TextOut(8,2,MESSAGE36);
           Canvas.TextOut(8,14,MESSAGE37);
           Canvas.TextOut(23,2,'Ube');
@@ -1189,26 +1200,109 @@ begin
         end;
         if grid=true then
         begin
+          Canvas.Pen.Color:=clGray;
+          i:=ry2;
+          repeat
+            Canvas.Line(rx1,i,rx2,i);
+            i:=i-5;
+          until i=ry1-5;
+          i:=rx1;
+          repeat
+            Canvas.Line(i,ry1,i,ry2);
+            i:=i+5;
+          until i=rx2+5;
+          Canvas.Pen.Color:=clBlack;
           Canvas.Pen.Width:=1;
           i:=ry2;
           repeat
             Canvas.Line(rx1,i,rx2,i);
             i:=i-25;
           until i=ry1-25;
-          i:=rx1;
+            i:=rx1;
           repeat
             Canvas.Line(i,ry1,i,ry2);
             i:=i+25;
           until i=rx2+25;
+          end;
+          b:=7;
+          repeat
+            printgraph(g1xpix,g1ypix,strtofloat(mdata[b]),strtofloat(mdata[b+1]),strtofloat(mdata[b+2]),strtofloat(mdata[b+3]));
+            b:=b+2
+          until b=45;
         end;
+        DrawGraphic(x1+mm(35), y1+cm(1), mm(205), 0, Pic.Graphic);
+        Pic.Free;
       end;
-
-
-
-
-
-
-
+      if PageControl1.ActivePageIndex=2 then
+      begin
+        CenterText(Printer.PageWidth div 2, y1,MESSAGE41+' ('+Edit2.Text+')');
+        Pic:=TPicture.Create;
+        Pic.Bitmap.Height:=Image3.Picture.Bitmap.Height;
+        Pic.Bitmap.Width:=Image3.Picture.Width;
+        Pic.Bitmap.Canvas.Pen.Color:=clBlack;
+        Pic.Bitmap.Canvas.Pen.Width:=1;
+        Pic.Bitmap.Canvas.Rectangle(1,1,Pic.Bitmap.Width,Pic.Bitmap.Height);
+        // grid / text
+        with Pic.Bitmap do
+        begin
+          if header=true then
+          begin
+            Canvas.Font.Size:=8;
+            Canvas.Font.Color:=clBlack;
+            Canvas.TextOut(8,2,MESSAGE36);
+            Canvas.TextOut(8,14,MESSAGE37);
+            Canvas.TextOut(23,2,'Ube');
+            Canvas.TextOut(23,14,'Ib');
+            Canvas.TextOut(58,2,MESSAGE38+inttostr(g2xdiv)+' mV/div');
+            Canvas.TextOut(58,14,MESSAGE38+inttostr(g2ydiv)+' uA/div');
+          end;
+          if grid=true then
+          begin
+            Canvas.Pen.Color:=clGray;
+            i:=ry2;
+            repeat
+              Canvas.Line(rx1,i,rx2,i);
+              i:=i-5;
+            until i=ry1-5;
+            i:=rx1;
+            repeat
+              Canvas.Line(i,ry1,i,ry2);
+              i:=i+5;
+            until i=rx2+5;
+            Canvas.Pen.Color:=clBlack;
+            Canvas.Pen.Width:=1;
+            i:=ry2;
+            repeat
+              Canvas.Line(rx1,i,rx2,i);
+              i:=i-25;
+            until i=ry1-25;
+              i:=rx1;
+            repeat
+              Canvas.Line(i,ry1,i,ry2);
+              i:=i+25;
+            until i=rx2+25;
+          end;
+        b:=47;
+        repeat
+          printgraph(g2xpix,g2ypix,strtofloat(mdata[b]),strtofloat(mdata[b+1]),strtofloat(mdata[b+2]),strtofloat(mdata[b+3]));
+          b:=b+2;
+        until b=85;
+        b:=87;
+        repeat
+         printgraph(g2xpix,g2ypix,strtofloat(mdata[b]),strtofloat(mdata[b+1]),strtofloat(mdata[b+2]),strtofloat(mdata[b+3]));
+          b:=b+2;
+        until b=125;
+        b:=127;
+        repeat
+          printgraph(g2xpix,g2ypix,strtofloat(mdata[b]),strtofloat(mdata[b+1]),strtofloat(mdata[b+2]),strtofloat(mdata[b+3]));
+          b:=b+2;
+        until b=165;
+        b:=167;
+        repeat
+          printgraph(g2xpix,g2ypix,strtofloat(mdata[b]),strtofloat(mdata[b+1]),strtofloat(mdata[b+2]),strtofloat(mdata[b+3]));
+          b:=b+2;
+        until b=205;
+      end;
       DrawGraphic(x1+mm(35), y1+cm(1), mm(205), 0, Pic.Graphic);
       Pic.Free;
     end;

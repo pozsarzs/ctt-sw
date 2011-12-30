@@ -68,8 +68,6 @@ procedure makeuserdir;
 procedure runbrowser(url: string);
 procedure runmailer(adr: string);
 procedure setdisplaycolors;
-procedure drawgraph1(xpix,ypix,a1,a2,a3,a4: single);
-procedure drawgraph2(xpix,ypix,a1,a2,a3,a4: single);
 procedure writetodisplay;
 procedure loadhis;
 procedure savehis;
@@ -705,6 +703,11 @@ begin
   writetodisplay;
 end;
 
+// write and draw data to displays
+procedure writetodisplay;
+var
+  b: byte;
+
 procedure drawgraph1(xpix,ypix,a1,a2,a3,a4: single);
 var
   xx1, yy1, xx2, yy2: longint;
@@ -731,10 +734,6 @@ begin
   Form1.Image3.Canvas.Line(xx1,yy1,xx2,yy2);
 end;
 
-// write and draw data to displays
-procedure writetodisplay;
-var
-  b: byte;
 begin
   // 1st page
   Form1.Panel1.Caption:=mdata[1]+' ';
