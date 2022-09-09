@@ -1,0 +1,10 @@
+# +----------------------------------------------------------------------------+
+# | CTT v0.1 * transistor tester and characteristic curve plotter              |
+# | Copyright (C) 2010-2022 Pozsar Zsolt <pozsarzs@gmail.com>                  |
+# | green.pal                                                                  |
+# | Display colour setting                                                     |
+# +----------------------------------------------------------------------------+
+FG=$63FF63
+D1=$50CD50
+D2=$3C9A3C
+BG=$005200

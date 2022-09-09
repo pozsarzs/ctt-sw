@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CTT
+Exec=ctt
+Icon=ctt.xpm
+Info=CTT
+Comment=Transistor tester and characteristic curve plotter
+Comment[hu]=Tranzisztor teszter és jelleggörbe rajzoló
+Type=Application
+Categories=Application;Electronics;
+Terminal=false
+StartupNotify=true

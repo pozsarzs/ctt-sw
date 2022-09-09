@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1497114828"/>
+  <Params Value=" -MObjFPC -Scgi -O1 -veibq -vw-n-h- -Fl/opt/gnome/lib -Fu/home/pozsarzs/Git/PROG_ctt-demo-sw/source/synapse -Fu/home/pozsarzs/Git/PROG_ctt-demo-sw/source/convert -Fu/usr/lib/lazarus/1.6.2/lcl/units/i386-linux/gtk2 -Fu/usr/lib/lazarus/1.6.2/lcl/units/i386-linux -Fu/usr/lib/lazarus/1.6.2/components/lazutils/lib/i386-linux -Fu/usr/lib/lazarus/1.6.2/packager/units/i386-linux -Fu/home/pozsarzs/Git/PROG_ctt-demo-sw/source/ -dLCL -dLCLgtk2 ctt.lpr"/>
+</CONFIG>

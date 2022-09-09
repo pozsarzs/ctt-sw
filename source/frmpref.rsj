@@ -1,0 +1,12 @@
+{"version":1,"strings":[
+{"hash":239965006,"name":"frmpref.message01","sourcebytes":[83,101,108,101,99,116,32,98,114,111,119,115,101,114,32,97,112,112,108,105,99,97,116,105,111,110],"value":"Select browser application"},
+{"hash":184910334,"name":"frmpref.message02","sourcebytes":[83,101,108,101,99,116,32,109,97,105,108,101,114,32,97,112,112,108,105,99,97,116,105,111,110],"value":"Select mailer application"},
+{"hash":47254778,"name":"frmpref.message03","sourcebytes":[101,120,101,99,117,116,97,98,108,101,115,124,42,46,101,120,101,124,97,108,108,32,102,105,108,101,115,124,42,46,42],"value":"executables|*.exe|all files|*.*"},
+{"hash":182747562,"name":"frmpref.message04","sourcebytes":[97,108,108,32,102,105,108,101,115,124,42,46,42],"value":"all files|*.*"},
+{"hash":8253605,"name":"frmpref.message05","sourcebytes":[119,104,105,116,101],"value":"white"},
+{"hash":133968743,"name":"frmpref.message06","sourcebytes":[121,101,108,108,111,119],"value":"yellow"},
+{"hash":30900,"name":"frmpref.message07","sourcebytes":[114,101,100],"value":"red"},
+{"hash":7244734,"name":"frmpref.message08","sourcebytes":[103,114,101,101,110],"value":"green"},
+{"hash":431029,"name":"frmpref.message09","sourcebytes":[98,108,117,101],"value":"blue"},
+{"hash":6891419,"name":"frmpref.message10","sourcebytes":[98,108,97,99,107],"value":"black"}
+]}

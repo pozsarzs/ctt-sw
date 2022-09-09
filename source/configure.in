@@ -1,0 +1,46 @@
+dnl +--------------------------------------------------------------------------+
+dnl | CTT v0.1 * transistor tester and characteristic curve plotter            |
+dnl | Copyright (C) 2010-2022 Pozsar Zsolt <pozsarzs@gmail.com>                |
+dnl | configure.in                                                             |
+dnl | Autoconf input file for unix-like systems                                |
+dnl +--------------------------------------------------------------------------+
+
+AC_INIT(config.pp.in)
+AC_CONFIG_AUX_DIR(config)
+AC_CANONICAL_SYSTEM
+
+AC_PATH_PROG(rm, rm, no)
+AC_PATH_PROG(install, install, no)
+
+AC_CHECK_PROGS(make, gmake make)
+test "$make" = "" && AC_MSG_ERROR(Make not found!)
+AC_CHECK_PROGS(hfpc,fpc,no)
+test x"$hfpc" = xno && AC_MSG_ERROR(FreePascal compiler not found!)
+
+lcldir=`find /usr -type d -name lcl | grep lazarus | grep -v doc | grep -v test`
+AC_CHECK_FILE($lcldir/lclbase.lpk,,AC_MSG_ERROR(LCL unit files not found!))
+
+AC_CHECK_FILE(../documents/VERSION,,AC_MSG_ERROR(VERSION file not found!))
+version=`cat ../documents/VERSION`
+os=`fpc -iSO`
+architecture=`fpc -iSP`
+
+AC_SUBST(architecture)
+AC_SUBST(fpflag)
+AC_SUBST(install)
+AC_SUBST(lcldir)
+AC_SUBST(make)
+AC_SUBST(os)
+AC_SUBST(rm)
+AC_SUBST(sysconfdir)
+AC_SUBST(version)
+AC_OUTPUT( Makefile.global config.pp )
+
+echo "
+Summary
+=======
+    Target op. system	$os
+    Target processor	$architecture
+
+  Type '${make}' for compilation and then '${make} install'.
+"

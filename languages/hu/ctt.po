@@ -1,828 +1,888 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Project-Id-Version: CTT-demo v0.1\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Pozsár Zsolt <pozsarzs@gmail.com>\n"
+"Language-Team: Pozsár Zsolt <pozsarzs@gmail.com>\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.11\n"
 
 msgid "pin-out:"
-msgstr ""
+msgstr "lábkiosztás:"
 
 #: commonproc.message01
 msgid "Missing default configuration file!"
-msgstr ""
+msgstr "Hiányzó beállítás fájl!"
 
 #: commonproc.message02
 msgid "Cannot write the user's configuration file!"
-msgstr ""
+msgstr "A felhasználó beállítása nem menthető!"
 
 #: commonproc.message03
 msgid "Please check browser application setting!"
-msgstr ""
+msgstr "Ellenőrizze a megadott böngésző alkalmazást!"
 
 #: commonproc.message04
 msgid "Please check mailer application setting!"
-msgstr ""
+msgstr "Ellenőrizze a megadott levelező alkalmazást!"
 
 #: commonproc.message05
 msgid "Missing palette file!"
-msgstr ""
+msgstr "Hiányzó színbeállítások!"
 
 #: frmmain.message01
 msgid "Demo"
-msgstr ""
+msgstr "Demo"
 
 #: frmmain.message02
 msgid "Full"
-msgstr ""
+msgstr "Teljes"
 
 #: frmmain.message03
 msgid "Off-line"
-msgstr ""
+msgstr "Off-line"
 
 #: frmmain.message04
 msgid "On-line"
-msgstr ""
+msgstr "On-line"
 
 #: frmmain.message05
 msgid "New version is available. Please visit CTT's homepage!"
-msgstr ""
+msgstr "Új változat elérhető. Kérem, látogassa meg a CTT honlapját!"
 
 #: frmmain.message06
 msgctxt "frmmain.message06"
 msgid "Open original profile"
-msgstr ""
+msgstr "Eredeti profil megnyitás"
 
 #: frmmain.message07
 msgid "Save profile as"
-msgstr ""
+msgstr "Profil mentés másként"
 
 #: frmmain.message08
 msgid "Profile files (*.pro)|*.pro|"
-msgstr ""
+msgstr "Profil állományok (*.pro)|*.pro|"
 
 #: frmmain.message09
 msgid "File is exist. Replace?"
-msgstr ""
+msgstr "A fájl létezik, felülírjam?"
 
 #: frmmain.message10
 msgctxt "frmmain.message10"
 msgid "new profile"
-msgstr ""
+msgstr "új profil"
 
 #: frmmain.message11
 msgid "Save recent profile?"
-msgstr ""
+msgstr "Mentsem az jelenlegi profilt?"
 
 #: frmmain.message12
 msgid "Num"
-msgstr ""
+msgstr "Szám"
 
 #: frmmain.message13
 msgid "h21E"
-msgstr ""
+msgstr "h21E"
 
 #: frmmain.message14
 msgid "Box"
-msgstr ""
+msgstr "Doboz"
 
 #: frmmain.message15
 msgid "Compartment of the sorting box"
-msgstr ""
+msgstr "Válogató doboz rekesze"
 
 #: frmmain.message16
 msgid "emitter"
-msgstr ""
+msgstr "emitter"
 
 #: frmmain.message17
 msgid "base"
-msgstr ""
+msgstr "bázis"
 
 #: frmmain.message18
 msgid "collector"
-msgstr ""
+msgstr "kollektor"
 
 #: frmmain.message19
 msgid "shield/metal package"
-msgstr ""
+msgstr "árnyékolás, fémház"
 
 #: frmmain.message20
 msgid "none"
-msgstr ""
+msgstr "nincs"
 
 #: frmmain.message21
 msgid "Missing files! Please reinstall CTT!"
-msgstr ""
+msgstr "Hiányzó fájlok! Telepítse újra az alkalmazást."
 
 #: frmmain.message22
 msgid "There is not newer version!"
-msgstr ""
+msgstr "Nincs újabb változat."
 
 #: frmmain.message23
 msgctxt "frmmain.message23"
 msgid "(description)"
-msgstr ""
+msgstr "(leírás)"
 
 #: frmmain.message24
 msgid "Open own profile"
-msgstr ""
+msgstr "Saját profil megnyitása"
 
 #: frmmain.message25
 msgid "Profile load error, creating a new one"
-msgstr ""
+msgstr "Profil megnyitási hiba, készítek egy üreset."
 
 #: frmmain.message26
 msgid "(unknown)"
-msgstr ""
+msgstr "(unknown)"
 
 #: frmmain.message27
 msgid "Invalid or missing hardware!"
-msgstr ""
+msgstr "Érvénytelen vagy hiányzó hardver!"
 
 #: frmmain.message28
 msgctxt "frmmain.message28"
 msgid "Save result in BMP format"
-msgstr ""
+msgstr "Eredmény mentés BMP formátumban"
 
 #: frmmain.message29
 msgctxt "frmmain.message29"
 msgid "Save result in TXT format"
-msgstr ""
+msgstr "Eredmény mentés TXT formátumban"
 
 #: frmmain.message30
 msgid "Bitmap files (*.bmp)|*.bmp|"
-msgstr ""
+msgstr "Bitkép (*.bmp)|*.bmp|"
 
 #: frmmain.message31
 msgid "Text files (*.txt)|*.txt|"
-msgstr ""
+msgstr "Szöveges állomány (*.txt)|*.txt|"
 
 #: frmmain.message32
 msgid "Cannot save this file!"
-msgstr ""
+msgstr "Sajnálom, nem tudtam elmenteni ezt a fájlt."
 
 #: frmmain.message33
 msgid "Connect a transistor to tester and press OK!"
-msgstr ""
+msgstr "Csatlakoztasson egy tranzisztort a teszterhez és nyomja meg az OK-t!"
 
 #: frmmain.message34
 msgid "Put it to this compartment: #"
-msgstr ""
+msgstr "Tegye a következő rekeszbe: "
 
 #: frmmain.message35
 msgid "Set aside..."
-msgstr ""
+msgstr "Tegye félre..."
 
 #: frmmain.message36
 msgid "X: "
-msgstr ""
+msgstr "X:"
 
 #: frmmain.message37
 msgid "Y: "
-msgstr ""
+msgstr "Y:"
 
 #: frmmain.message38
 msgid "resolution: "
-msgstr ""
+msgstr "felbontás: "
 
 #: frmmain.message39
 msgid "marker: "
-msgstr ""
+msgstr "marker: "
 
 #: frmmain.message40
 msgid "Bipolar transistor input characteristic"
-msgstr ""
+msgstr "Bipoláris tranzisztor bemeneti karakterisztikája"
 
 #: frmmain.message41
 msgid "Bipolar transistor output characteristic"
-msgstr ""
+msgstr "Bipoláris tranzisztor kimeneti karakterisztikája"
 
 #: frmmain.message42
 msgid "This application is a demo version of the CTT."
-msgstr ""
+msgstr "Ez az alkalmazás a CTT előzetes demó kiadása."
 
 #: frmmain.message43
 msgid "You can view and test the application, but you can not measure."
-msgstr ""
+msgstr "Megtekintheti és kipróbálhatja, de mérésre nem alkalmas."
 
 #: frmpref.message01
 msgid "Select browser application"
-msgstr ""
+msgstr "Válasszon böngészőt"
 
 #: frmpref.message02
 msgid "Select mailer application"
-msgstr ""
+msgstr "Válasszon levelezőt"
 
 #: frmpref.message03
 msgid "executables|*.exe|all files|*.*"
-msgstr ""
+msgstr "alkalmazások|*.exe|minden fájl|*.*"
 
 #: frmpref.message04
 msgid "all files|*.*"
-msgstr ""
+msgstr "minden fájl|*.*"
 
 #: frmpref.message05
 msgid "white"
-msgstr ""
+msgstr "fehér"
 
 #: frmpref.message06
 msgid "yellow"
-msgstr ""
+msgstr "sárga"
 
 #: frmpref.message07
 msgid "red"
-msgstr ""
+msgstr "vörös"
 
 #: frmpref.message08
 msgid "green"
-msgstr ""
+msgstr "zöld"
 
 #: frmpref.message09
 msgid "blue"
-msgstr ""
+msgstr "kék"
 
 #: frmpref.message10
 msgid "black"
-msgstr ""
+msgstr "fekete"
 
 #: tform1.bitbtn6.caption
 msgctxt "tform1.bitbtn6.caption"
 msgid "&Clear"
-msgstr ""
+msgstr "&Törlés"
 
 #: tform1.bitbtn7.caption
 msgctxt "TFORM1.BITBTN7.CAPTION"
 msgid "&Clear"
-msgstr ""
+msgstr "&Törlés"
 
 #: tform1.button1.caption
 msgctxt "tform1.button1.caption"
 msgid "&Start"
-msgstr ""
+msgstr "In&dítás"
 
 #: tform1.button10.caption
 msgctxt "TFORM1.BUTTON10.CAPTION"
 msgid "&Start"
-msgstr ""
+msgstr "In&dítás"
 
 #: tform1.button11.caption
 msgctxt "TFORM1.BUTTON11.CAPTION"
 msgid "&Clear"
-msgstr ""
+msgstr "&Törlés"
 
 #: tform1.button2.caption
 msgctxt "tform1.button2.caption"
 msgid "Start"
-msgstr ""
+msgstr "Indítás"
 
 #: tform1.button3.caption
 msgctxt "TFORM1.BUTTON3.CAPTION"
 msgid "Start"
-msgstr ""
+msgstr "Indítás"
 
 #: tform1.button4.caption
 msgctxt "TFORM1.BUTTON4.CAPTION"
 msgid "Start"
-msgstr ""
+msgstr "Indítás"
 
 #: tform1.button5.caption
 msgctxt "TFORM1.BUTTON5.CAPTION"
 msgid "Start"
-msgstr ""
+msgstr "Indítás"
 
 #: tform1.button6.caption
 msgctxt "TFORM1.BUTTON6.CAPTION"
 msgid "Start"
-msgstr ""
+msgstr "Indítás"
 
 #: tform1.button7.caption
 msgctxt "TFORM1.BUTTON7.CAPTION"
 msgid "&Start"
-msgstr ""
+msgstr "In&dítás"
 
 #: tform1.button8.caption
 msgctxt "tform1.button8.caption"
 msgid "&Details..."
-msgstr ""
+msgstr "Rés&zletek"
 
 #: tform1.button9.caption
 msgctxt "TFORM1.BUTTON9.CAPTION"
 msgid "&Details..."
-msgstr ""
+msgstr "Rés&zletek"
 
 #: tform1.caption
 msgid "CTT - new profile"
-msgstr ""
+msgstr "CTT - új profil"
 
 #: tform1.combobox1.text
 msgid "NPN"
-msgstr ""
+msgstr "NPN"
 
 #: tform1.edit1.text
 msgctxt "tform1.edit1.text"
 msgid "(description)"
-msgstr ""
+msgstr "(leírás)"
 
 #: tform1.edit2.text
 msgctxt "tform1.edit2.text"
 msgid "new profile"
-msgstr ""
+msgstr "új profil"
 
 #: tform1.groupbox1.caption
 msgid "BUce"
-msgstr ""
+msgstr "BUce"
 
 #: tform1.groupbox2.caption
 msgid "BUcb"
-msgstr ""
+msgstr "BUcb"
 
 #: tform1.groupbox3.caption
 msgid "Ieb0"
-msgstr ""
+msgstr "Ieb0"
 
 #: tform1.groupbox4.caption
 msgid "Icb0"
-msgstr ""
+msgstr "Icb0"
 
 #: tform1.groupbox5.caption
 msgid "Ice0"
-msgstr ""
+msgstr "Ice0"
 
 #: tform1.label1.caption
 msgid "Type:"
-msgstr ""
+msgstr "Típus:"
 
 #: tform1.label10.caption
 msgid "Pin #5:"
-msgstr ""
+msgstr "5. láb:"
 
 #: tform1.label11.caption
 msgid "Pin #3:"
-msgstr ""
+msgstr "3. láb:"
 
 #: tform1.label12.caption
 msgid "Pin #4:"
-msgstr ""
+msgstr "4. láb:"
 
 #: tform1.label14.caption
 msgid "Package &"
-msgstr ""
+msgstr "Tokozás és"
 
 #: tform1.label15.caption
 msgid "Pin #6:"
-msgstr ""
+msgstr "6. láb:"
 
 #: tform1.label17.caption
 msgid "Pin #7:"
-msgstr ""
+msgstr "7. láb:"
 
 #: tform1.label18.caption
 msgid "Warning!"
-msgstr ""
+msgstr "Figyelem!"
 
 #: tform1.label19.caption
 msgid "This measurement can destroy the transistor!"
-msgstr ""
+msgstr "Ez a mérés tönkreteheti a tranzisztort!"
 
 #: tform1.label2.caption
 msgid "Pin #1:"
-msgstr ""
+msgstr "1. láb:"
 
 #: tform1.label20.caption
 msgctxt "tform1.label20.caption"
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #: tform1.label21.caption
 msgctxt "TFORM1.LABEL21.CAPTION"
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #: tform1.label22.caption
 msgctxt "tform1.label22.caption"
 msgid "uA"
-msgstr ""
+msgstr "uA"
 
 #: tform1.label23.caption
 msgctxt "TFORM1.LABEL23.CAPTION"
 msgid "uA"
-msgstr ""
+msgstr "uA"
 
 #: tform1.label24.caption
 msgctxt "TFORM1.LABEL24.CAPTION"
 msgid "uA"
-msgstr ""
+msgstr "uA"
 
 #: tform1.label25.caption
 msgid "Breakdown voltage"
-msgstr ""
+msgstr "Letörési feszültség"
 
 #: tform1.label26.caption
 msgid "Reverse current"
-msgstr ""
+msgstr "Szivárgóáram"
 
 #: tform1.label27.caption
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: tform1.label28.caption
 msgid "Tolerance:"
-msgstr ""
+msgstr "Tűrés:"
 
 #: tform1.label29.caption
 msgid "Measure voltage: 100V"
-msgstr ""
+msgstr "Mérőfeszültség: 100V"
 
 #: tform1.label3.caption
 msgid "Ucem [V]:"
-msgstr ""
+msgstr "Ucem [V]:"
 
 #: tform1.label30.caption
 msgid "Measure voltage: 6V"
-msgstr ""
+msgstr "Mérőfeszültség: 6V"
 
 #: tform1.label4.caption
 msgid "Ucbm [V]:"
-msgstr ""
+msgstr "Ucbm [V]:"
 
 #: tform1.label5.caption
 msgid "Icm [A]:"
-msgstr ""
+msgstr "Icm [A]:"
 
 #: tform1.label6.caption
 msgid "Ibm [mA]:"
-msgstr ""
+msgstr "Ibm [mA]:"
 
 #: tform1.label7.caption
 msgid "Pd [W]:"
-msgstr ""
+msgstr "Pd [W]:"
 
 #: tform1.label8.caption
 msgid "Polarity"
-msgstr ""
+msgstr "Polaritás"
 
 #: tform1.label9.caption
 msgid "Pin #2:"
-msgstr ""
+msgstr "2. láb:"
 
 #: tform1.menuitem1.caption
 msgid "&File"
-msgstr ""
+msgstr "&Fájl"
 
 #: tform1.menuitem10.caption
 msgctxt "TFORM1.MENUITEM10.CAPTION"
 msgid "&Help"
-msgstr ""
+msgstr "&Súgó"
 
 #: tform1.menuitem14.caption
 msgid "See home&page"
-msgstr ""
+msgstr "&Honlap"
 
 #: tform1.menuitem15.caption
 msgctxt "TFORM1.MENUITEM15.CAPTION"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem16.caption
 msgctxt "TFORM1.MENUITEM16.CAPTION"
 msgid "&Save profile"
-msgstr ""
+msgstr "Profil mentése &másként"
 
 #: tform1.menuitem17.caption
 msgid "&Open profile"
-msgstr ""
+msgstr "Pr&ofil megnyitás"
 
 #: tform1.menuitem18.caption
 msgctxt "TFORM1.MENUITEM18.CAPTION"
 msgid "&New profile"
-msgstr ""
+msgstr "Ú&j profil"
 
 #: tform1.menuitem19.caption
 msgctxt "tform1.menuitem19.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem2.caption
 msgid "&Operation"
-msgstr ""
+msgstr "Műkö&dés"
 
 #: tform1.menuitem20.caption
 msgid "Search &update"
-msgstr ""
+msgstr "F&rissítés keresés"
 
 #: tform1.menuitem21.caption
 msgctxt "TFORM1.MENUITEM21.CAPTION"
 msgid "&Original profiles"
-msgstr ""
+msgstr "Eredeti pr&ofilok"
 
 #: tform1.menuitem22.caption
 msgid "&Parameters"
-msgstr ""
+msgstr "&Paraméterek"
 
 #: tform1.menuitem23.caption
 msgid "&Base characteristic"
-msgstr ""
+msgstr "&Bázis karakterisztika"
 
 #: tform1.menuitem24.caption
 msgid "&Pair select"
-msgstr ""
+msgstr "&Párbaválogatás"
 
 #: tform1.menuitem25.caption
 msgctxt "TFORM1.MENUITEM25.CAPTION"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem26.caption
 msgid "&Preferences..."
-msgstr ""
+msgstr "B&eállítások"
 
 #: tform1.menuitem27.caption
 msgctxt "TFORM1.MENUITEM27.CAPTION"
 msgid "&My profiles"
-msgstr ""
+msgstr "Saját pro&filok"
 
 #: tform1.menuitem28.caption
 msgid "Save profile &as..."
-msgstr ""
+msgstr "Profil mentés m&ásként"
 
 #: tform1.menuitem29.caption
 msgid "Save &result"
-msgstr ""
+msgstr "E&redmény mentés"
 
 #: tform1.menuitem3.caption
 msgctxt "tform1.menuitem3.caption"
 msgid "&Help"
-msgstr ""
+msgstr "&Súgó"
 
 #: tform1.menuitem30.caption
 msgctxt "TFORM1.MENUITEM30.CAPTION"
 msgid "as &picture (BMP)"
-msgstr ""
+msgstr "ké&pként (BMP)"
 
 #: tform1.menuitem31.caption
 msgctxt "TFORM1.MENUITEM31.CAPTION"
 msgid "as data (TXT)"
-msgstr ""
+msgstr "adatként (TXT)"
 
 #: tform1.menuitem37.caption
 msgid "&View"
-msgstr ""
+msgstr "&Nézet"
 
 #: tform1.menuitem38.caption
 msgctxt "TFORM1.MENUITEM38.CAPTION"
 msgid "Toggle &grid"
-msgstr ""
+msgstr "&Rács be/ki"
 
 #: tform1.menuitem39.caption
 msgctxt "TFORM1.MENUITEM39.CAPTION"
 msgid "Toggle &header"
-msgstr ""
+msgstr "Fejlé&c be/ki"
 
 #: tform1.menuitem4.caption
 msgid "&Quit"
-msgstr ""
+msgstr "&Kilépés"
 
 #: tform1.menuitem40.caption
 msgid "&Collector characteristic"
-msgstr ""
+msgstr "&Kollektor karakterisztika"
 
 #: tform1.menuitem42.caption
 msgctxt "TFORM1.MENUITEM42.CAPTION"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem43.caption
 msgid "Re&fresh displays"
-msgstr ""
+msgstr "Kijelzők &frissítése"
 
 #: tform1.menuitem44.caption
 msgid "&Clear all display"
-msgstr ""
+msgstr "Összes kijelző tör&lése"
 
 #: tform1.menuitem8.caption
 msgctxt "TFORM1.MENUITEM8.CAPTION"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem9.caption
 msgid "&About..."
-msgstr ""
+msgstr "&Névjegy"
 
 #: tform1.panel1.caption
 msgctxt "tform1.panel1.caption"
 msgid "0 "
-msgstr ""
+msgstr "0"
 
 #: tform1.panel2.caption
 msgctxt "TFORM1.PANEL2.CAPTION"
 msgid "0 "
-msgstr ""
+msgstr "0"
 
 #: tform1.panel3.caption
 msgctxt "TFORM1.PANEL3.CAPTION"
 msgid "0 "
-msgstr ""
+msgstr "0"
 
 #: tform1.panel4.caption
 msgctxt "TFORM1.PANEL4.CAPTION"
 msgid "0 "
-msgstr ""
+msgstr "0"
 
 #: tform1.panel5.caption
 msgctxt "TFORM1.PANEL5.CAPTION"
 msgid "0 "
-msgstr ""
+msgstr "0"
 
 #: tform1.statusbar1.panels[0].text
 msgid "DEMO"
-msgstr ""
+msgstr "DEMO"
 
 #: tform1.tabsheet1.caption
 msgid "Parameters"
-msgstr ""
+msgstr "Paraméterek"
 
 #: tform1.tabsheet2.caption
 msgid "Base characteristic"
-msgstr ""
+msgstr "Bázis karakterisztika"
 
 #: tform1.tabsheet3.caption
 msgid "Pair select"
-msgstr ""
+msgstr "Párbaválogatás"
 
 #: tform1.tabsheet4.caption
 msgid "Collector characteristic"
-msgstr ""
+msgstr "Kollektor karakterisztika"
 
 #: tform1.toolbar1.caption
 msgid "ToolBar1"
-msgstr ""
+msgstr "ToolBar1"
 
 #: tform1.toolbutton1.caption
 msgctxt "tform1.toolbutton1.caption"
 msgid "&New profile"
-msgstr ""
+msgstr "Ú&j profil"
 
 #: tform1.toolbutton1.hint
 msgid "Create new profile"
-msgstr ""
+msgstr "Új profil létrehozása"
 
 #: tform1.toolbutton10.caption
 msgctxt "tform1.toolbutton10.caption"
 msgid "Toggle &grid"
-msgstr ""
+msgstr "&Rács be/ki"
 
 #: tform1.toolbutton10.hint
 msgid "Toggle grid"
-msgstr ""
+msgstr "Rács be/ki"
 
 #: tform1.toolbutton12.caption
 msgid "ToolButton12"
-msgstr ""
+msgstr "ToolButton12"
 
 #: tform1.toolbutton14.caption
 msgid "Re&fresh"
-msgstr ""
+msgstr "&Frissítés"
 
 #: tform1.toolbutton14.hint
 msgid "Refresh displays"
-msgstr ""
+msgstr "Kijelzők frissítése"
 
 #: tform1.toolbutton2.caption
 msgctxt "tform1.toolbutton2.caption"
 msgid "&Original profiles"
-msgstr ""
+msgstr "Eredeti pr&ofilok"
 
 #: tform1.toolbutton2.hint
 msgctxt "tform1.toolbutton2.hint"
 msgid "Open original profile"
-msgstr ""
+msgstr "Eredeti profil megnyitás"
 
 #: tform1.toolbutton3.caption
 msgctxt "tform1.toolbutton3.caption"
 msgid "&My profiles"
-msgstr ""
+msgstr "Saját pro&filok"
 
 #: tform1.toolbutton3.hint
 msgid "Open my profile"
-msgstr ""
+msgstr "Saját profil megnyitás"
 
 #: tform1.toolbutton4.caption
 msgctxt "tform1.toolbutton4.caption"
 msgid "&Save profile"
-msgstr ""
+msgstr "Profil mentése &másként"
 
 #: tform1.toolbutton4.hint
 msgid "Save profile"
-msgstr ""
+msgstr "Profil mentés"
 
 #: tform1.toolbutton5.caption
 msgctxt "tform1.toolbutton5.caption"
 msgid "as &picture (BMP)"
-msgstr ""
+msgstr "ké&pként (BMP)"
 
 #: tform1.toolbutton5.hint
 msgctxt "tform1.toolbutton5.hint"
 msgid "Save result in BMP format"
-msgstr ""
+msgstr "Eredmény mentés BMP formátumban"
 
 #: tform1.toolbutton6.caption
 msgctxt "tform1.toolbutton6.caption"
 msgid "as data (TXT)"
-msgstr ""
+msgstr "adatként (TXT)"
 
 #: tform1.toolbutton6.hint
 msgctxt "tform1.toolbutton6.hint"
 msgid "Save result in TXT format"
-msgstr ""
+msgstr "Eredmény mentés TXT formátumban"
 
 #: tform1.toolbutton7.caption
 msgid "ToolButton7"
-msgstr ""
+msgstr "ToolButton7"
 
 #: tform1.toolbutton8.caption
 msgid "ToolButton8"
-msgstr ""
+msgstr "ToolButton8"
 
 #: tform1.toolbutton9.caption
 msgctxt "tform1.toolbutton9.caption"
 msgid "Toggle &header"
-msgstr ""
+msgstr "Fejlé&c be/ki"
 
 #: tform1.toolbutton9.hint
 msgid "Toggle header"
-msgstr ""
+msgstr "Fejléc be/ki"
 
 #: tform2.button1.caption
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: tform2.caption
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #: tform2.label1.caption
 msgid "CTT-demo v0.1"
-msgstr ""
+msgstr "CTT-demo v0.1"
 
 #: tform2.label11.caption
 msgid "Copyright (C) 2010-2022 Pozsár Zsolt"
-msgstr ""
+msgstr "Copyright (C) 2010-2022 Pozsár Zsolt"
 
 #: tform2.label2.caption
 msgid "Transistor tester and characteristic curve plotter"
-msgstr ""
+msgstr "Tranzisztor teszter és jelleggörbe rajzoló"
 
 #: tform2.label3.caption
 msgid "Homepage:"
-msgstr ""
+msgstr "Honlap:"
 
 #: tform2.label4.caption
 msgid "http://www.pozsarzs.hu"
-msgstr ""
+msgstr "A letöltéshez látogassa meg a http://www.pozsarzs.hu-t."
 
 #: tform2.label5.caption
 msgid "pozsarzs@gmail.com"
-msgstr ""
+msgstr "pozsarzs@gmail.com"
 
 #: tform4.button1.caption
 msgid "&Set"
-msgstr ""
+msgstr "&Beállít"
 
 #: tform4.button2.caption
 msgid "&Cancel"
-msgstr ""
+msgstr "&Mégsem"
 
 #: tform4.button4.caption
 msgctxt "tform4.button4.caption"
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: tform4.button5.caption
 msgctxt "TFORM4.BUTTON5.CAPTION"
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: tform4.caption
 msgid "Preferences"
-msgstr ""
+msgstr "Beállítások"
 
 #: tform4.checkbox1.caption
 msgid "Offline mode"
-msgstr ""
+msgstr "Off-line mód"
 
 #: tform4.combobox1.text
 msgid "378H"
-msgstr ""
+msgstr "378H"
 
 #: tform4.label1.caption
 msgid "Browser application:"
-msgstr ""
+msgstr "Böngésző alkalmazás:"
 
 #: tform4.label2.caption
 msgid "Mailer application:"
-msgstr ""
+msgstr "Levelező alkalmazás:"
 
 #: tform4.label3.caption
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: tform4.radiogroup1.caption
 msgid "Display color"
-msgstr ""
+msgstr "Kijelzőszín"
 
+#~ msgid "&Software help"
+#~ msgstr "&Szoftver segítség"
+
+#, fuzzy
+#~ msgid "H&ardware help"
+#~ msgstr ""
+#~ "#-#-#-#-#  0catalog.po (CTT v0.1pre1-demo)  #-#-#-#-#\n"
+#~ "H&ardver segítség\n"
+#~ "#-#-#-#-#  0catalog.po (CTT v0.1pre1-demo)  #-#-#-#-#\n"
+#~ "&Hardver segítség"
+
+#~ msgid "Set &serial number..."
+#~ msgstr "Sorozatszám beállítás..."
+
+#~ msgid "On-line &registration"
+#~ msgstr "On-line &regisztráció"
+
+#~ msgid "On-line &bugreport"
+#~ msgstr "On-line hi&bajelentés"
+
+#~ msgid "Software help"
+#~ msgstr "Szoftver segítség"
+
+#~ msgid "Hardware help"
+#~ msgstr "Hardver segítség"
+
+#~ msgid "Computer controlled Transistor Tester"
+#~ msgstr "Számítógép vezérelt tranzisztor teszter"
+
+#~ msgid "info@pozsarzs.hu"
+#~ msgstr "info@pozsarzs.hu"
+
+#~ msgid "E-mail:"
+#~ msgstr "E-mail:"
+
+#~ msgid "Name:"
+#~ msgstr "Név:"
+
+#~ msgid "Serial:"
+#~ msgstr "Sorozatszám:"
+
+#~ msgid "Button4"
+#~ msgstr "Button4"
+
+#~ msgid "Set serial"
+#~ msgstr "Sorozatszám beállítás"
+
+#~ msgid "Your serial number:"
+#~ msgstr "Az Ön sorozatszáma:"
