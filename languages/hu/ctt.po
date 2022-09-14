@@ -35,6 +35,15 @@ msgstr "Ellenőrizze a megadott levelező alkalmazást!"
 msgid "Missing palette file!"
 msgstr "Hiányzó színbeállítások!"
 
+#: commonproc.message06
+msgctxt "commonproc.message06"
+msgid "Missing files! Please reinstall CTT!"
+msgstr "Hiányzó fájlok! Telepítse újra az alkalmazást."
+
+#: commonproc.message07
+msgid "Cannot write temporary file!"
+msgstr "Ideiglenes állomány nem hozható létre!"
+
 #: frmmain.message01
 msgid "Demo"
 msgstr "Demo"

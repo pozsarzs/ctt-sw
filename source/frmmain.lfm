@@ -13,6 +13,7 @@ object Form1: TForm1
   Menu = MainMenu1
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  Position = poDefault
   LCLVersion = '1.6.2.0'
   object Bevel3: TBevel
     Left = 74
@@ -154,7 +155,6 @@ object Form1: TForm1
     Panels = <    
       item
         Alignment = taCenter
-        Text = 'DEMO'
         Width = 50
       end    
       item
@@ -881,7 +881,7 @@ object Form1: TForm1
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 8
         Caption = '&Details...'
-        Enabled = False
+        OnClick = Button8Click
         TabOrder = 1
       end
     end
@@ -964,7 +964,6 @@ object Form1: TForm1
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 8
         Caption = '&Details...'
-        Enabled = False
         TabOrder = 1
       end
     end

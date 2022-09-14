@@ -23,20 +23,21 @@ uses
   frmmain,
   frmabout,
   commonproc,
-  frmpref;
+  frmpref,
+  frmdetails;
 
 begin
   if (ParamStr(1) = '-v') or (ParamStr(1) = '--version') then
   begin
-    writeln(APPNAME + ' v'+ VERSION);
+    writeln(APPNAME + ' v' + VERSION);
     halt(0);
   end;
-  Application.Title:='CTT * Transistor tester and characteristic curve '
-    +'plotter';
+  Application.Title := 'CTT * Transistor tester and characteristic curve ' + 'plotter';
   {$I ctt.lrs}
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TForm5, Form5);
   Application.Run;
 end.

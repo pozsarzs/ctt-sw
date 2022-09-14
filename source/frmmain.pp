@@ -20,7 +20,7 @@ interface
 uses
   Classes, SysUtils, process, FileUtil, LResources, Forms, Controls, Graphics,
   Dialogs, Menus, ComCtrls, ExtCtrls, StdCtrls, Spin, ExtDlgs, Grids, Buttons,
-  frmabout, frmpref, commonproc, dos;
+  frmabout, frmdetails, frmpref, commonproc, dos;
 
 type
   { TForm1 }
@@ -182,6 +182,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -396,7 +397,6 @@ begin
   StringGrid1.Cells[1, 0] := MESSAGE13;
   StringGrid1.Cells[2, 0] := MESSAGE15;
   Screen.Cursors[1] := LoadCursorFromLazarusResource('haircross');
-  ShowMessage(MESSAGE42 + ' ' + MESSAGE43);
 end;
 
 // on close query event;
@@ -481,6 +481,18 @@ begin
     ShowMessage(MESSAGE27)
   else
     writetodisplay;
+end;
+
+// details button
+procedure TForm1.Button8Click(Sender: TObject);
+begin
+  if Form5.Showing=false then
+  begin
+    Form5.Height:=Form1.Height;
+    Form5.Left:=Form1.Left+Form1.Width+15;
+    Form5.Top:=Form1.Top;
+    Form5.Show;
+  end else Form5.Close;
 end;
 
 // clear display

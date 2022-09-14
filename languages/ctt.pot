@@ -24,6 +24,15 @@ msgstr ""
 msgid "Missing palette file!"
 msgstr ""
 
+#: commonproc.message06
+msgctxt "commonproc.message06"
+msgid "Missing files! Please reinstall CTT!"
+msgstr ""
+
+#: commonproc.message07
+msgid "Cannot write temporary file!"
+msgstr ""
+
 #: frmmain.message01
 msgid "Demo"
 msgstr ""

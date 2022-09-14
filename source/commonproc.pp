@@ -54,7 +54,6 @@ var
 const
   packages: array[0..4] of string = ('emitter', 'base', 'collector', 'package', 'none');
 
-{$I demodata.pp}
 {$I config.pp}
 
 function getexepath: string;
@@ -78,10 +77,12 @@ resourcestring
   MESSAGE03 = 'Please check browser application setting!';
   MESSAGE04 = 'Please check mailer application setting!';
   MESSAGE05 = 'Missing palette file!';
+  MESSAGE06 = 'Missing files! Please reinstall CTT!';
+  MESSAGE07 = 'Cannot write temporary file!';
 
 implementation
 
-uses frmmain;
+uses frmmain, frmdetails;
 
 // get executable path
 function getexepath: string;
@@ -103,198 +104,183 @@ end;
 // load profile
 function loadprofile(filename: string): boolean;
 var
-  Count: byte;
-  ty, po, ds, pc, ce, cb, ic, ib, pd, p1, p2, p3, p4, p5, p6, p7: string;
+  count: byte;
+  ty, po, ds, pc, ce, cb, ic, eb, pd, p1, p2, p3, p4, p5, p6, p7: string;
 begin
-  ty := '';
-  po := '';
-  ds := '';
-  pc := '';
-  ce := '';
-  cb := '';
-  ic := '';
-  ib := '';
-  pd := '';
-  p1 := '';
-  p2 := '';
-  p3 := '';
-  p4 := '';
-  p5 := '';
-  p6 := '';
-  p7 := '';
-  assignfile(t, filename);
+  ty:=''; po:=''; ds:=''; pc:=''; ce:=''; cb:=''; ic:=''; eb:='';
+  pd:=''; p1:=''; p2:=''; p3:=''; p4:=''; p5:=''; p6:=''; p7:='';
+  assignfile(t,filename);
   try
     reset(t);
     repeat
-      readln(t, s);
-      if s[1] + s[2] + s[3] = 'TY=' then
-        for b := 4 to length(s) do
-          ty := ty + s[b];
-      if s[1] + s[2] + s[3] = 'PO=' then
-        for b := 4 to length(s) do
-          po := po + s[b];
-      if s[1] + s[2] + s[3] = 'DS=' then
-        for b := 4 to length(s) do
-          ds := ds + s[b];
-      if s[1] + s[2] + s[3] = 'PC=' then
-        for b := 4 to length(s) do
-          pc := pc + s[b];
-      if s[1] + s[2] + s[3] = 'CE=' then
-        for b := 4 to length(s) do
-          ce := ce + s[b];
-      if s[1] + s[2] + s[3] = 'CB=' then
-        for b := 4 to length(s) do
-          cb := cb + s[b];
-      if s[1] + s[2] + s[3] = 'IC=' then
-        for b := 4 to length(s) do
-          ic := ic + s[b];
-      if s[1] + s[2] + s[3] = 'IB=' then
-        for b := 4 to length(s) do
-          ib := ib + s[b];
-      if s[1] + s[2] + s[3] = 'PD=' then
-        for b := 4 to length(s) do
-          pd := pd + s[b];
-      if s[1] + s[2] + s[3] = 'P1=' then
-        for b := 4 to length(s) do
-          p1 := p1 + s[b];
-      if s[1] + s[2] + s[3] = 'P2=' then
-        for b := 4 to length(s) do
-          p2 := p2 + s[b];
-      if s[1] + s[2] + s[3] = 'P3=' then
-        for b := 4 to length(s) do
-          p3 := p3 + s[b];
-      if s[1] + s[2] + s[3] = 'P4=' then
-        for b := 4 to length(s) do
-          p4 := p4 + s[b];
-      if s[1] + s[2] + s[3] = 'P5=' then
-        for b := 4 to length(s) do
-          p5 := p5 + s[b];
-      if s[1] + s[2] + s[3] = 'P6=' then
-        for b := 4 to length(s) do
-          p6 := p6 + s[b];
-      if s[1] + s[2] + s[3] = 'P7=' then
-        for b := 4 to length(s) do
-          p7 := p7 + s[b];
-    until (EOF(t));
+      readln(t,s);
+      if s[1]+s[2]+s[3]='TY=' then for b:=4 to length(s) do ty:=ty+s[b];
+      if s[1]+s[2]+s[3]='PO=' then for b:=4 to length(s) do po:=po+s[b];
+      if s[1]+s[2]+s[3]='DS=' then for b:=4 to length(s) do ds:=ds+s[b];
+      if s[1]+s[2]+s[3]='PC=' then for b:=4 to length(s) do pc:=pc+s[b];
+      if s[1]+s[2]+s[3]='CE=' then for b:=4 to length(s) do ce:=ce+s[b];
+      if s[1]+s[2]+s[3]='CB=' then for b:=4 to length(s) do cb:=cb+s[b];
+      if s[1]+s[2]+s[3]='IC=' then for b:=4 to length(s) do ic:=ic+s[b];
+      if s[1]+s[2]+s[3]='EB=' then for b:=4 to length(s) do eb:=eb+s[b];
+      if s[1]+s[2]+s[3]='PD=' then for b:=4 to length(s) do pd:=pd+s[b];
+      if s[1]+s[2]+s[3]='P1=' then for b:=4 to length(s) do p1:=p1+s[b];
+      if s[1]+s[2]+s[3]='P2=' then for b:=4 to length(s) do p2:=p2+s[b];
+      if s[1]+s[2]+s[3]='P3=' then for b:=4 to length(s) do p3:=p3+s[b];
+      if s[1]+s[2]+s[3]='P4=' then for b:=4 to length(s) do p4:=p4+s[b];
+      if s[1]+s[2]+s[3]='P5=' then for b:=4 to length(s) do p5:=p5+s[b];
+      if s[1]+s[2]+s[3]='P6=' then for b:=4 to length(s) do p6:=p6+s[b];
+      if s[1]+s[2]+s[3]='P7=' then for b:=4 to length(s) do p7:=p7+s[b];
+    until(eof(t));
     closefile(t);
   except
-    loadprofile := False;
+    loadprofile:=false;
     exit;
   end;
   with Form1 do
   begin
-    Form1.Edit2.Caption := ty;
-    if po = 'NPN' then
-      ComboBox1.ItemIndex := 0
-    else
-      ComboBox1.ItemIndex := 1;
-    Edit1.Caption := ds;
-    b := 0;
-    for Count := 0 to ComboBox2.Items.Count - 1 do
-      if uppercase(pc) = uppercase(ComboBox2.Items.ValueFromIndex[Count]) then
+    Form1.Edit2.Caption:=ty;
+    if po='NPN' then ComboBox1.ItemIndex:=0 else ComboBox1.ItemIndex:=1;
+    Edit1.Caption:=ds;
+    b:=0;
+    for count:=0 to ComboBox2.Items.Count-1 do
+      if uppercase(pc)=uppercase(ComboBox2.Items.ValueFromIndex[count]) then
       begin
-        ComboBox2.ItemIndex := Count;
-        b := 1;
+        ComboBox2.ItemIndex:=count;
+        b:=1;
       end;
-    if b = 0 then
-      ComboBox2.ItemIndex := ComboBox2.Items.IndexOf(frmmain.MESSAGE26);
-    try
-      FloatSpinEdit1.Value := strtofloat(ce);
-    except
-      FloatSpinEdit1.Value := 0;
-    end;
-    try
-      FloatSpinEdit2.Value := strtofloat(cb);
-    except
-      FloatSpinEdit2.Value := 0;
-    end;
-    try
-      FloatSpinEdit3.Value := strtofloat(ic);
-    except
-      FloatSpinEdit3.Value := 0;
-    end;
-    try
-      FloatSpinEdit4.Value := strtofloat(ib);
-    except
-      FloatSpinEdit4.Value := 0;
-    end;
-    try
-      FloatSpinEdit5.Value := strtofloat(pd);
-    except
-      FloatSpinEdit5.Value := 0;
-    end;
-    ComboBox3.ItemIndex := 4;
-    ComboBox4.ItemIndex := 4;
-    ComboBox5.ItemIndex := 4;
-    ComboBox6.ItemIndex := 4;
-    ComboBox7.ItemIndex := 4;
-    ComboBox8.ItemIndex := 4;
-    ComboBox9.ItemIndex := 4;
-    for Count := 0 to 4 do
+    if b=0 then ComboBox2.ItemIndex:=ComboBox2.Items.IndexOf(frmmain.MESSAGE26);
+    try FloatSpinEdit1.Value:=strtofloat(ce); except FloatSpinEdit1.Value:=0; end;
+    try FloatSpinEdit2.Value:=strtofloat(cb); except FloatSpinEdit2.Value:=0; end;
+    try FloatSpinEdit3.Value:=strtofloat(ic); except FloatSpinEdit3.Value:=0; end;
+    try FloatSpinEdit4.Value:=strtofloat(eb); except FloatSpinEdit4.Value:=0; end;
+    try FloatSpinEdit5.Value:=strtofloat(pd); except FloatSpinEdit5.Value:=0; end;
+    if FloatSpinEdit1.Value>=20
+    then
     begin
-      if uppercase(p1) = uppercase(packages[Count]) then
-        ComboBox3.ItemIndex := Count;
-      if uppercase(p2) = uppercase(packages[Count]) then
-        ComboBox4.ItemIndex := Count;
-      if uppercase(p3) = uppercase(packages[Count]) then
-        ComboBox5.ItemIndex := Count;
-      if uppercase(p4) = uppercase(packages[Count]) then
-        ComboBox6.ItemIndex := Count;
-      if uppercase(p5) = uppercase(packages[Count]) then
-        ComboBox7.ItemIndex := Count;
-      if uppercase(p6) = uppercase(packages[Count]) then
-        ComboBox8.ItemIndex := Count;
-      if uppercase(p7) = uppercase(packages[Count]) then
-        ComboBox9.ItemIndex := Count;
+      Form5.FloatSpinEdit1.Value:=20;
+      Form5.FloatSpinEdit8.Value:=20;
+    end else
+    begin
+      Form5.FloatSpinEdit1.Value:=FloatSpinEdit1.Value;
+      Form5.FloatSpinEdit8.Value:=FloatSpinEdit1.Value;
     end;
-    s := profilefilename;
-    Delete(s, length(s) - 3, 4);
-    for b := length(s) downto 1 do
-      if (s[b] = '/') or (s[b] = '\') then
-        break;
-    Delete(s, 1, b);
-    profilename := s;
+    ComboBox3.ItemIndex:=4;
+    ComboBox4.ItemIndex:=4;
+    ComboBox5.ItemIndex:=4;
+    ComboBox6.ItemIndex:=4;
+    ComboBox7.ItemIndex:=4;
+    ComboBox8.ItemIndex:=4;
+    ComboBox9.ItemIndex:=4;
+    for count:=0 to 4 do
+    begin
+      if uppercase(p1)=uppercase(packages[count]) then ComboBox3.ItemIndex:=count;
+      if uppercase(p2)=uppercase(packages[count]) then ComboBox4.ItemIndex:=count;
+      if uppercase(p3)=uppercase(packages[count]) then ComboBox5.ItemIndex:=count;
+      if uppercase(p4)=uppercase(packages[count]) then ComboBox6.ItemIndex:=count;
+      if uppercase(p5)=uppercase(packages[count]) then ComboBox7.ItemIndex:=count;
+      if uppercase(p6)=uppercase(packages[count]) then ComboBox8.ItemIndex:=count;
+      if uppercase(p7)=uppercase(packages[count]) then ComboBox9.ItemIndex:=count;
+    end;
+    s:=profilefilename;
+    delete(s,length(s)-3,4);
+    for b:=length(s) downto 1 do
+      if (s[b]='/') or (s[b]='\') then break;
+    delete(s,1,b);
+    profilename:=s;
   end;
 end;
 
 // measure
 function measure(m: byte): boolean;
+var
+  puffer: array[1..206] of string;
+  pol: char;
+
+  procedure callbackend(mode, polarity, data1, data2, data3,
+    data4, data5, data6: string);
+  var
+    tmp: Text;
+  begin
+    swapvectors;
+    exec(exepath + APPNAME + '-backend', 'm' + mode + ' ' + polarity + ' ' + data1 +
+      ' ' + data2 + ' ' + data3 + ' ' + data4 + ' ' + data5 + ' ' + data6);
+    swapvectors;
+    if doserror <> 0 then
+    begin
+      ShowMessage(MESSAGE06);
+      halt(1);
+    end;
+    case dosexitcode of
+      2:
+      begin
+        ShowMessage(MESSAGE07);
+        halt(3);
+      end;
+    end;
+    for b := 1 to 206 do
+      puffer[b] := '0';
+    assignfile(tmp, DIR_TEMP + 'ctt.tmp');
+    try
+      reset(tmp);
+      readln(tmp, s);
+      b := 1;
+      repeat
+        readln(tmp, puffer[b]);
+        b := b + 1;
+      until (EOF(tmp)) or (b = 207);
+      closefile(tmp);
+    except
+      ShowMessage(MESSAGE07);
+      halt(2);
+    end;
+  end;
+
 begin
-  randomize;
   measure := True;
+  if Form1.ComboBox1.ItemIndex = 0 then
+    pol := 'p'
+  else
+    pol := 'n';
 
   // -- Mode1-Mode5 --
   if m < 6 then
   begin
-    str(random(99) + 1, s);
-    mdata[m] := s;
+    callbackend(IntToStr(m), pol, '0', '0', '0', '0', '0', '0');
+    mdata[m] := puffer[m];
   end;
 
   // -- Mode6 --
   if m = 6 then
   begin
+    callbackend(IntToStr(m),
+      pol,
+      floattostr(Form5.FloatSpinEdit1.Value),
+      floattostr(Form5.FloatSpinEdit2.Value),
+      '0', '0', '0', '0');
     for b := 7 to 46 do
-      mdata[b] := idemo[b - 6]
+      mdata[b] := puffer[b];
   end;
 
   // -- Mode7 --
   if m = 7 then
   begin
-    for b := 47 to 86 do
-      mdata[b] := o1demo[b - 46];
-    for b := 87 to 126 do
-      mdata[b] := o2demo[b - 86];
-    for b := 127 to 166 do
-      mdata[b] := o3demo[b - 126];
-    for b := 167 to 206 do
-      mdata[b] := o4demo[b - 166];
+    callbackend(IntToStr(m),
+      pol,
+      floattostr(Form5.FloatSpinEdit3.Value),
+      floattostr(Form5.FloatSpinEdit5.Value),
+      floattostr(Form5.FloatSpinEdit5.Value),
+      floattostr(Form5.FloatSpinEdit6.Value),
+      floattostr(Form5.FloatSpinEdit8.Value),
+      floattostr(Form1.FloatSpinEdit3.Value));
+    for b := 47 to 206 do
+      mdata[b] := puffer[b];
   end;
 
   // -- Mode8 --
   if m = 8 then
   begin
-    str(random(150) + 25, s);
-    mdata[6] := s;
+    callbackend(IntToStr(m), pol, '0', '0', '0', '0', '0', '0');
+    mdata[6] := puffer[6];
   end;
 end;
 
@@ -357,7 +343,7 @@ begin
     txt := TStringList.Create;
     with THTTPSend.Create do
     begin
-      if HttpGetText(HOMEPAGE + '/ctt/update/prog_version.txt', txt) then
+      if HttpGetText(HOMEPAGE + '/upgrade/ctt/prog_version.txt', txt) then
         try
           newversion := txt.Strings[0];
           if VERSION <> newversion then

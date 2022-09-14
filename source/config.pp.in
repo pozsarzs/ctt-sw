@@ -21,23 +21,8 @@ const
   {$IFDEF UseFHS}
     MYI18PATH='@prefix@/share/locale/';
   {$ELSE}
-    {$IFDEF UNIX}
-      MYI18PATH='/languages/';
-    {$ENDIF}
-    {$IFDEF ANDROID}
-      MYI18PATH='/languages/';
-    {$ENDIF}
-    {$IFDEF WIN32}
-      MYI18PATH='\languages\';
-    {$ENDIF}
+    MYI18PATH='/languages/';
   {$ENDIF}
   // user's folders
-  {$IFDEF UNIX}
-    DIR_CONFIG='/.config/ctt/';
-  {$ENDIF}
-  {$IFDEF ANDROID}
-    DIR_CONFIG='/config/';
-  {$ENDIF}
-  {$IFDEF WIN32}
-    DIR_CONFIG='\AppData\Local\ctt\';
-  {$ENDIF}
+  DIR_CONFIG='/.config/ctt/';
+  DIR_TEMP='/tmp/';
