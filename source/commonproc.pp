@@ -13,18 +13,19 @@
 // FOR A PARTICULAR PURPOSE.
 
 {
- Mode  Operation  Output data    Input data
- -----------------------------------------------------------------------------
- Mode0  Stand-by  -      -
- Mode1  BUce    N/P;Pwr      BUce
- Mode2  BBcb    N/P;Pwr      BUcb
- Mode3  Ieb0    N/P;Pwr      Ieb0
- Mode4  Icb0    N/P;Pwr      Icb0
- Mode5  Ice0    N/P;Pwr      Ice0
- Mode6  Charact.  N/P;Pwr;Uce;5xIb  20xIb,Ube; 5x20xIc,Uce
- Mode7  Charact.  N/P;Pwr;Uce;5xIb  20xIb,Ube; 5x20xIc,Uce
- Mode8  Selection  N/P;Pwr;?
+ Mode	Operation	Input data		Output data
+ ---------------------------------------------------------------------
+ Mode0	Stand-by	-			-
+ Mode1	BUce		N/P;Pwr			BUce
+ Mode2	BBcb		N/P;Pwr			BUcb
+ Mode3	Ieb0		N/P;Pwr			Ieb0
+ Mode4	Icb0		N/P;Pwr			Icb0
+ Mode5	Ice0		N/P;Pwr			Ice0
+ Mode6	Charact.	N/P;Pwr;Uce;Ubem	20xIb,Ube
+ Mode7	Charact.	N/P;Pwr;Uce;5xIb	20xIb,Ube; 5x20xIc,Uce
+ Mode8	Selection	N/P;Pwr;?
 }
+
 unit commonproc;
 
 {$MODE OBJFPC}{$H-}
@@ -79,6 +80,7 @@ resourcestring
   MESSAGE05 = 'Missing palette file!';
   MESSAGE06 = 'Missing files! Please reinstall CTT!';
   MESSAGE07 = 'Cannot write temporary file!';
+  MESSAGE08 = 'Cannot read temporary file!';
 
 implementation
 
@@ -202,7 +204,7 @@ var
     tmp: Text;
   begin
     swapvectors;
-    exec(exepath + APPNAME + '-backend', 'm' + mode + ' ' + polarity + ' ' + data1 +
+    exec(exepath + 'ctt-backend', 'm' + mode + ' ' + polarity + ' ' + data1 +
       ' ' + data2 + ' ' + data3 + ' ' + data4 + ' ' + data5 + ' ' + data6);
     swapvectors;
     if doserror <> 0 then
@@ -230,7 +232,7 @@ var
       until (EOF(tmp)) or (b = 207);
       closefile(tmp);
     except
-      ShowMessage(MESSAGE07);
+      ShowMessage(MESSAGE08);
       halt(2);
     end;
   end;

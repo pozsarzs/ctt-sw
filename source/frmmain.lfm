@@ -266,10 +266,10 @@ object Form1: TForm1
     Height = 605
     Top = 24
     Width = 541
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Around = 8
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 17
     object TabSheet1: TTabSheet
       Caption = 'Parameters'
@@ -964,6 +964,7 @@ object Form1: TForm1
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 8
         Caption = '&Details...'
+        OnClick = Button9Click
         TabOrder = 1
       end
     end

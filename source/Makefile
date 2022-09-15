@@ -8,7 +8,7 @@
 include Makefile.global
 
 srcfiles = ctt.lpr ctt-backend.pp
-binfiles = ctt
+binfiles = ctt ctt-backend
 
 all:
 	@echo "- Compiling source code..."

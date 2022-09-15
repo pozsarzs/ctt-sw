@@ -183,6 +183,7 @@ type
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -417,8 +418,8 @@ begin
           exit;
         profilefilename := SaveDialog1.FileName;
         i := length(profilefilename);
-        if profilefilename[i - 3] + profilefilename[i - 2] + profilefilename[i - 1] +
-        profilefilename[i] <> '.pro' then
+        if profilefilename[i - 3] + profilefilename[i - 2] +
+        profilefilename[i - 1] + profilefilename[i] <> '.pro' then
           profilefilename := profilefilename + '.pro';
         fsplit(profilefilename, tdir, tname, textn);
         if FSearch(tname + textn, tdir) <> '' then
@@ -483,16 +484,21 @@ begin
     writetodisplay;
 end;
 
-// details button
+// details buttons
 procedure TForm1.Button8Click(Sender: TObject);
 begin
-  if Form5.Showing=false then
-  begin
-    Form5.Height:=Form1.Height;
-    Form5.Left:=Form1.Left+Form1.Width+15;
-    Form5.Top:=Form1.Top;
-    Form5.Show;
-  end else Form5.Close;
+  if Form5.Showing = False then
+    Form5.Show
+  else
+    Form5.Close;
+end;
+
+procedure TForm1.Button9Click(Sender: TObject);
+begin
+  if Form5.Showing = False then
+    Form5.Show
+  else
+    Form5.Close;
 end;
 
 // clear display
@@ -607,7 +613,8 @@ begin
       if header = True then
       begin
         Canvas.TextOut(200, 2, MESSAGE39 + floattostr((x - 8) * g1xpix) + ' mV');
-        Canvas.TextOut(200, 14, MESSAGE39 + floattostr((y - 379) * (-1) * g1ypix) + ' uA');
+        Canvas.TextOut(200, 14, MESSAGE39 + floattostr(
+          (y - 379) * (-1) * g1ypix) + ' uA');
       end;
     end
     else
@@ -639,10 +646,10 @@ begin
   Memo2.Lines.Add(MESSAGE41 + ' [' + Edit2.Text + ']');
   b := 47;
   repeat
-    Memo2.Lines.Add(' ' + mdata[b] + ' mV' + #9 + mdata[b + 1] + ' mA' + #9 +
-      '| ' + mdata[b + 40] + ' mV' + #9 + mdata[b + 41] + ' mA' + #9 +
-      '| ' + mdata[b + 80] + ' mV' + #9 + mdata[b + 81] + ' mA' + #9 +
-      '| ' + mdata[b + 120] + ' mV' + #9 + mdata[b + 121] + ' mA');
+    Memo2.Lines.Add(' ' + mdata[b] + ' mV' + #9 + mdata[b + 1] +
+      ' mA' + #9 + '| ' + mdata[b + 40] + ' mV' + #9 + mdata[b + 41] +
+      ' mA' + #9 + '| ' + mdata[b + 80] + ' mV' + #9 + mdata[b + 81] +
+      ' mA' + #9 + '| ' + mdata[b + 120] + ' mV' + #9 + mdata[b + 121] + ' mA');
     b := b + 2
   until b = 85;
   Memo2.Lines.Add('');
@@ -672,7 +679,8 @@ begin
       if header = True then
       begin
         Canvas.TextOut(200, 2, MESSAGE39 + floattostr((x - 8) * g1xpix) + ' mV');
-        Canvas.TextOut(200, 14, MESSAGE39 + floattostr((y - 379) * (-1) * g1ypix) + ' uA');
+        Canvas.TextOut(200, 14, MESSAGE39 + floattostr(
+          (y - 379) * (-1) * g1ypix) + ' uA');
       end;
     end
     else
@@ -792,8 +800,8 @@ begin
           exit;
         profilefilename := SaveDialog1.FileName;
         i := length(profilefilename);
-        if profilefilename[i - 3] + profilefilename[i - 2] + profilefilename[i - 1] +
-        profilefilename[i] <> '.pro' then
+        if profilefilename[i - 3] + profilefilename[i - 2] +
+        profilefilename[i - 1] + profilefilename[i] <> '.pro' then
           profilefilename := profilefilename + '.pro';
         fsplit(profilefilename, tdir, tname, textn);
         if FSearch(tname + textn, tdir) <> '' then
@@ -855,8 +863,8 @@ begin
           exit;
         profilefilename := Form1.SaveDialog1.FileName;
         i := length(profilefilename);
-        if profilefilename[i - 3] + profilefilename[i - 2] + profilefilename[i - 1] +
-        profilefilename[i] <> '.pro' then
+        if profilefilename[i - 3] + profilefilename[i - 2] +
+        profilefilename[i - 1] + profilefilename[i] <> '.pro' then
           profilefilename := profilefilename + '.pro';
         fsplit(profilefilename, tdir, tname, textn);
         if FSearch(tname + textn, tdir) <> '' then
@@ -938,7 +946,7 @@ begin
   if saveprofile(profilefilename) = True then
   begin
     changedprofile := False;
-    Form1.Caption := commonproc.APPNAME+' - ' + profilename;
+    Form1.Caption := commonproc.APPNAME + ' - ' + profilename;
   end;
 end;
 
@@ -966,7 +974,7 @@ begin
   if saveprofile(profilefilename) = True then
   begin
     changedprofile := False;
-    Form1.Caption := commonproc.APPNAME+' - ' + profilename;
+    Form1.Caption := commonproc.APPNAME + ' - ' + profilename;
   end;
 end;
 

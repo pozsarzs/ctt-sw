@@ -15,7 +15,7 @@
 const
   HOMEPAGE = 'http://www.pozsarzs.hu';
   APPNAME='CTT';
-  VERSION='0.1';
+  VERSION='@version@';
   // install path
   INSTPATH='@prefix@/';
   {$IFDEF UseFHS}
