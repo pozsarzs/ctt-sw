@@ -78,12 +78,15 @@ object Form1: TForm1
     ParentColor = False
   end
   object Label14: TLabel
+    AnchorSideRight.Side = asrBottom
     Left = 8
     Height = 30
     Top = 256
     Width = 58
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Package &'#10'pin-out:'
     ParentColor = False
+    WordWrap = True
   end
   object Image1: TImage
     Left = 75

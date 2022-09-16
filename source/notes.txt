@@ -1,0 +1,36 @@
+Operation modes of application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ M.  Operation       Input data  Parameter  Output data  Result    Puffer
+---------------------------------------------------------------------------------
+ M0  Stand-by        -           -          -            -         -
+ M1  BUce                                                BUce      mdata[1]
+ M2  BUcb                                                BUcb      mdata[2]
+ M3  Ieb0                                                Ieb0      mdata[3]
+ M4  Icb0                                                Icb0      mdata[4]
+ M5  Ice0                                                Ice0      mdata[5]
+ M6  Input diagram                                       (Ube;Ib)  mdata[7..46]
+ M7  Output diagram                                      (Uce;Ic)  mdata[47..206]
+ M8  Selection h21e                                      h21e      mdata[6]
+
+
+
+
+
+-------
+{
+
+ ctt-backend mode polarity data1 data2...data6
+
+ Mode	Operation	Input data		Output data
+ ---------------------------------------------------------------------
+ Mode0	Stand-by	-			-
+ Mode1	BUce		N/P;Pwr			BUce
+ Mode2	BBcb		N/P;Pwr			BUcb
+ Mode3	Ieb0		N/P;Pwr			Ieb0
+ Mode4	Icb0		N/P;Pwr			Icb0
+ Mode5	Ice0		N/P;Pwr			Ice0
+ Mode6	Charact.	N/P;Pwr;Uce;Ubem	20xIb,Ube
+ Mode7	Charact.	N/P;Pwr;Uce;5xIb	20xIb,Ube; 5x20xIc,Uce
+ Mode8	Selection	N/P;Pwr;?
+}

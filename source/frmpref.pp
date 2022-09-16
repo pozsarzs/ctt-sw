@@ -71,10 +71,11 @@ resourcestring
 implementation
 
 { TForm4 }
-//  on show event
+
+//  OnShow event
 procedure TForm4.FormShow(Sender: TObject);
 var
-  Count: byte;
+  b: byte;
 begin
   Edit1.Text := browserapp;
   Edit2.Text := mailerapp;
@@ -91,29 +92,23 @@ begin
   RadioGroup1.Items.Add(MESSAGE08);
   RadioGroup1.Items.Add(MESSAGE09);
   RadioGroup1.Items.Add(MESSAGE10);
-  for Count := 0 to 5 do
-    if commonproc.displaycolor = colors[Count] then
-      RadioGroup1.ItemIndex := Count;
+  for b := 0 to 5 do
+    if commonproc.displaycolor = colors[b] then
+      RadioGroup1.ItemIndex := b;
 end;
 
-// cancel button
+// Cancel button
 procedure TForm4.Button2Click(Sender: TObject);
 begin
   Close;
 end;
 
-// browse buttons
+// Browse buttons
 procedure TForm4.Button4Click(Sender: TObject);
 begin
   OpenDialog1.Title := MESSAGE01;
-  {$IFDEF LINUX}
   OpenDialog1.InitialDir := '/';
   Opendialog1.Filter := MESSAGE03;
-  {$ENDIF}
-  {$IFDEF WINDOWS}
-  OpenDialog1.InitialDir := '\';
-  Opendialog1.Filter := MESSAGE04;
-  {$ENDIF}
   if OpenDialog1.Execute = False then
     exit;
   Edit1.Text := OpenDialog1.FileName;
@@ -122,20 +117,14 @@ end;
 procedure TForm4.Button5Click(Sender: TObject);
 begin
   OpenDialog1.Title := MESSAGE02;
-  {$IFDEF LINUX}
   OpenDialog1.InitialDir := '/';
   Opendialog1.Filter := MESSAGE03;
-  {$ENDIF}
-  {$IFDEF WINDOWS}
-  OpenDialog1.InitialDir := '\';
-  Opendialog1.Filter := MESSAGE04;
-  {$ENDIF}
   if OpenDialog1.Execute = False then
     exit;
   Edit2.Text := OpenDialog1.FileName;
 end;
 
-// set button
+// Set button
 procedure TForm4.Button1Click(Sender: TObject);
 begin
   commonproc.browserapp := Edit1.Text;

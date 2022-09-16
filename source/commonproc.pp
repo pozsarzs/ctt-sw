@@ -12,20 +12,6 @@
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
 
-{
- Mode	Operation	Input data		Output data
- ---------------------------------------------------------------------
- Mode0	Stand-by	-			-
- Mode1	BUce		N/P;Pwr			BUce
- Mode2	BBcb		N/P;Pwr			BUcb
- Mode3	Ieb0		N/P;Pwr			Ieb0
- Mode4	Icb0		N/P;Pwr			Icb0
- Mode5	Ice0		N/P;Pwr			Ice0
- Mode6	Charact.	N/P;Pwr;Uce;Ubem	20xIb,Ube
- Mode7	Charact.	N/P;Pwr;Uce;5xIb	20xIb,Ube; 5x20xIc,Uce
- Mode8	Selection	N/P;Pwr;?
-}
-
 unit commonproc;
 
 {$MODE OBJFPC}{$H-}
@@ -86,24 +72,22 @@ implementation
 
 uses frmmain, frmdetails;
 
-// get executable path
+// Get executable path
 function getexepath: string;
 begin
   fsplit(ParamStr(0), exepath, p, p);
 end;
 
-// get language
+// Get language
 function getlang: string;
 begin
-  {$IFDEF LINUX}
   s := getenv('LANG');
-  {$ENDIF}
   if length(s) = 0 then
     s := 'en';
   lang := lowercase(s);
 end;
 
-// load profile
+// Load profile
 function loadprofile(filename: string): boolean;
 var
   count: byte;
@@ -192,7 +176,7 @@ begin
   end;
 end;
 
-// measure
+// Measure
 function measure(m: byte): boolean;
 var
   puffer: array[1..206] of string;
@@ -286,55 +270,51 @@ begin
   end;
 end;
 
-// save profile
+// Save profile
 function saveprofile(filename: string): boolean;
 begin
   assignfile(t, filename);
-  {$I-}
-  rewrite(t);
-  Write(t, '# +');
-  for b := 4 to 79 do
-    Write(t, '-');
-  writeln(t, '+');
-  writeln(t, '# | CTT v0.1 * transistor tester and characteristic curve plotter         |');
-  writeln(t, '# | Copyright (C) 2010-2022 Pozsar Zsolt <pozsarzs@gmail.com>                  |');
-  writeln(t, '# | *.pro                                                                      |');
-  writeln(t, '# | Transistor profile                                                         |');
-  Write(t, '# +');
-  for b := 4 to 79 do
-    Write(t, '-');
-  writeln(t, '+');
-  writeln(t, 'TY=' + Form1.Edit2.Text);
-  writeln(t, 'DS=' + Form1.Edit1.Text);
-  writeln(t, 'CE=' + Form1.FloatSpinEdit1.ValueToStr(Form1.FloatSpinEdit1.Value));
-  writeln(t, 'CB=' + Form1.FloatSpinEdit2.ValueToStr(Form1.FloatSpinEdit2.Value));
-  writeln(t, 'IC=' + Form1.FloatSpinEdit3.ValueToStr(Form1.FloatSpinEdit3.Value));
-  writeln(t, 'IB=' + Form1.FloatSpinEdit4.ValueToStr(Form1.FloatSpinEdit4.Value));
-  writeln(t, 'PD=' + Form1.FloatSpinEdit5.ValueToStr(Form1.FloatSpinEdit5.Value));
-  writeln(t, 'PO=' + Form1.ComboBox1.Items.Strings[Form1.ComboBox1.ItemIndex]);
-  writeln(t, 'PC=' + Form1.ComboBox2.Items.Strings[Form1.ComboBox2.ItemIndex]);
-  writeln(t, 'P1=' + packages[Form1.ComboBox3.ItemIndex]);
-  writeln(t, 'P2=' + packages[Form1.ComboBox4.ItemIndex]);
-  writeln(t, 'P3=' + packages[Form1.ComboBox5.ItemIndex]);
-  writeln(t, 'P4=' + packages[Form1.ComboBox6.ItemIndex]);
-  writeln(t, 'P5=' + packages[Form1.ComboBox7.ItemIndex]);
-  writeln(t, 'P6=' + packages[Form1.ComboBox8.ItemIndex]);
-  writeln(t, 'P7=' + packages[Form1.ComboBox9.ItemIndex]);
-  closefile(t);
-  {$I+}
-  if ioresult <> 0 then
-  begin
+  try
+    rewrite(t);
+    write(t, '# +');
+    for b := 4 to 79 do
+      write(t, '-');
+    writeln(t, '+');
+    writeln(t, '# | CTT v0.1 * transistor tester and characteristic curve plotter              |');
+    writeln(t, '# | Copyright (C) 2010-2022 Pozsar Zsolt <pozsarzs@gmail.com>                  |');
+    writeln(t, '# | *.pro                                                                      |');
+    writeln(t, '# | Transistor profile                                                         |');
+    write(t, '# +');
+    for b := 4 to 79 do
+      write(t, '-');
+    writeln(t, '+');
+    writeln(t, 'TY=' + Form1.Edit2.Text);
+    writeln(t, 'DS=' + Form1.Edit1.Text);
+    writeln(t, 'CE=' + Form1.FloatSpinEdit1.ValueToStr(Form1.FloatSpinEdit1.Value));
+    writeln(t, 'CB=' + Form1.FloatSpinEdit2.ValueToStr(Form1.FloatSpinEdit2.Value));
+    writeln(t, 'IC=' + Form1.FloatSpinEdit3.ValueToStr(Form1.FloatSpinEdit3.Value));
+    writeln(t, 'IB=' + Form1.FloatSpinEdit4.ValueToStr(Form1.FloatSpinEdit4.Value));
+    writeln(t, 'PD=' + Form1.FloatSpinEdit5.ValueToStr(Form1.FloatSpinEdit5.Value));
+    writeln(t, 'PO=' + Form1.ComboBox1.Items.Strings[Form1.ComboBox1.ItemIndex]);
+    writeln(t, 'PC=' + Form1.ComboBox2.Items.Strings[Form1.ComboBox2.ItemIndex]);
+    writeln(t, 'P1=' + packages[Form1.ComboBox3.ItemIndex]);
+    writeln(t, 'P2=' + packages[Form1.ComboBox4.ItemIndex]);
+    writeln(t, 'P3=' + packages[Form1.ComboBox5.ItemIndex]);
+    writeln(t, 'P4=' + packages[Form1.ComboBox6.ItemIndex]);
+    writeln(t, 'P5=' + packages[Form1.ComboBox7.ItemIndex]);
+    writeln(t, 'P6=' + packages[Form1.ComboBox8.ItemIndex]);
+    writeln(t, 'P7=' + packages[Form1.ComboBox9.ItemIndex]);
+    closefile(t);
+  except
     ShowMessage(MESSAGE02);
-    saveprofile := False;
-  end
-  else
-  begin
-    profilename := tname;
-    saveprofile := True;
+    Result := False;
+    exit;
   end;
+  profilename := tname;
+  Result := True;
 end;
 
-// search update
+// Search update
 function searchupdate: boolean;
 var
   txt: TStringList;
@@ -360,7 +340,7 @@ begin
   end;
 end;
 
-// clear display(s)
+// Clear display(s)
 procedure cleardisplay(m: byte);
 var
   rx1, rx2, ry1, ry2: integer;
@@ -430,7 +410,7 @@ begin
       if grid = True then
       begin
         Canvas.Pen.Width := 1;
-        // finom
+        // fine
         Canvas.Pen.Color := d2;
         i := ry2;
         repeat
@@ -442,7 +422,7 @@ begin
           Canvas.Line(i, ry1, i, ry2);
           i := i + 5;
         until i = rx2 + 5;
-        // durva
+        // rough
         Canvas.Pen.Color := d1;
         i := ry2;
         repeat
@@ -478,7 +458,7 @@ begin
       if grid = True then
       begin
         Canvas.Pen.Width := 1;
-        // finom
+        // fine
         Canvas.Pen.Color := d2;
         i := ry2;
         repeat
@@ -490,7 +470,7 @@ begin
           Canvas.Line(i, ry1, i, ry2);
           i := i + 5;
         until i = rx2 + 5;
-        // durva
+        // rough
         Canvas.Pen.Color := d1;
         i := ry2;
         repeat
@@ -507,18 +487,16 @@ begin
   end;
 end;
 
-// load configuration
+// Load configuration
 procedure loadcfg;
 var
   conffile: byte;
 begin
   conffile := 0;
-  {$IFDEF LINUX}
   if FSearch('ctt.conf', exepath) <> '' then
     conffile := 1;
   if FSearch('cttrc', userdir) <> '' then
     conffile := 2;
-  {$ENDIF}
   case conffile of
     1: assignfile(t, exepath + 'ctt.conf');
     2: assignfile(t, userdir + 'cttrc');
@@ -563,20 +541,18 @@ begin
   end;
 end;
 
-// make user's directory
+// Make user's directory
 procedure makeuserdir;
 begin
-  {$IFDEF LINUX}
   userdir := getenvironmentvariable('HOME');
   userdir := userdir + '/.ctt/';
-  {$I-}
-  mkdir(userdir);
-  {$I+}
-  ioresult;
-  {$ENDIF}
+  try
+    mkdir(userdir);
+  except
+  end;
 end;
 
-// run browser application
+// Run browser application
 procedure runbrowser(url: string);
 begin
   Form1.Process1.CommandLine := browserapp + ' ' + url;
@@ -587,7 +563,7 @@ begin
   end;
 end;
 
-// run mailer application
+// Run mailer application
 procedure runmailer(adr: string);
 begin
   Form1.Process2.CommandLine := mailerapp + ' ' + adr;
@@ -598,42 +574,40 @@ begin
   end;
 end;
 
-// save configuration
+// Save configuration
 procedure savecfg;
 begin
-  {$IFDEF LINUX}
   assignfile(t, userdir + '/cttrc');
-  {$ENDIF}
-  {$I-}
-  rewrite(t);
-  Write(t, '# +');
-  for b := 4 to 79 do
-    Write(t, '-');
-  writeln(t, '+');
-  writeln(t, '# | CTT v0.1 * Transistor tester                                               |');
-  writeln(t, '# | Copyright (C) 2010 Pozsar Zsolt <info@pozsarzs.hu>                         |');
-  writeln(t, '# | cttrc                                                                      |');
-  writeln(t, '# | User''s configuration file                                                  |');
-  Write(t, '# +');
-  for b := 4 to 79 do
-    Write(t, '-');
-  writeln(t, '+');
-  writeln(t, 'WB=' + browserapp);
-  writeln(t, 'MC=' + mailerapp);
-  writeln(t, 'BA=' + baseaddress);
-  writeln(t, 'DC=' + displaycolor);
-  Write(t, 'OM=');
-  if offline = True then
-    writeln(t, '1')
-  else
-    writeln(t, '0');
-  closefile(t);
-  {$I+}
-  if ioresult <> 0 then
+  try
+    rewrite(t);
+    write(t, '# +');
+    for b := 4 to 79 do
+      write(t, '-');
+    writeln(t, '+');
+    writeln(t, '# | CTT v0.1 * transistor tester and characteristic curve plotter              |');
+    writeln(t, '# | Copyright (C) 2010-2022 Pozsar Zsolt <pozsarzs@gmail.com>                  |');
+    writeln(t, '# | cttrc                                                                      |');
+    writeln(t, '# | User''s configuration file                                                  |');
+    write(t, '# +');
+    for b := 4 to 79 do
+      write(t, '-');
+    writeln(t, '+');
+    writeln(t, 'WB=' + browserapp);
+    writeln(t, 'MC=' + mailerapp);
+    writeln(t, 'BA=' + baseaddress);
+    writeln(t, 'DC=' + displaycolor);
+    write(t, 'OM=');
+    if offline = True then
+      writeln(t, '1')
+    else
+      writeln(t, '0');
+    closefile(t);
+  except
     ShowMessage(MESSAGE02);
+  end;
 end;
 
-// set display colors
+// Set display colors
 procedure setdisplaycolors;
 var
   foreground, dark1, dark2, background: string;
@@ -643,38 +617,33 @@ begin
   background := '';
   dark1 := '';
   dark2 := '';
-  {$IFDEF LINUX}
   assignfile(t, exepath + 'palettes/' + displaycolor + '.pal');
-  {$ENDIF}
-  {$I-}
-  reset(t);
-  repeat
-    readln(t, s);
-    s := lowercase(s);
-    if s[1] + s[2] + s[3] = 'fg=' then
-      for b := 4 to length(s) do
-        foreground := foreground + s[b];
-    if s[1] + s[2] + s[3] = 'd1=' then
-      for b := 4 to length(s) do
-        dark1 := dark1 + s[b];
-    if s[1] + s[2] + s[3] = 'd2=' then
-      for b := 4 to length(s) do
-        dark2 := dark2 + s[b];
-    if s[1] + s[2] + s[3] = 'bg=' then
-      for b := 4 to length(s) do
-        background := background + s[b];
-  until (EOF(t));
-  {$I+}
-  if ioresult <> 0 then
-  begin
+  try
+    reset(t);
+    repeat
+      readln(t, s);
+      s := lowercase(s);
+      if s[1] + s[2] + s[3] = 'fg=' then
+        for b := 4 to length(s) do
+          foreground := foreground + s[b];
+      if s[1] + s[2] + s[3] = 'd1=' then
+        for b := 4 to length(s) do
+          dark1 := dark1 + s[b];
+      if s[1] + s[2] + s[3] = 'd2=' then
+        for b := 4 to length(s) do
+          dark2 := dark2 + s[b];
+      if s[1] + s[2] + s[3] = 'bg=' then
+        for b := 4 to length(s) do
+          background := background + s[b];
+    until (EOF(t));
+    closefile(t);
+  except
     ShowMessage(MESSAGE05);
     foreground := '$ffffff';
     background := '$000000';
     dark1 := '$cccccc';
     dark2 := '$999999';
-  end
-  else
-    closefile(t);
+  end;
   RGBtoHLS(StrToInt(hextodez(background[2] + background[3])),
     StrToInt(hextodez(background[4] + background[5])),
     StrToInt(hextodez(background[6] + background[7])),
@@ -709,7 +678,7 @@ begin
   writetodisplay;
 end;
 
-// write and draw data to displays
+// Write and draw data to displays
 procedure writetodisplay;
 var
   b: byte;

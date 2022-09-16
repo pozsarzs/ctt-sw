@@ -55,7 +55,7 @@ implementation
 
 { TForm2 }
 
-// on show event
+// OnShow event
 procedure TForm2.FormShow(Sender: TObject);
 begin
   Label1.Caption := commonproc.APPNAME+' v' + commonproc.VERSION;
@@ -66,7 +66,7 @@ begin
   Label10.Font.Color := clRed;
 end;
 
-// homepage
+// Open homepage
 procedure TForm2.Label4MouseEnter(Sender: TObject);
 begin
   Label4.Font.Color := clRed;
@@ -82,7 +82,7 @@ begin
   runbrowser(Label4.Caption);
 end;
 
-// e-mail
+// Send e-mail
 procedure TForm2.Label5Click(Sender: TObject);
 begin
   runmailer(Label5.Caption);
@@ -98,7 +98,7 @@ begin
   Label5.Font.Color := clBlue;
 end;
 
-// close about
+// Close about
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   Close;

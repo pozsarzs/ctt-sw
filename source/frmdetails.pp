@@ -59,6 +59,7 @@ implementation
 
 { TForm5 }
 
+// OnChange event
 procedure TForm5.CheckBox1Change(Sender: TObject);
 begin
   if CheckBox1.Checked = False then
