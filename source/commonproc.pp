@@ -180,16 +180,17 @@ end;
 function measure(m: byte): boolean;
 var
   puffer: array[1..206] of string;
-  pol: char;
+  polarity: char;
 
-  procedure callbackend(mode, polarity, data1, data2, data3,
-    data4, data5, data6: string);
+  procedure callbackend(mode, polarity, parameter1, parameter2,
+    parameter3, parameter4, parameter5, parameter6: string);
   var
     tmp: Text;
   begin
     swapvectors;
-    exec(exepath + 'ctt-backend', 'm' + mode + ' ' + polarity + ' ' + data1 +
-      ' ' + data2 + ' ' + data3 + ' ' + data4 + ' ' + data5 + ' ' + data6);
+    exec(exepath + 'ctt-backend', 'm' + mode + ' ' + polarity +
+      ' ' + parameter1 + ' ' + parameter2 + ' ' + parameter3 +
+      ' ' + parameter4 + ' ' + parameter5 + ' ' + parameter6);
     swapvectors;
     if doserror <> 0 then
     begin
@@ -224,14 +225,14 @@ var
 begin
   measure := True;
   if Form1.ComboBox1.ItemIndex = 0 then
-    pol := 'p'
+    polarity := 'p'
   else
-    pol := 'n';
+    polarity := 'n';
 
   // -- Mode1-Mode5 --
   if m < 6 then
   begin
-    callbackend(IntToStr(m), pol, '0', '0', '0', '0', '0', '0');
+    callbackend(IntToStr(m), polarity, '0', '0', '0', '0', '0', '0');
     mdata[m] := puffer[m];
   end;
 
@@ -239,7 +240,7 @@ begin
   if m = 6 then
   begin
     callbackend(IntToStr(m),
-      pol,
+      polarity,
       floattostr(Form5.FloatSpinEdit1.Value),
       floattostr(Form5.FloatSpinEdit2.Value),
       '0', '0', '0', '0');
@@ -251,7 +252,7 @@ begin
   if m = 7 then
   begin
     callbackend(IntToStr(m),
-      pol,
+      polarity,
       floattostr(Form5.FloatSpinEdit3.Value),
       floattostr(Form5.FloatSpinEdit5.Value),
       floattostr(Form5.FloatSpinEdit5.Value),
@@ -265,7 +266,7 @@ begin
   // -- Mode8 --
   if m = 8 then
   begin
-    callbackend(IntToStr(m), pol, '0', '0', '0', '0', '0', '0');
+    callbackend(IntToStr(m), polarity, '0', '0', '0', '0', '0', '0');
     mdata[6] := puffer[6];
   end;
 end;

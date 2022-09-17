@@ -1,36 +1,90 @@
 Operation modes of application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- M.  Operation       Input data  Parameter  Output data  Result    Puffer
----------------------------------------------------------------------------------
- M0  Stand-by        -           -          -            -         -
- M1  BUce                                                BUce      mdata[1]
- M2  BUcb                                                BUcb      mdata[2]
- M3  Ieb0                                                Ieb0      mdata[3]
- M4  Icb0                                                Icb0      mdata[4]
- M5  Ice0                                                Ice0      mdata[5]
- M6  Input diagram                                       (Ube;Ib)  mdata[7..46]
- M7  Output diagram                                      (Uce;Ic)  mdata[47..206]
- M8  Selection h21e                                      h21e      mdata[6]
+ M. | Operation       Parameters of ctt-backend           Result    Puffer
+----+------------------------------------------------------------------------------
+ M0 | Stand-by        m0
+ M1 | BUce            m1 n/p 0 0 0 0 0 0                  BUce      mdata[1]
+ M2 | BUcb            m2 n/p 0 0 0 0 0 0                  BUcb      mdata[2]
+ M3 | Ieb0            m3 n/p 0 0 0 0 0 0                  Ieb0      mdata[3]
+ M4 | Icb0            m4 n/p 0 0 0 0 0 0                  Icb0      mdata[4]
+ M5 | Ice0            m5 n/p 0 0 0 0 0 0                  Ice0      mdata[5]
+ M6 | Input diagram                                       (Ube;Ib)  mdata[7..46]
+ M7 | Output diagram                                      (Uce;Ic)  mdata[47..206]
+ M8 | Selection h21e                                      h21e      mdata[6]
+
+
+Closed Reed-relays in CTT/SW2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One-step measures:
+
+ M. | K1  K2  K3  K4  K5  K6  K7  K8  K9  K10  K11  K12
+----+---------------------------------------------------
+ M0 |
+ M1 | x               x               x
+ M2 |         x       x               x
+ M3 | x           x                       x
+ M4 | x                   x               x
+ M5 |         x               x                x
+----+---------------------------------------------------
+    | B   B   E   E   C   C   C   C   AD  AD   AD   AD
+
+More-steps measures:
+
+ M. | K1  K2  K3  K4  K5  K6  K7  K8  K9  K10  K11  K12
+----+---------------------------------------------------
+----+---------------------------------------------------
+    | B   B   E   E   C   C   C   C   AD  AD   AD   AD
+
+
+Selection lines and I/O bits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+         | -SL | I/O |   D0       D1       D2       D3       D4       D5       D6       D7   |
+---------+-----+-----------------------------------------------------------------------------+---------------------------------
+ CTT/SW1 |  0  |  O  | Mode D0  Mode D1  Mode D2    -     -Ube/Uce    -EN   -NPN/PNP   -HP   | Mode D0-3 *, -EN: enable Ube/Uce
+ CTT/DP  |  0  |  O  | Mode D0  Mode D1  Mode D2    -        -        -     -NPN/PNP   -HP   | Mode D0-3 *
+ CTT/SC  |  1  |  I  |   ST0      ST1      ST2      ST3                                      | status lines
+ CTT/AD  |  3  |  O  |   D0       D1       D2       D3       D4       D5       D6       D7   | lower bits of A/D
+ CTT/AD  |  4  |  0  |   D8       D9       D10      D11      0     polarity  overrun    end  | higher bits and status of A/D
+ CTT/AD  |  5  |  x  |   -        -        -        -        -        -        -        -    | start measure
+ CTT/PS3 |  6  |  O  |   D0       D1       D2       D3       D4       D5       D6       D7   | output voltage **
+ CTT/PS2 |  7  |  O  |   D0       D1       D2       D3       D4       D5       D6       D7   | output voltage ***
+
+Notes:
+  *:   0  000B  M0  Stand-by
+       1  001B  M1  BUce
+       2  010B  M2  BUcb
+       3  011B  M3  Ieb0
+       4  100B  M4  Icb0
+       5  101B  M5  Ice0
+       6  110B  M6  Input diagram
+       6  110B  M7  Output diagram
+       6  110B  M8  Selection h21e
+  **:  Uout = 1.25 * (1 + (D *  2 ohm / 320 ohm)) - 1,25V   [V]
+  ***: Uout = 1.25 * (1 + (D * 20 ohm / 320 ohm)) - 1,25V   [V]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 -------
-{
-
- ctt-backend mode polarity data1 data2...data6
-
- Mode	Operation	Input data		Output data
- ---------------------------------------------------------------------
- Mode0	Stand-by	-			-
- Mode1	BUce		N/P;Pwr			BUce
- Mode2	BBcb		N/P;Pwr			BUcb
- Mode3	Ieb0		N/P;Pwr			Ieb0
- Mode4	Icb0		N/P;Pwr			Icb0
- Mode5	Ice0		N/P;Pwr			Ice0
  Mode6	Charact.	N/P;Pwr;Uce;Ubem	20xIb,Ube
  Mode7	Charact.	N/P;Pwr;Uce;5xIb	20xIb,Ube; 5x20xIc,Uce
  Mode8	Selection	N/P;Pwr;?
-}
+                     
