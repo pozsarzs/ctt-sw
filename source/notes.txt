@@ -4,36 +4,31 @@ Operation modes of application
  M. | Operation       Parameters of ctt-backend           Result    Puffer
 ----+------------------------------------------------------------------------------
  M0 | Stand-by        m0
- M1 | BUce            m1 n/p 0 0 0 0 0 0                  BUce      mdata[1]
- M2 | BUcb            m2 n/p 0 0 0 0 0 0                  BUcb      mdata[2]
- M3 | Ieb0            m3 n/p 0 0 0 0 0 0                  Ieb0      mdata[3]
- M4 | Icb0            m4 n/p 0 0 0 0 0 0                  Icb0      mdata[4]
- M5 | Ice0            m5 n/p 0 0 0 0 0 0                  Ice0      mdata[5]
- M6 | Input diagram                                       (Ube;Ib)  mdata[7..46]
- M7 | Output diagram                                      (Uce;Ic)  mdata[47..206]
- M8 | Selection h21e                                      h21e      mdata[6]
+ M1 | BUce            m1 n/p 0   0   0   0   0    0       BUce      mdata[1]
+ M2 | BUcb            m2 n/p 0   0   0   0   0    0       BUcb      mdata[2]
+ M3 | Ieb0            m3 n/p 0   0   0   0   0    0       Ieb0      mdata[3]
+ M4 | Icb0            m4 n/p 0   0   0   0   0    0       Icb0      mdata[4]
+ M5 | Ice0            m5 n/p 0   0   0   0   0    0       Ice0      mdata[5]
+ M6 | Input diagram   m6 n/p Ibm Uce 0   0   0    Icm     (Ube;Ib)  mdata[7..46]
+ M7 | Output diagram  m7 n/p Ib1 Ib2 Ib3 Ib4 Ucem Icm     (Uce;Ic)  mdata[47..206]
+ M8 | Selection h21e  m8 n/p Ube Uce 0   0   Ucem Icm     h21e      mdata[6]
 
 
 Closed Reed-relays in CTT/SW2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-One-step measures:
 
  M. | K1  K2  K3  K4  K5  K6  K7  K8  K9  K10  K11  K12
 ----+---------------------------------------------------
  M0 |
  M1 | x               x               x
  M2 |         x       x               x
- M3 | x           x                       x
- M4 | x                   x               x
- M5 |         x               x                x
-----+---------------------------------------------------
-    | B   B   E   E   C   C   C   C   AD  AD   AD   AD
-
-More-steps measures:
-
- M. | K1  K2  K3  K4  K5  K6  K7  K8  K9  K10  K11  K12
-----+---------------------------------------------------
+ M3 | x           x                        x
+ M4 | x                   x                x
+ M5 |         x               x                 x
+ M6 |     x   x                   x                  x
+ M7 |     x   x                   x             x
+ M8 |     x   x                   x                  x
+ M8 |     x   x                   x             x
 ----+---------------------------------------------------
     | B   B   E   E   C   C   C   C   AD  AD   AD   AD
 
@@ -62,29 +57,5 @@ Notes:
        6  110B  M6  Input diagram
        6  110B  M7  Output diagram
        6  110B  M8  Selection h21e
-  **:  Uout = 1.25 * (1 + (D *  2 ohm / 320 ohm)) - 1,25V   [V]
-  ***: Uout = 1.25 * (1 + (D * 20 ohm / 320 ohm)) - 1,25V   [V]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--------
- Mode6	Charact.	N/P;Pwr;Uce;Ubem	20xIb,Ube
- Mode7	Charact.	N/P;Pwr;Uce;5xIb	20xIb,Ube; 5x20xIc,Uce
- Mode8	Selection	N/P;Pwr;?
-                     
+  **:  Uout = 1.25 * (1 + (D *  2 ohm / 320 ohm)) - 1,25V [V]
+  ***: Uout = 1.25 * (1 + (D * 20 ohm / 320 ohm)) - 1,25V [V]

@@ -14,7 +14,7 @@
 
 {
  Usage:
-   ctt-backend mode polarity data1 data2...data6
+   ctt-backend mode polarity parameter1 parameter2...parameter6
 
  Halt codes:
    1: manual run
@@ -50,7 +50,21 @@ var
   {$IFDEF DEMO}
     puffer[1] := IntToStr(random(99) + 1);
   {$ELSE}
-    // tényleges mérés
+    {
+      Measurement process:
+        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        write $A1 or $E1 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
+        write $00 to -SL5 (start A/D converter)
+        wait for D7 from -SL4
+        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        read lower bits from -SL3
+        read higher and status bits from -SL4
+    }
+    // Place of the real measurement process
   {$ENDIF}
   end;
 
@@ -59,8 +73,22 @@ var
   {$IFDEF DEMO}
     puffer[2] := IntToStr(random(99) + 1);
   {$ELSE}
-    // tényleges mérés
-{$ENDIF}
+    {
+      Measurement process:
+        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        write $A2 or $E2 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
+        write $00 to -SL5 (start A/D converter)
+        wait for D7 from -SL4
+        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        read lower bits from -SL3
+        read higher and status bits from -SL4
+    }
+    // Place of the real measurement process
+  {$ENDIF}
   end;
 
   procedure mode3;
@@ -68,7 +96,21 @@ var
   {$IFDEF DEMO}
     puffer[3] := IntToStr(random(99) + 1);
   {$ELSE}
-    // tényleges mérés
+    {
+      Measurement process:
+        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        write $A3 or $E3 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
+        write $00 to -SL5 (start A/D converter)
+        wait for D7 from -SL4
+        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        read lower bits from -SL3
+        read higher and status bits from -SL4
+    }
+    // Place of the real measurement process
   {$ENDIF}
   end;
 
@@ -77,7 +119,21 @@ var
   {$IFDEF DEMO}
     puffer[4] := IntToStr(random(99) + 1);
   {$ELSE}
-    // tényleges mérés
+    {
+      Measurement process:
+        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        write $A4 or $E4 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
+        write $00 to -SL5 (start A/D converter)
+        wait for D7 from -SL4
+        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        read lower bits from -SL3
+        read higher and status bits from -SL4
+    }
+    // Place of the real measurement process
   {$ENDIF}
   end;
 
@@ -86,7 +142,21 @@ var
   {$IFDEF DEMO}
     puffer[5] := IntToStr(random(99) + 1);
   {$ELSE}
-    // tényleges mérés
+    {
+      Measurement process:
+        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        write $A5 or $E5 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
+        write $00 to -SL5 (start A/D converter)
+        wait for D7 from -SL4
+        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
+        write $00 to -SL6 (Uout=0 V)
+        write $00 to -SL7 (Uout=0 V)
+        read lower bits from -SL3
+        read higher and status bits from -SL4
+    }
+    // Place of the real measurement process
   {$ENDIF}
   end;
 
