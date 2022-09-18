@@ -41,8 +41,8 @@ Selection lines and I/O bits
  CTT/SW1 |  0  |  O  | Mode D0  Mode D1  Mode D2    -     -Ube/Uce    -EN   -NPN/PNP   -HP   | Mode D0-3 *, -EN: enable Ube/Uce
  CTT/DP  |  0  |  O  | Mode D0  Mode D1  Mode D2    -        -        -     -NPN/PNP   -HP   | Mode D0-3 *
  CTT/SC  |  1  |  I  |   ST0      ST1      ST2      ST3                                      | status lines
- CTT/AD  |  3  |  O  |   D0       D1       D2       D3       D4       D5       D6       D7   | lower bits of A/D
- CTT/AD  |  4  |  0  |   D8       D9       D10      D11      0     polarity  overrun    end  | higher bits and status of A/D
+ CTT/AD  |  3  |  I  |   D0       D1       D2       D3       D4       D5       D6       D7   | lower bits of A/D
+ CTT/AD  |  4  |  I  |   D8       D9       D10      D11      0     polarity  overrun    end  | higher bits and status of A/D
  CTT/AD  |  5  |  x  |   -        -        -        -        -        -        -        -    | start measure
  CTT/PS3 |  6  |  O  |   D0       D1       D2       D3       D4       D5       D6       D7   | output voltage **
  CTT/PS2 |  7  |  O  |   D0       D1       D2       D3       D4       D5       D6       D7   | output voltage ***
