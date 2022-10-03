@@ -1,21 +1,95 @@
-Operation modes of application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Notes
+~~~~~
 
- M. | Operation       Parameters of ctt-backend           Result    Puffer
-----+------------------------------------------------------------------------------
- M0 | Stand-by        m0
- M1 | BUce            m1 n/p 0   0   0   0   0    0       BUce      mdata[1]
- M2 | BUcb            m2 n/p 0   0   0   0   0    0       BUcb      mdata[2]
- M3 | Ieb0            m3 n/p 0   0   0   0   0    0       Ieb0      mdata[3]
- M4 | Icb0            m4 n/p 0   0   0   0   0    0       Icb0      mdata[4]
- M5 | Ice0            m5 n/p 0   0   0   0   0    0       Ice0      mdata[5]
- M6 | Input diagram   m6 n/p Ibm Uce 0   0   0    Icm     (Ube;Ib)  mdata[7..46]
- M7 | Output diagram  m7 n/p Ib1 Ib2 Ib3 Ib4 Ucem Icm     (Uce;Ic)  mdata[47..206]
- M8 | Selection h21e  m8 n/p Ube Uce 0   0   Ucem Icm     h21e      mdata[6]
+I. SOFTWARE
+
+I/1. Operation modes
+
+ M. | Operation      | Description
+----+----------------+----------------------------------------------------------
+ M0 | Stand-by       |
+ M1 | BUce           | Collector-emitter breakdown voltage
+ M2 | BUcb           | Collector-base breakdown voltage
+ M3 | Ieb0           | Emitter-base cutoff current
+ M4 | Icb0           | Collector-base cutoff current
+ M5 | Ice0           | Collector-emitter cutoff current
+ M6 | Input diagram  | Ube-Ib characteristic curve
+ M7 | Output diagram | Uce-Ic characteristic curve
+ M8 | Selection h21e |
 
 
-Closed Reed-relays in CTT/SW2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I/2. Passed data from application to backend program
+
+ M. | Operation      | Passed data from app to packend | Source of data
+----+----------------+----------------------------------------------------------
+ M0 | Stand-by       | m0
+ M1 | BUce           | m1; n/p
+ M2 | BUcb           | m2; n/p
+ M3 | Ieb0           | m3; n/p
+ M4 | Icb0           | m4; n/p
+ M5 | Ice0           | m5; n/p
+ M6 | Input diagram  | m6; n/p; Ibm; Uce; Icm
+ M7 | Output diagram | m7; n/p; Ib1; Ib2; Ib3; Ib4; Ucem; Icm
+ M8 | Selection h21e | m8; n/p; Ube; Uce; Ucem; Icm
+
+ Source of data:
+   Ib1-4:
+   Ibm:
+   Icm:
+   m0-8:
+   n/p:
+   Ube:
+   Uce:
+   Ucem
+
+
+I/3. Call of the backend program (command line parameters)
+
+ M. | Operation      | Command line
+----+----------------+----------------------------------------------------------
+ M0 | Stand-by       | $ backend m0
+ M1 | BUce           | $ backend m1 n/p 0   0   0   0   0    0
+ M2 | BUcb           | $ backend m2 n/p 0   0   0   0   0    0
+ M3 | Ieb0           | $ backend m3 n/p 0   0   0   0   0    0
+ M4 | Icb0           | $ backend m4 n/p 0   0   0   0   0    0
+ M5 | Ice0           | $ backend m5 n/p 0   0   0   0   0    0
+ M6 | Input diagram  | $ backend m6 n/p Ibm Uce 0   0   0    Icm
+ M7 | Output diagram | $ backend m7 n/p Ib1 Ib2 Ib3 Ib4 Ucem Icm
+ M8 | Selection h21e | $ backend m8 n/p Ube Uce 0   0   Ucem Icm
+
+
+I/4. Passed data from backend program to application
+
+Result of the backend program (in /tmp/ctt.tmp file)
+
+ M. | Operation      | Result   | Number of lines
+----+----------------+----------+------------------------------------------------
+ M0 | Stand-by       |          |
+ M1 | BUce           | BUce     | 1
+ M2 | BUcb           | BUcb     | 2
+ M3 | Ieb0           | Ieb0     | 3
+ M4 | Icb0           | Icb0     | 4
+ M5 | Ice0           | Ice0     | 5
+ M6 | Input diagram  | (Ube;Ib) | (7;8)...(45;46)
+ M7 | Output diagram | (Uce;Ic) | (47;48)...(205;206)
+ M8 | Selection h21e | h21e     | 6
+
+  Target data in application:
+    BUce: mdata[1] of unit commonproc.pp
+    BUcb: mdata[2] of unit commonproc.pp
+    Ieb0: mdata[3] of unit commonproc.pp
+    Icb0: mdata[4] of unit commonproc.pp
+    Ice0: mdata[5] of unit commonproc.pp
+    Ube:  mdata[7..45] of unit commonproc.pp (only odd indexes)
+    Ib:   mdata[8..46] of unit commonproc.pp (only even indexes)
+    Uce:  mdata[47..205] of unit commonproc.pp (only odd indexes)
+    Ic:   mdata[48..206] of unit commonproc.pp (only even indexes)
+    h21e: mdata[6] of unit commonproc.pp
+
+
+II. HARDWARE
+
+II/1. Closed Reed-relays in CTT/SW2
 
  M. | K1  K2  K3  K4  K5  K6  K7  K8  K9  K10  K11  K12
 ----+---------------------------------------------------
@@ -33,8 +107,7 @@ Closed Reed-relays in CTT/SW2
     | B   B   E   E   C   C   C   C   AD  AD   AD   AD
 
 
-Selection lines and I/O bits
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+II/2. Selection lines and I/O bits
 
          | -SL | I/O |   D0       D1       D2       D3       D4       D5       D6       D7   |
 ---------+-----+-----------------------------------------------------------------------------+---------------------------------

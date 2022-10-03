@@ -1,8 +1,8 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TForm1','FORMDATA',[
-  'TPF0'#6'TForm1'#5'Form1'#4'Left'#3#208#0#6'Height'#3#167#2#3'Top'#2#28#5'Wid'
-  +'th'#3#221#2#13'ActiveControl'#7#5'Edit2'#11'BorderIcons'#11#12'biSystemMenu'
+  'TPF0'#6'TForm1'#5'Form1'#4'Left'#3'!'#1#6'Height'#3#167#2#3'Top'#2#28#5'Widt'
+  +'h'#3#221#2#13'ActiveControl'#7#5'Edit2'#11'BorderIcons'#11#12'biSystemMenu'
   +#10'biMinimize'#0#7'Caption'#6#17'CTT - new profile'#12'ClientHeight'#3#144#2
   +#11'ClientWidth'#3#221#2#21'Constraints.MinHeight'#3#167#2#20'Constraints.Mi'
   +'nWidth'#3#221#2#4'Menu'#7#9'MainMenu1'#12'OnCloseQuery'#7#14'FormCloseQuery'
@@ -66,9 +66,9 @@ LazarusResources.Add('TForm1','FORMDATA',[
   +'ist'#8'TabOrder'#2#7#4'Text'#6#3'NPN'#0#0#12'TPageControl'#12'PageControl1'
   +#23'AnchorSideRight.Control'#7#5'Owner'#20'AnchorSideRight.Side'#7#9'asrBott'
   ,'om'#24'AnchorSideBottom.Control'#7#10'StatusBar1'#4'Left'#3#184#0#6'Height'
-  +#3']'#2#3'Top'#2#24#5'Width'#3#29#2#10'ActivePage'#7#9'TabSheet4'#7'Anchors'
+  +#3']'#2#3'Top'#2#24#5'Width'#3#29#2#10'ActivePage'#7#9'TabSheet1'#7'Anchors'
   +#11#5'akTop'#6'akLeft'#7'akRight'#8'akBottom'#0#20'BorderSpacing.Around'#2#8
-  +#8'TabIndex'#2#2#8'TabOrder'#2#17#0#9'TTabSheet'#9'TabSheet1'#7'Caption'#6#10
+  +#8'TabIndex'#2#0#8'TabOrder'#2#17#0#9'TTabSheet'#9'TabSheet1'#7'Caption'#6#10
   +'Parameters'#12'ClientHeight'#3'<'#2#11'ClientWidth'#3#23#2#6'OnShow'#7#13'T'
   +'abSheet1Show'#0#6'TBevel'#6'Bevel2'#4'Left'#2#8#6'Height'#2#10#3'Top'#3#235
   +#0#5'Width'#3#8#2#5'Align'#7#8'alCustom'#5'Shape'#7#9'bsTopLine'#0#0#6'TLabe'
@@ -426,8 +426,8 @@ LazarusResources.Add('TForm1','FORMDATA',[
   +'bSheet'#9'TabSheet4'#7'Caption'#6#24'Collector characteristic'#12'ClientHei'
   +'ght'#3'<'#2#11'ClientWidth'#3#23#2#6'OnShow'#7#13'TabSheet1Show'#0#6'TBevel'
   +#6'Bevel5'#4'Left'#2#8#6'Height'#3#133#1#3'Top'#2#8#5'Width'#3#6#2#0#0#6'TIm'
-  +'age'#6'Image3'#4'Left'#2#9#6'Height'#3#131#1#3'Top'#2#9#5'Width'#3#4#2#11'O'
-  +'nMouseDown'#7#15'Image3MouseDown'#11'OnMouseMove'#7#15'Image3MouseMove'#0#0
+  +'age'#6'Image3'#4'Left'#2#11#6'Height'#3#131#1#3'Top'#2#10#5'Width'#3#4#2#11
+  +'OnMouseDown'#7#15'Image3MouseDown'#11'OnMouseMove'#7#15'Image3MouseMove'#0#0
   +#7'TButton'#8'Button10'#23'AnchorSideRight.Control'#7#9'TabSheet4'#20'Anchor'
   +'SideRight.Side'#7#9'asrBottom'#24'AnchorSideBottom.Control'#7#9'TabSheet4'
   +#21'AnchorSideBottom.Side'#7#9'asrBottom'#4'Left'#3#196#1#6'Height'#2#25#3'T'

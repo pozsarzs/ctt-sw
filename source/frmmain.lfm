@@ -1,5 +1,5 @@
 object Form1: TForm1
-  Left = 208
+  Left = 289
   Height = 679
   Top = 28
   Width = 733
@@ -269,10 +269,10 @@ object Form1: TForm1
     Height = 605
     Top = 24
     Width = 541
-    ActivePage = TabSheet4
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Around = 8
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 17
     object TabSheet1: TTabSheet
       Caption = 'Parameters'
@@ -900,9 +900,9 @@ object Form1: TForm1
         Width = 518
       end
       object Image3: TImage
-        Left = 9
+        Left = 11
         Height = 387
-        Top = 9
+        Top = 10
         Width = 516
         OnMouseDown = Image3MouseDown
         OnMouseMove = Image3MouseMove

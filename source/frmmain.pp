@@ -597,7 +597,11 @@ begin
     begin
       if header = True then
       begin
-        Canvas.TextOut(200, 2, MESSAGE39 + floattostr((x - 8) * g1xpix) + ' mV');
+        if ((x - 8) * g1xpix) >= 1000 then
+          Canvas.TextOut(200, 2, MESSAGE39 + floattostrf(
+            (x - 8) * g1xpix / 1000, ffFixed, 2, 3) + ' V')
+        else
+          Canvas.TextOut(200, 2, MESSAGE39 + floattostr((x - 8) * g1xpix) + ' mV');
         Canvas.TextOut(200, 14, MESSAGE39 + floattostr(
           (y - 379) * (-1) * g1ypix) + ' uA');
       end;
@@ -672,9 +676,17 @@ begin
     begin
       if header = True then
       begin
-        Canvas.TextOut(200, 2, MESSAGE39 + floattostr((x - 8) * g1xpix) + ' mV');
-        Canvas.TextOut(200, 14, MESSAGE39 + floattostr(
-          (y - 379) * (-1) * g1ypix) + ' uA');
+        if ((x - 8) * g2xpix) >= 1000 then
+          Canvas.TextOut(200, 2, MESSAGE39 + floattostrf(
+            (x - 8) * g2xpix / 1000, ffFixed, 2, 3) + ' V')
+        else
+          Canvas.TextOut(200, 2, MESSAGE39 + floattostr((x - 8) * g2xpix) + ' mV');
+        if ((y - 379) * (-1) * g2ypix) >= 1000 then
+          Canvas.TextOut(200, 14, MESSAGE39 + floattostrf(
+            (y - 379) * (-1) * g2ypix / 1000, ffFixed, 2, 3) + ' mA')
+        else
+          Canvas.TextOut(200, 14, MESSAGE39 + floattostr(
+            (y - 379) * (-1) * g2ypix) + ' mA');
       end;
     end
     else
@@ -701,9 +713,9 @@ procedure TForm1.Button7Click(Sender: TObject);
 var
   box: array[1..20] of byte;
   boxindex: byte;
-  count: integer;
+  Count: integer;
   inputdata: byte;
-  minvalue, maxvalue: single;
+  MinValue, MaxValue: single;
   br: boolean;
   put: boolean;
 begin
@@ -715,10 +727,10 @@ begin
   Button7.Enabled := False;
   Button11.Enabled := False;
   br := False;
-  count := 1;
+  Count := 1;
   repeat
     if (MessageDlg(MESSAGE33, mtConfirmation, [mbOK, mbCancel], 0) = mrOk) or
-      (count = 65534) then
+      (Count = 65534) then
     begin
       if measure(8) = False then
       begin
@@ -728,14 +740,14 @@ begin
       else
       begin
         StringGrid1.RowCount := StringGrid1.RowCount + 1;
-        StringGrid1.Cells[0, count] := IntToStr(count);
-        StringGrid1.Cells[1, count] := commonproc.mdata[6];
+        StringGrid1.Cells[0, Count] := IntToStr(Count);
+        StringGrid1.Cells[1, Count] := commonproc.mdata[6];
         inputdata := StrToInt(commonproc.mdata[6]);
         MinValue := inputdata - inputdata * Spinedit1.Value / 100;
         MaxValue := inputdata + inputdata * Spinedit1.Value / 100;
         put := False;
         for b := 1 to 20 do
-          if (box[b] <= maxvalue) and (box[b] >= minvalue) then
+          if (box[b] <= MaxValue) and (box[b] >= MinValue) then
           begin
             put := True;
             StringGrid1.Cells[2, Count] := MESSAGE34 + IntToStr(b);
@@ -757,7 +769,7 @@ begin
     end
     else
       br := True;
-    count := count + 1;
+    Count := Count + 1;
   until br = True;
   Button11.Enabled := True;
   Button7.Enabled := True;
