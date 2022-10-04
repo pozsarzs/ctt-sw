@@ -1,15 +1,247 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!doctype html public "-//w3c//dtd html 4.0 átmeneti//en">
 <html>
-  <head>
+  <fej>
     <meta http-equiv="content-type" context="text/html; charset=utf-8">
-    <title>CTT Segítség | A hardver</title>
+    <title>CTT Segítség | Hardver</title>
     <link href="../styles.css" rel=stylesheet type="text/css">
   </head>
   <body class="normal">
-    <b class="title1">III. A hardver</b>
+    <b class="title1">III. Hardver</b><br>
+    <br>
+    <b class="title2">Az eszközről</b><br>
+    <br>
+    A CTT egy számítógép által vezérelt teszter és plotter bipoláris tranzisztorokhoz.
+    A készülék a párhuzamos porton keresztül csatlakozik a géphez.<br>
+    <br>
+    <b class="title3">Üzemmódok és feszültségmérés</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <tr><td align="left">M1 üzemmód</td><td align="left">BU<sub>CB</sub> mérés</td><td align="left">U< sub>CB</sub>=100 V</td><td align="left">&nbsp;</td></tr>
+        <tr><td align="left">M2 üzemmód</td><td align="left">BU<sub>CE</sub> mérés</td><td align="left">U< sub>CE</sub>=0...20 V</td><td align="left">&nbsp;</td></tr>
+        <tr><td align="left">M3 üzemmód</td><td align="left">I<sub>EB0</sub> mérés</td><td align="left">U< sub>EB</sub>=0...20 V</td><td align="left">&nbsp;</td></tr>
+        <tr><td align="left">M4 üzemmód</td><td align="left">I<sub>CB0</sub> mérés</td><td align="left">U< sub>CB</sub>=0...20 V</td><td align="left">&nbsp;</td></tr>
+        <tr><td align="left">M5 üzemmód</td><td align="left">I<sub>CE0</sub> mérés</td><td align="left">U< sub>CE</sub>=0...20 V</td><td align="left">&nbsp;</td></tr>
+        <tr><td align="left">M6 üzemmód</td><td align="left">I<sub>B</sub>/U<sub>BE</sub> karakterisztikus görbe rögzítése</td><td align="left">U<sub>B</sub>=0...1 V</td><td align="left">U<sub>C</sub>=0...20 V</td></tr>
+        <tr><td align="left">M7 üzemmód</td><td align="left">I<sub>C</sub>/U<sub>CE</sub> jelleggörbe rögzítése</td><td align="left">U<sub>B</sub>=0...1 V</td><td align="left">U<sub>C</sub>=0...20 V</td></tr>
+        <tr><td align="left">M8 üzemmód</td><td align="left">párosítás</td><td align="left">U<sub>B</sub>=0...1 V</td><td align="left">U<sub>C</sub>=0...20 V</td></tr>
+      </tbody>
+    </table>
+    <br>
+    <b class="title3">Mérési elv</b><br>
+    <br>
+    <table width="100%" border=0>
+      <tr>
+        <td><img src="../pics/principle_figure_1.png" width="100%" border="1"></td>
+        <td><img src="../pics/principle_figure_2.png" width="100%" border="1"></td>
+        <td><img src="../pics/principle_figure_3.png" width="100%" border="1"></td>
+      </tr>
+      <tr>
+        <td align="center"><i>Kollektor-emitter áttörési feszültség mérése</i></td>
+        <td align="center"><i>Kollektor-bázis áttörési feszültség mérése</i></td>
+        <td align="center"><i>Az emitter-bázis visszáram mérése</i></td>
+      <tr>
+      </tr>
+        <td><img src="../pics/principle_figure_4.png" width="100%" border="1"></td>
+        <td><img src="../pics/principle_figure_5.png" width="100%" border="1"></td>
+        <td><img src="../pics/principle_figure_6.png" width="100%" border="1"></td>
+      </tr>
+      <tr>
+        <td align="center"><i>Kollektor-bázis visszáram mérése</i></td>
+        <td align="center"><i>Kollektor-emitter visszáram mérése</i></td>
+        <td align="center"><i>Az Ube/Ib vagy Uce/Ic jelleggörbe mérése és ábrázolása</i></td>
+      <tr>
+    </table>
+    <br>
+    <b class="title3">Megvalósítás</b><br>
+    <br>
+    <table width="100%" border=0>
+      <tr>
+        <td><img src="../pics/implementation_figure_1.png" width="100%" border="1"></td>
+        <td><img src="../pics/implementation_figure_2.png" width="100%" border="1"></td>
+        <td><img src="../pics/implementation_figure_3.png" width="100%" border="1"></td>
+      </tr>
+      <tr>
+        <td align="center"><i>Kollektor-emitter áttörési feszültség mérése</i></td>
+        <td align="center"><i>Kollektor-bázis áttörési feszültség mérése</i></td>
+        <td align="center"><i>Az emitter-bázis visszáram mérése</i></td>
+      <tr>
+      </tr>
+        <td><img src="../pics/implementation_figure_4.png" width="100%" border="1"></td>
+        <td><img src="../pics/implementation_figure_5.png" width="100%" border="1"></td>
+        <td><img src="../pics/implementation_figure_6.png" width="100%" border="1"></td>
+      </tr>
+      <tr>
+        <td align="center"><i>Kollektor-bázis visszáram mérése</i></td>
+        <td align="center"><i>Kollektor-emitter visszáram mérése</i></td>
+        <td align="center"><i>Az Ube/Ib vagy Uce/Ic jelleggörbe mérése és ábrázolása</i></td>
+      <tr>
+    </table>
+    <br>
+    <i>Megjegyzés:</i> A képeken látható elektronikus alkatrészek a CTT/SW2 egységben találhatók.<br>
+    <br>
+    <b class="title2">Belső felépítés</b><br>
+    <br>
+    A készülék tíz egységből áll, amelyek külön nyomtatott áramköri lapon helyezkednek el.
+    Az egységek hagyományos (kötegelt) vezetékezéssel kapcsolódnak egymáshoz és csak néhány nagyobb
+    alkatrész található köztük. A digitális egységek perifériákként működnek, és választóvonalak
+    segítségével olvashatók/írhatók. Lásd az egységek kapcsolási rajzait vagy töltse le
+    az egész dokumentációt a <a href="https://github.com/pozsarzs/ctt-hw">Github-tárolójából</a>.<br>
+    <br>
+    <img src="../pics/sch_ctt.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/IF egység</b><br>
+    <br>
+    Az interfész négy beállítható berendezésazonosítóval (EqID), nyolc kiválasztó
+    kimenettel, nyolc bemenettel és nyolc kimenettel rendelkezik és LPT porton
+    keresztül csatlakozik a számítógéphez. A négy bites EqID azonosítja az
+    eszközt, amely a jumperekkel állítható be.<br>Az I/O művelet előtt a
+    számítógép 3 bites választó címet és 4 bites EqID-t küld, amely az IC2
+    oktális D típusú flip-flop áramkörben (74LS374) van tárolva. (Engedélyezést
+    fogad a -INIT vonalról). A tárolt és beállított azonosítót a IC3 komparátor
+    (74LS688) hasonlítja össze, és ha van egyezik akkor engedélyezi az IC4
+    multiplexer áramkört (74LS138). A második engedélyezés az LPT port -STROBE
+    vonalán érkezik. Az azonosító egyezését a számítógép felé az -ERROR vonalon
+    jelzi. Ha a multiplexer engedélyezve van, akkor a megfelelő kiválasztó
+    kimenet aktiválásra kerül, ezután az I/O művelet elvégezhető.<br> A PC a
+    nyolc bitet két részben olvassa be az IC5 4x2 bemenetű multiplexer áramkör
+    (74LS157) segítségével.<br> A félbájtos adatok a  BUSY, -ACK, SLCT és PE
+    vonalakon kerülnek beolvasásra, az -AUTOFD az alsó és a felső kiválasztására
+    szolgál. A kimenet pufferelve van egy IC1 buszmeghajtó áramkörrel (74LS245)
+    az LPT adapter azonos áramkörének védelmére. A PC az egység felé D0-7 sorokon
+    keresztül egyszerre egy bájtot tud küldeni.<br>
+    <br>
+    <img src="../pics/sch_ctt-if.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/SW1</b><br>
+    <br>
+    Az első kapcsolóegység felelős a második kapcsolóegység vezérléséért. A
+    kapcsolóegységbe egy bájtos adat vihető be a -SL0 kiválasztóvonal
+    segítségével. Az adatok első három bitje határozza meg a működési módot, a
+    negyedik nem használt, az ötödik segítségével válthatunk a Ube/Uce mérés
+    között, a hatodik engedélyezi a kiválasztott mérést. A hetedik segítségével
+    kiválasztható a tranzisztor felépítése (NPN/PNP) és a nyolcadikkal
+    választható a nagyobb áramú mérés a teljesítménytranzisztoroknak.<br>A beírt
+    bájtot az IC1 oktális D típusú flip-flop áramkör (74LS374) tárolja. Az alsó
+    három bit az IC2 (74LS138) multiplexerhez kerül. A multiplexer O0 és O7
+    kimenete az alapértelmezett pozíció, ilyenkor nincs mérés, a tesztcsatlakozó
+    feszültségmentes. A többi kimenet  hajtja meg a 14 tranzisztoros nyitott
+    kollektoros kimenetet az IC3 (74LS04) invertereken és D1-14 diódákon
+    keresztül. A dióda áramkör biztosítja, hogy a működési módoknak megfelelő
+    kimenetek legyenek bekapcsolva, és a bemeneti jelek egymástól el legyenek 
+    választva.<br> Az IC1 O4-6 kimenete a diódákon keresztül a kimeneti
+    tranzisztorokhoz jut. Az O7 kimenet egy tranzisztorral a panelen kívül
+    elhelyezett relét kapcsolja.<br>
+    <br>
+    <img src="../pics/sch_ctt-sw1.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/SW2</b><br>
+    <br>
+    A második kapcsolóegységet az első kapcsolóegység vezérli. A feladata a
+    mérőfeszültségek és az A/D átalakító egység csatlakoztatása a mérendő
+    tranzisztorhoz. Minden relé Reed-relé, az R10-R23 ellenállások a tekercsek
+    áramát korlátozzák.<br> D1-D14 diódák elnyomják a fordított polaritású
+    feszültségcsúcsokat, amikor a relé kikapcsol. <br>A mérőkör független a
+    készülék testjétől.<br>
+    <br>
+    <img src="../pics/sch_ctt-sw2.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/AD</b><br>
+    <br>
+    Az A/D konverter egység a mérőáramkör feszültségeit méri.<br>A a mérés az
+    -SL5 választóvonal aktiválásával kezdődik. Emiatt a az IC2 D-típusú flip-flop
+    áramkör (74LS74) átbillen és elindul mérési ciklus. A mérés végét az A/D
+    konverter STATUS kimenete jelzi, ami alaphelyzetbe állítja a flip-flopot  és
+    a konverter HOLD állapotba kerül.<br>Az IC1 A/D konverter (ICL7109) 12 bites,
+    így a kimeneti adat két bájtos lesz. A kimeneti adatok az IC3 és IC4
+    buszmeghajtó áramkörökön (74LS245) keresztül kerülnek az adatbuszra. A mért
+    érték alsó bájtja az -SL3, a felső -SL4 bájt használatával olvasható ki. A
+    hatodik bit jelzi a mért feszültség polaritását, a hetedik a túlcsordulást, a
+    nyolcadik a mérés állapotát. A negyedik bit mindig 0.<br>
+    <br>
+    <img src="../pics/sch_ctt-ad.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/DP</b><br>
+    <br>
+    A kijelző egység az előlapon lévő LED-ekkel mutatja a készülék állapotát. Az
+    -SL0 kiválasztó vonal aktiválásával egy bájtnyi adatot lehet a
+    kapcsolóegységgel egy időben az egységbe írni. Az adat első három bitje
+    határozza meg az üzemmódot, a negyedik nem használt, a hetedik a tranzisztor
+    felépítését jelzi, a nyolcadik pedig teljesítménytranzisztorok mérésére
+    szolgál.<br> A bemeneti bájt az IC1-ben van tárolva, amely egy oktális
+    D-típusú flip-flop áramkör (74LS374). Az alsó három bit megy IC2 (74LS138)
+    multiplexerre. A multiplexer O0-O7 kimenetei az Üzemmód LED-ekre vannak
+    kötve.<br> Az IC1 O6 kimenete csatlakozik a sárga NPN LED és tranzisztoros
+    inverteren keresztül a sárga PNP LED-hez. O7 kimenet kapcsolja a nagyáramú
+    mérés LED-jét.<br>
+    <br>
+    <img src="../pics/sch_ctt-dp.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/SC</b><br>
+    <br>
+    Az állapotgyűjtő egység feladata, hogy négy digitális állapotot továbbítson a
+    vezérlőegység felé.<br>Ha az -SL1 választóvonal aktiválva van, az IC1
+    buszmeghajtó áramkör (74LS244) átviszi bemeneteinek állapotát az adatvonalra,
+    amelynek felső négy bitje mindig 0.<br> Ez az egység jelenleg nincs
+    használatban.<br>
+    <br>
+    <img src="../pics/sch_ctt-sc.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/PS1</b><br>
+    <br>
+    Az egység feladata a digitális áramköri egységek stabilizált
+    egyenfeszültséggel történő ellátása: +5 V 2 A és -5 V 500 mA, valamint a
+    testfüggetlen Um2 feszültség előállítása, ami kb. 100 V. Ez az egység
+    tartalmazza a polaritásváltó relé meghajtó tranzisztorait. Ez a relé az
+    egységek között található.<br>
+    <br>
+    <img src="../pics/sch_ctt-ps1.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/PS2 és CTT/PS3</b><br>
+    <br>
+    Mindkét tápegység testfüggetlen, átkapcsolható polaritású mérőfeszültséget
+    állít elő. A CTT/PS2 kimeneti feszültsége 20 V 1,5 A, a CTT/PS3-é pedig 1 V
+    100 mA. A kimeneti feszültség 256 lépésben állítható. A kimenetek
+    túláramvédelemmel rendelkeznek.<br> A tápegység az LM317 feszültségszabályozó
+    két altípusán alapul. Az integrált áramkör kimeneti feszültsége könnyen
+    állítható, termikus és rövidzárvédett kimenettel rendelkezik.<br> A
+    transzformátor szekunder feszültsége kétutas egyenirányítás után a
+    pufferkondenzátorokra jut. A pozitív feszültséget a szabályozó áramkör (IC1),
+    a negatív feszültség a Zener dióda szabályozza, az utóbbi az előfeszültséget
+    biztosítja. A 0V-os kimeneti feszültséget a trimmer potenciométerrel (P1)
+    kell beállítani.<br> Az -SL7 vagy -SL6 kiválasztóvonalak aktiválásával egy
+    bájt adat vihető be ebbe az egységbe. A bemenet bájt IC2 oktális D-típusú
+    flip-flop áramkörben (74LS374) van tárolva. Az adat azonnal megjelenik a
+    tároló kimenetén, és bekapcsolja a K2-9 PCB reléket T1-8 tranzisztorok
+    segítségével. A relék érintkezője megváltoztatja a feszültségszabályozó
+    ellenálláslétrájának értékét, ezért a kimenet a feszültség is változik.<br>
+    <br>
+    <img src="../pics/sch_ctt-ps2.png" width="100%" border="1">
+    <br>
+    <br>
+    <img src="../pics/sch_ctt-ps3.png" width="100%" border="1">
+    <br>
+    <br>
+    <b class="title3">CTT/PS4</b><br>
+    <br>
+    Az egység feladata a többi tápegység váltakozó árammal való ellátása.
+    Tartalmaz egy nagy teljesítményű hálózati transzformátort és a primer
+    áramköri alkatrészeket. A transzformátor toroid alakú, és öt szekunder
+    tekerccsel rendelkezik: 8 V 2 A; 8V 500mA; 18 V 10 mA; 2x25V 1A; 2x5V
+    100mA.<br>
+    <br>
+    <img src="../pics/sch_ctt-ps4.png" width="100%" border="1">
     <br>
     <br>
     <br>
-    <a href="index.html">Vissza a tartalomjegyzékhez</a>
+    <a href="index.html">Vissza a tartalomhoz</a>
   </body>
 </html>

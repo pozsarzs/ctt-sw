@@ -1,7 +1,7 @@
 **CTT - transistor tester and characteristic curve plotter**  
 Copyright (C) 2010-2022 Pozsár Zsolt <pozsarzs@gmail.com>  
 Homepage: <http://www.pozsarzs.hu/>  
-GitHub: <https://github.com/pozsarzs/ctt-demo-sw>
+GitHub: <https://github.com/pozsarzs/ctt-sw>
 
 **Software**
 

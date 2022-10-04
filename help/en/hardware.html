@@ -95,7 +95,7 @@
     <br>
     <b class="title3">CTT/IF unit</b><br>
     <br>
-    This unit is identical to a previous project (LPTIO). Interface has eight
+    This unit is identical to a previous project (LPTIO). Interface has four
     settable equipment ID (EqID), eight select outputs, eight inputs and eight
     outputs and is connected to a computer via an LPT port. The four-bit EqID
     identifies the device, which can be set using the jumpers.<br>Before the I/O
@@ -124,7 +124,7 @@
     -SL0 selection line. The first three bits of the data determine the operating
     mode, the fourth is not used, the fifth can be used to switch between the
     Ube/Uce measurement, the sixth enables the measurement selected in the
-    previous bit, the sixth can be used to select the structure of the transistor
+    previous bit, the seventh can be used to select the structure of the transistor
     (NPN/PNP) and the eighth can be select the higher current measurement for the
     power transistors.<br>The entered byte is stored by IC1 octal D type flip-flop
     circuit (74LS374). The lower three bits go to multiplexer IC2 (74LS138).
@@ -217,7 +217,7 @@
     steps. The outputs have overcurrent protection.<br> The power supply is based
     on two subtypes of the LM317 voltage regulator. The output voltage of the
     circuit can be easily adjusted, and its output is thermally and short-circuit
-    protected. The double secondary voltage of the transformer reaches the buffer
+    protected.<br>The double secondary voltage of the transformer reaches the buffer
     capacitors after two-way rectification. The positive voltage goes to the
     regulator circuit (IC1), the negative voltage to a stabilizer built with a
     zener diode, which provides the bias voltage. The 0V output voltage can be
