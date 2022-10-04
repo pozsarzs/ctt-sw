@@ -58,7 +58,7 @@ implementation
 // OnShow event
 procedure TForm2.FormShow(Sender: TObject);
 begin
-  Label1.Caption := commonproc.APPNAME+' v' + commonproc.VERSION;
+  Label1.Caption := commonproc.APPNAME + ' v' + commonproc.VERSION;
   Label4.Caption := commonproc.HOMEPAGE;
   Label4.Enabled := not commonproc.offline;
   Label5.Enabled := not commonproc.offline;

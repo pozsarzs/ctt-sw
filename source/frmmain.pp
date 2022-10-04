@@ -713,10 +713,10 @@ procedure TForm1.Button7Click(Sender: TObject);
 var
   box: array[1..20] of byte;
   boxindex: byte;
+  br: boolean;
   Count: integer;
   inputdata: byte;
-  MinValue, MaxValue: single;
-  br: boolean;
+  minvalue, maxvalue: single;
   put: boolean;
 begin
   StringGrid1.RowCount := 1;
@@ -743,11 +743,11 @@ begin
         StringGrid1.Cells[0, Count] := IntToStr(Count);
         StringGrid1.Cells[1, Count] := commonproc.mdata[6];
         inputdata := StrToInt(commonproc.mdata[6]);
-        MinValue := inputdata - inputdata * Spinedit1.Value / 100;
-        MaxValue := inputdata + inputdata * Spinedit1.Value / 100;
+        minvalue := inputdata - inputdata * Spinedit1.Value / 100;
+        maxvalue := inputdata + inputdata * Spinedit1.Value / 100;
         put := False;
         for b := 1 to 20 do
-          if (box[b] <= MaxValue) and (box[b] >= MinValue) then
+          if (box[b] <= maxvalue) and (box[b] >= minvalue) then
           begin
             put := True;
             StringGrid1.Cells[2, Count] := MESSAGE34 + IntToStr(b);
@@ -1091,32 +1091,32 @@ begin
   writetodisplay;
 end;
 
-// clear all display
+// Clear all display
 procedure TForm1.MenuItem44Click(Sender: TObject);
 begin
   cleardisplay(99);
 end;
 
 // -- Operation menu -----------------------------------------------------------
-// view 1st page
+// View 1st page
 procedure TForm1.MenuItem22Click(Sender: TObject);
 begin
   PageControl1.ActivePageIndex := 0;
 end;
 
-// view 2nd page
+// View 2nd page
 procedure TForm1.MenuItem23Click(Sender: TObject);
 begin
   PageControl1.ActivePageIndex := 1;
 end;
 
-// view 3rd page
+// View 3rd page
 procedure TForm1.MenuItem40Click(Sender: TObject);
 begin
   PageControl1.ActivePageIndex := 2;
 end;
 
-// view 4th page
+// View 4th page
 procedure TForm1.MenuItem24Click(Sender: TObject);
 begin
   PageControl1.ActivePageIndex := 3;

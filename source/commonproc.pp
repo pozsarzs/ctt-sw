@@ -91,7 +91,7 @@ end;
 function loadprofile(filename: string): boolean;
 var
   Count: byte;
-  ty, po, ds, pc, ce, cb, ic, eb, pd, p1, p2, p3, p4, p5, p6, p7: string;
+  ty, po, ds, pc, ce, cb, ic, ib, pd, p1, p2, p3, p4, p5, p6, p7: string;
 begin
   ty := '';
   po := '';
@@ -100,7 +100,7 @@ begin
   ce := '';
   cb := '';
   ic := '';
-  eb := '';
+  ib := '';
   pd := '';
   p1 := '';
   p2 := '';
@@ -135,9 +135,9 @@ begin
       if s[1] + s[2] + s[3] = 'IC=' then
         for b := 4 to length(s) do
           ic := ic + s[b];
-      if s[1] + s[2] + s[3] = 'EB=' then
+      if s[1] + s[2] + s[3] = 'IB=' then
         for b := 4 to length(s) do
-          eb := eb + s[b];
+          ib := ib + s[b];
       if s[1] + s[2] + s[3] = 'PD=' then
         for b := 4 to length(s) do
           pd := pd + s[b];
@@ -201,7 +201,7 @@ begin
       FloatSpinEdit3.Value := 0;
     end;
     try
-      FloatSpinEdit4.Value := strtofloat(eb);
+      FloatSpinEdit4.Value := strtofloat(ib);
     except
       FloatSpinEdit4.Value := 0;
     end;
@@ -383,17 +383,17 @@ begin
   assignfile(t, filename);
   try
     rewrite(t);
-    Write(t, '# +');
+    write(t, '# +');
     for b := 4 to 79 do
-      Write(t, '-');
+      write(t, '-');
     writeln(t, '+');
     writeln(t, '# | CTT v0.1 * transistor tester and characteristic curve plotter              |');
     writeln(t, '# | Copyright (C) 2010-2022 Pozsar Zsolt <pozsarzs@gmail.com>                  |');
     writeln(t, '# | *.pro                                                                      |');
     writeln(t, '# | Transistor profile                                                         |');
-    Write(t, '# +');
+    write(t, '# +');
     for b := 4 to 79 do
-      Write(t, '-');
+      write(t, '-');
     writeln(t, '+');
     writeln(t, 'TY=' + Form1.Edit2.Text);
     writeln(t, 'DS=' + Form1.Edit1.Text);
