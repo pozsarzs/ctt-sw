@@ -33,6 +33,14 @@ msgstr ""
 msgid "Cannot write temporary file!"
 msgstr ""
 
+#: commonproc.message08
+msgid "Cannot read temporary file!"
+msgstr ""
+
+#: frmdetails.message01
+msgid "Minimum value is 4 uA for \"Auto value\""
+msgstr ""
+
 #: frmmain.message01
 msgid "Demo"
 msgstr ""
@@ -116,6 +124,7 @@ msgid "none"
 msgstr ""
 
 #: frmmain.message21
+msgctxt "frmmain.message21"
 msgid "Missing files! Please reinstall CTT!"
 msgstr ""
 
@@ -331,6 +340,26 @@ msgstr ""
 #: tform1.edit2.text
 msgctxt "tform1.edit2.text"
 msgid "new profile"
+msgstr ""
+
+#: tform1.floatspinedit1.hint
+msgid "Maximal collector-emitter voltage by catalog"
+msgstr ""
+
+#: tform1.floatspinedit2.hint
+msgid "Maximal collector-base voltage by catalog"
+msgstr ""
+
+#: tform1.floatspinedit3.hint
+msgid "Maximal collector current by catalog"
+msgstr ""
+
+#: tform1.floatspinedit4.hint
+msgid "Maximal base current by catalog"
+msgstr ""
+
+#: tform1.floatspinedit5.hint
+msgid "Maximal dissipation power by catalog"
 msgstr ""
 
 #: tform1.groupbox1.caption
@@ -638,15 +667,12 @@ msgctxt "TFORM1.PANEL5.CAPTION"
 msgid "0 "
 msgstr ""
 
-#: tform1.statusbar1.panels[0].text
-msgid "DEMO"
-msgstr ""
-
 #: tform1.tabsheet1.caption
 msgid "Parameters"
 msgstr ""
 
 #: tform1.tabsheet2.caption
+msgctxt "TFORM1.TABSHEET2.CAPTION"
 msgid "Base characteristic"
 msgstr ""
 
@@ -655,6 +681,7 @@ msgid "Pair select"
 msgstr ""
 
 #: tform1.tabsheet4.caption
+msgctxt "TFORM1.TABSHEET4.CAPTION"
 msgid "Collector characteristic"
 msgstr ""
 
@@ -766,7 +793,7 @@ msgid "About"
 msgstr ""
 
 #: tform2.label1.caption
-msgid "CTT-demo v0.1"
+msgid "CTT v0.1"
 msgstr ""
 
 #: tform2.label11.caption
@@ -833,5 +860,91 @@ msgstr ""
 
 #: tform4.radiogroup1.caption
 msgid "Display color"
+msgstr ""
+
+#: tform5.caption
+msgid "Details"
+msgstr ""
+
+#: tform5.checkbox1.caption
+msgid "Auto value"
+msgstr ""
+
+#: tform5.checkbox1.hint
+msgid "Check to set Ib2-4 automatically"
+msgstr ""
+
+#: tform5.floatspinedit1.hint
+msgid "Constant collector-emitter voltage"
+msgstr ""
+
+#: tform5.floatspinedit2.hint
+msgid "Maximal base current"
+msgstr ""
+
+#: tform5.floatspinedit3.hint
+msgctxt "tform5.floatspinedit3.hint"
+msgid "Constant base current"
+msgstr ""
+
+#: tform5.floatspinedit5.hint
+msgctxt "TFORM5.FLOATSPINEDIT5.HINT"
+msgid "Constant base current"
+msgstr ""
+
+#: tform5.floatspinedit6.hint
+msgctxt "TFORM5.FLOATSPINEDIT6.HINT"
+msgid "Constant base current"
+msgstr ""
+
+#: tform5.floatspinedit7.hint
+msgctxt "TFORM5.FLOATSPINEDIT7.HINT"
+msgid "Constant base current"
+msgstr ""
+
+#: tform5.floatspinedit8.hint
+msgid "Maximal collector-emitter voltage"
+msgstr ""
+
+#: tform5.groupbox1.caption
+msgctxt "tform5.groupbox1.caption"
+msgid "Base characteristic"
+msgstr ""
+
+#: tform5.groupbox2.caption
+msgctxt "tform5.groupbox2.caption"
+msgid "Collector characteristic"
+msgstr ""
+
+#: tform5.label1.caption
+msgid "Uce [V]:"
+msgstr ""
+
+#: tform5.label2.caption
+msgid "*Ibmax [uA]:"
+msgstr ""
+
+#: tform5.label3.caption
+msgid "Ib1 [uA]:"
+msgstr ""
+
+#: tform5.label4.caption
+msgid "* At measure, CTT increments it from zero to maximal value."
+msgstr ""
+
+#: tform5.label5.caption
+msgid "Ib2 [uA]:"
+msgstr ""
+
+#: tform5.label6.caption
+msgid "Ib3 [uA]:"
+msgstr ""
+
+#: tform5.label7.caption
+msgid "Ib4 [uA]:"
+msgstr ""
+
+#: tform5.label8.caption
+msgid "*Ucemax [V]:"
 msgstr ""
 

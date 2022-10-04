@@ -18,13 +18,14 @@ program ctt;
 uses
   Interfaces,
   Forms,
-  LResources,
   DefaultTranslator,
   frmmain,
   frmabout,
   commonproc,
   frmpref,
   frmdetails;
+
+{$R *.res}
 
 begin
   if (ParamStr(1) = '-v') or (ParamStr(1) = '--version') then
@@ -33,7 +34,6 @@ begin
     halt(0);
   end;
   Application.Title := 'CTT * Transistor tester and characteristic curve ' + 'plotter';
-  {$I ctt.lrs}
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);

@@ -141,6 +141,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Constant collector-emitter voltage'
       Top = 4
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -150,6 +151,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 20
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       Value = 0
     end
@@ -160,6 +163,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Maximal base current'
       Top = 33
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -168,6 +172,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 10000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
       Value = 0
     end
@@ -246,6 +252,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Constant base current'
       Top = 4
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -255,6 +262,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 10000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       Value = 0
     end
@@ -263,11 +272,14 @@ object Form5: TForm5
       AnchorSideTop.Side = asrBottom
       Left = 6
       Height = 22
+      Hint = 'Check to set Ib2-4 automatically'
       Top = 33
       Width = 94
       BorderSpacing.Top = 4
       Caption = 'Auto value'
       OnChange = CheckBox1Change
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
     end
     object FloatSpinEdit5: TFloatSpinEdit
@@ -277,6 +289,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Constant base current'
       Top = 59
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -285,6 +298,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 10000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
       Value = 0
     end
@@ -295,6 +310,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Constant base current'
       Top = 88
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -303,6 +319,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 10000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 3
       Value = 0
     end
@@ -313,6 +331,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Constant base current'
       Top = 117
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -321,6 +340,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 10000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 4
       Value = 0
     end
@@ -331,6 +352,7 @@ object Form5: TForm5
       AnchorSideRight.Side = asrBottom
       Left = 120
       Height = 25
+      Hint = 'Maximal collector-emitter voltage'
       Top = 146
       Width = 86
       Anchors = [akTop, akLeft, akRight]
@@ -339,6 +361,8 @@ object Form5: TForm5
       Increment = 1
       MaxValue = 20
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 5
       Value = 0
     end

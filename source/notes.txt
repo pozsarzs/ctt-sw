@@ -5,57 +5,65 @@ I. SOFTWARE
 
 I/1. Operation modes
 
- M. | Operation      | Description
-----+----------------+----------------------------------------------------------
- M0 | Stand-by       |
- M1 | BUce           | Collector-emitter breakdown voltage
- M2 | BUcb           | Collector-base breakdown voltage
- M3 | Ieb0           | Emitter-base cutoff current
- M4 | Icb0           | Collector-base cutoff current
- M5 | Ice0           | Collector-emitter cutoff current
- M6 | Input diagram  | Ube-Ib characteristic curve
- M7 | Output diagram | Uce-Ic characteristic curve
- M8 | Selection h21e |
+ M. | Operation         | Description
+----+----------------+-------------------------------------------------------
+ M0 | Stand-by          |
+ M1 | BUce              | Measuring collector-emitter breakdown voltage
+ M2 | BUcb              | Measuring collector-base breakdown voltage
+ M3 | Ieb0              | Measuring emitter-base cutoff current
+ M4 | Icb0              | Measuring collector-base cutoff current
+ M5 | Ice0              | Measuring collector-emitter cutoff current
+ M6 | Input diagram     | Measuring and plotting Ube/Ib characteristic curve
+ M7 | Output diagram    | Measuring and plotting Uce/Ic characteristic curves
+ M8 | Selection by h21e |
 
 
 I/2. Passed data from application to backend program
 
  M. | Operation      | Passed data from app to packend | Source of data
-----+----------------+----------------------------------------------------------
- M0 | Stand-by       | m0
- M1 | BUce           | m1; n/p
- M2 | BUcb           | m2; n/p
- M3 | Ieb0           | m3; n/p
- M4 | Icb0           | m4; n/p
- M5 | Ice0           | m5; n/p
- M6 | Input diagram  | m6; n/p; Ibm; Uce; Icm
- M7 | Output diagram | m7; n/p; Ib1; Ib2; Ib3; Ib4; Ucem; Icm
- M8 | Selection h21e | m8; n/p; Ube; Uce; Ucem; Icm
+----+----------------+--------------------------------------------------------------
+ M0 | Stand-by       | m0; n/p
+ M1 | BUce           | m1; n/p; Ucem; Ucbm; Icm; Ibm; Pd
+ M2 | BUcb           | m2; n/p; Ucem; Ucbm; Icm; Ibm; Pd
+ M3 | Ieb0           | m3; n/p; Ucem; Ucbm; Icm; Ibm; Pd
+ M4 | Icb0           | m4; n/p; Ucem; Ucbm; Icm; Ibm; Pd
+ M5 | Ice0           | m5; n/p; Ucem; Ucbm; Icm; Ibm; Pd
+ M6 | Input diagram  | m6; n/p; Uce; Ibmax; Ucem; Ucbm; Icm; Ibm; Pd
+ M7 | Output diagram | m7; n/p; Ib1; Ib2; Ib3; Ib4; Ucemax; Ucem; Ucbm; Icm; Ibm; Pd
+ M8 | Selection h21e | m8; n/p; Ucem; Ucbm; Icm; Ibm; Pd
 
  Source of data:
-   Ib1-4:
-   Ibm:
-   Icm:
-   m0-8:
-   n/p:
-   Ube:
-   Uce:
-   Ucem
+   Polarity:
+     n/p:    Form1.ComboBox1.ItemIndex (n/p=0/1)
+   Measure values:
+     Uce:    Form5.FloatSpinEdit1.Value
+     Ibmax:  Form5.FloatSpinEdit2.Value
+     Ib1:    Form5.FloatSpinEdit3.Value
+     Ib2:    Form5.FloatSpinEdit5.Value
+     Ib3:    Form5.FloatSpinEdit6.Value
+     Ib4:    Form5.FloatSpinEdit7.Value
+     Ucemax: Form5.FloatSpinEdit8.Value
+   Catalog values:
+     Ucem:   Form1.FloatSpinEdit1.Value
+     Ucbm:   Form1.FloatSpinEdit2.Value
+     Icm:    Form1.FloatSpinEdit3.Value
+     Ibm:    Form1.FloatSpinEdit4.Value
+     Pd:     Form1.FloatSpinEdit5.Value
 
 
 I/3. Call of the backend program (command line parameters)
 
  M. | Operation      | Command line
-----+----------------+----------------------------------------------------------
- M0 | Stand-by       | $ backend m0
- M1 | BUce           | $ backend m1 n/p 0   0   0   0   0    0
- M2 | BUcb           | $ backend m2 n/p 0   0   0   0   0    0
- M3 | Ieb0           | $ backend m3 n/p 0   0   0   0   0    0
- M4 | Icb0           | $ backend m4 n/p 0   0   0   0   0    0
- M5 | Ice0           | $ backend m5 n/p 0   0   0   0   0    0
- M6 | Input diagram  | $ backend m6 n/p Ibm Uce 0   0   0    Icm
- M7 | Output diagram | $ backend m7 n/p Ib1 Ib2 Ib3 Ib4 Ucem Icm
- M8 | Selection h21e | $ backend m8 n/p Ube Uce 0   0   Ucem Icm
+----+----------------+---------------------------------------------------------------
+ M0 | Stand-by       | $ backend m0 n/p 0   0     0   0   0      0    0    0   0   0
+ M1 | BUce           | $ backend m1 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd
+ M2 | BUcb           | $ backend m2 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd
+ M3 | Ieb0           | $ backend m3 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd
+ M4 | Icb0           | $ backend m4 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd
+ M5 | Ice0           | $ backend m5 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd
+ M6 | Input diagram  | $ backend m6 n/p Uce Ibmax 0   0   0      Ucem Ucbm Icm Ibm Pd
+ M7 | Output diagram | $ backend m7 n/p Ib1 Ib2   Ib3 Ib4 Ucemax Ucem Ucbm Icm Ibm Pd
+ M8 | Selection h21e | $ backend m8 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd
 
 
 I/4. Passed data from backend program to application
@@ -63,7 +71,7 @@ I/4. Passed data from backend program to application
 Result of the backend program (in /tmp/ctt.tmp file)
 
  M. | Operation      | Result   | Number of lines
-----+----------------+----------+------------------------------------------------
+----+----------------+-------------------------------
  M0 | Stand-by       |          |
  M1 | BUce           | BUce     | 1
  M2 | BUcb           | BUcb     | 2
@@ -75,16 +83,16 @@ Result of the backend program (in /tmp/ctt.tmp file)
  M8 | Selection h21e | h21e     | 6
 
   Target data in application:
-    BUce: mdata[1] of unit commonproc.pp
-    BUcb: mdata[2] of unit commonproc.pp
-    Ieb0: mdata[3] of unit commonproc.pp
-    Icb0: mdata[4] of unit commonproc.pp
-    Ice0: mdata[5] of unit commonproc.pp
-    Ube:  mdata[7..45] of unit commonproc.pp (only odd indexes)
-    Ib:   mdata[8..46] of unit commonproc.pp (only even indexes)
-    Uce:  mdata[47..205] of unit commonproc.pp (only odd indexes)
-    Ic:   mdata[48..206] of unit commonproc.pp (only even indexes)
-    h21e: mdata[6] of unit commonproc.pp
+    BUce: commonproc.mdata[1]
+    BUcb: commonproc.mdata[2]
+    Ieb0: commonproc.mdata[3]
+    Icb0: commonproc.mdata[4]
+    Ice0: commonproc.mdata[5]
+    Ube:  commonproc.mdata[7..45] (only odd indexes)
+    Ib:   commonproc.mdata[8..46] (only even indexes)
+    Uce:  commonproc.mdata[47..205] (only odd indexes)
+    Ic:   commonproc.mdata[48..206] (only even indexes)
+    h21e: commonproc.mdata[6]
 
 
 II. HARDWARE
@@ -92,7 +100,7 @@ II. HARDWARE
 II/1. Closed Reed-relays in CTT/SW2
 
  M. | K1  K2  K3  K4  K5  K6  K7  K8  K9  K10  K11  K12
-----+---------------------------------------------------
+----+--------------------------------------------------
  M0 |
  M1 | x               x               x
  M2 |         x       x               x
@@ -103,7 +111,7 @@ II/1. Closed Reed-relays in CTT/SW2
  M7 |     x   x                   x             x
  M8 |     x   x                   x                  x
  M8 |     x   x                   x             x
-----+---------------------------------------------------
+----+--------------------------------------------------
     | B   B   E   E   C   C   C   C   AD  AD   AD   AD
 
 

@@ -44,6 +44,14 @@ msgstr "Hiányzó fájlok! Telepítse újra az alkalmazást."
 msgid "Cannot write temporary file!"
 msgstr "Ideiglenes állomány nem hozható létre!"
 
+#: commonproc.message08
+msgid "Cannot read temporary file!"
+msgstr "Nem sikerült olvasni az átmeneti fájlból"
+
+#: frmdetails.message01
+msgid "Minimum value is 4 uA for \"Auto value\""
+msgstr "A minimum érték 4 uA az \"Auto beállításhoz\""
+
 #: frmmain.message01
 msgid "Demo"
 msgstr "Demo"
@@ -127,6 +135,7 @@ msgid "none"
 msgstr "nincs"
 
 #: frmmain.message21
+msgctxt "frmmain.message21"
 msgid "Missing files! Please reinstall CTT!"
 msgstr "Hiányzó fájlok! Telepítse újra az alkalmazást."
 
@@ -343,6 +352,26 @@ msgstr "(leírás)"
 msgctxt "tform1.edit2.text"
 msgid "new profile"
 msgstr "új profil"
+
+#: tform1.floatspinedit1.hint
+msgid "Maximal collector-emitter voltage by catalog"
+msgstr "Maximális kollektor-emitter feszültség a katalógusból"
+
+#: tform1.floatspinedit2.hint
+msgid "Maximal collector-base voltage by catalog"
+msgstr "Maximális kollektor-bázis feszültség a katalógusból"
+
+#: tform1.floatspinedit3.hint
+msgid "Maximal collector current by catalog"
+msgstr "Maximális kollektoráram a katalógusból"
+
+#: tform1.floatspinedit4.hint
+msgid "Maximal base current by catalog"
+msgstr "Maximális bázisáram a katalógusból"
+
+#: tform1.floatspinedit5.hint
+msgid "Maximal dissipation power by catalog"
+msgstr "Maximális disszipációs teljesítmény"
 
 #: tform1.groupbox1.caption
 msgid "BUce"
@@ -649,15 +678,12 @@ msgctxt "TFORM1.PANEL5.CAPTION"
 msgid "0 "
 msgstr "0"
 
-#: tform1.statusbar1.panels[0].text
-msgid "DEMO"
-msgstr "DEMO"
-
 #: tform1.tabsheet1.caption
 msgid "Parameters"
 msgstr "Paraméterek"
 
 #: tform1.tabsheet2.caption
+msgctxt "TFORM1.TABSHEET2.CAPTION"
 msgid "Base characteristic"
 msgstr "Bázis karakterisztika"
 
@@ -666,6 +692,7 @@ msgid "Pair select"
 msgstr "Párbaválogatás"
 
 #: tform1.tabsheet4.caption
+msgctxt "TFORM1.TABSHEET4.CAPTION"
 msgid "Collector characteristic"
 msgstr "Kollektor karakterisztika"
 
@@ -777,8 +804,8 @@ msgid "About"
 msgstr "Névjegy"
 
 #: tform2.label1.caption
-msgid "CTT-demo v0.1"
-msgstr "CTT-demo v0.1"
+msgid "CTT v0.1"
+msgstr "CTT v0.1"
 
 #: tform2.label11.caption
 msgid "Copyright (C) 2010-2022 Pozsár Zsolt"
@@ -845,6 +872,95 @@ msgstr "Port:"
 #: tform4.radiogroup1.caption
 msgid "Display color"
 msgstr "Kijelzőszín"
+
+#: tform5.caption
+msgid "Details"
+msgstr "Részletek"
+
+#: tform5.checkbox1.caption
+msgid "Auto value"
+msgstr "Auto beállítás"
+
+#: tform5.checkbox1.hint
+msgid "Check to set Ib2-4 automatically"
+msgstr "Jelöld be az Ib2-4 automata beállításához"
+
+#: tform5.floatspinedit1.hint
+msgid "Constant collector-emitter voltage"
+msgstr "Állandó kollektor-emitter feszültség"
+
+#: tform5.floatspinedit2.hint
+msgid "Maximal base current"
+msgstr "Maximális bázisáram"
+
+#: tform5.floatspinedit3.hint
+msgctxt "tform5.floatspinedit3.hint"
+msgid "Constant base current"
+msgstr "Állandó bázisáram"
+
+#: tform5.floatspinedit5.hint
+msgctxt "TFORM5.FLOATSPINEDIT5.HINT"
+msgid "Constant base current"
+msgstr "Állandó bázisáram"
+
+#: tform5.floatspinedit6.hint
+msgctxt "TFORM5.FLOATSPINEDIT6.HINT"
+msgid "Constant base current"
+msgstr "Állandó bázisáram"
+
+#: tform5.floatspinedit7.hint
+msgctxt "TFORM5.FLOATSPINEDIT7.HINT"
+msgid "Constant base current"
+msgstr "Állandó bázisáram"
+
+#: tform5.floatspinedit8.hint
+msgid "Maximal collector-emitter voltage"
+msgstr "Maximális kollektor-emitter feszültség"
+
+#: tform5.groupbox1.caption
+msgctxt "tform5.groupbox1.caption"
+msgid "Base characteristic"
+msgstr "Bázis karakterisztika"
+
+#: tform5.groupbox2.caption
+msgctxt "tform5.groupbox2.caption"
+msgid "Collector characteristic"
+msgstr "Kollektor karakterisztika"
+
+#: tform5.label1.caption
+msgid "Uce [V]:"
+msgstr "Uce [V]:"
+
+#: tform5.label2.caption
+msgid "*Ibmax [uA]:"
+msgstr "*Ibmax [uA]:"
+
+#: tform5.label3.caption
+msgid "Ib1 [uA]:"
+msgstr "Ib1 [uA]:"
+
+#: tform5.label4.caption
+msgid "* At measure, CTT increments it from zero to maximal value."
+msgstr "A mérés alatt a CTT nullától a maximális értékig növeli."
+
+#: tform5.label5.caption
+msgid "Ib2 [uA]:"
+msgstr "Ib2 [uA]:"
+
+#: tform5.label6.caption
+msgid "Ib3 [uA]:"
+msgstr "Ib3 [uA]:"
+
+#: tform5.label7.caption
+msgid "Ib4 [uA]:"
+msgstr "Ib4 [uA]:"
+
+#: tform5.label8.caption
+msgid "*Ucemax [V]:"
+msgstr "Ucemax [V]:"
+
+#~ msgid "DEMO"
+#~ msgstr "DEMO"
 
 #~ msgid "&Software help"
 #~ msgstr "&Szoftver segítség"

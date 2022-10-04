@@ -174,6 +174,7 @@ object Form1: TForm1
   object FloatSpinEdit1: TFloatSpinEdit
     Left = 95
     Height = 25
+    Hint = 'Maximal collector-emitter voltage by catalog'
     Top = 59
     Width = 80
     DecimalPlaces = 1
@@ -181,12 +182,15 @@ object Form1: TForm1
     MaxValue = 999
     MinValue = 0
     OnChange = Edit2Change
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     Value = 0
   end
   object FloatSpinEdit2: TFloatSpinEdit
     Left = 95
     Height = 25
+    Hint = 'Maximal collector-base voltage by catalog'
     Top = 87
     Width = 80
     DecimalPlaces = 1
@@ -194,12 +198,15 @@ object Form1: TForm1
     MaxValue = 999
     MinValue = 0
     OnChange = Edit2Change
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
     Value = 0
   end
   object FloatSpinEdit3: TFloatSpinEdit
     Left = 95
     Height = 25
+    Hint = 'Maximal collector current by catalog'
     Top = 115
     Width = 80
     DecimalPlaces = 1
@@ -207,6 +214,8 @@ object Form1: TForm1
     MaxValue = 99
     MinValue = 0
     OnChange = Edit2Change
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
     Value = 0
   end
@@ -222,6 +231,7 @@ object Form1: TForm1
   object FloatSpinEdit4: TFloatSpinEdit
     Left = 95
     Height = 25
+    Hint = 'Maximal base current by catalog'
     Top = 143
     Width = 80
     DecimalPlaces = 1
@@ -229,12 +239,15 @@ object Form1: TForm1
     MaxValue = 999
     MinValue = 0
     OnChange = Edit2Change
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
     Value = 0
   end
   object FloatSpinEdit5: TFloatSpinEdit
     Left = 95
     Height = 25
+    Hint = 'Maximal dissipation power by catalog'
     Top = 171
     Width = 80
     DecimalPlaces = 1
@@ -242,6 +255,8 @@ object Form1: TForm1
     MaxValue = 99
     MinValue = 0
     OnChange = Edit2Change
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
     Value = 0
   end
