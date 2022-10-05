@@ -20,7 +20,7 @@ I/1. Operation modes
 
 I/2. Passed data from application to backend program
 
- M. | Operation      | Passed data from app to packend | Source of data
+ M. | Operation      | Passed data
 ----+----------------+--------------------------------------------------------------
  M0 | Stand-by       | m0; n/p
  M1 | BUce           | m1; n/p; Ucem; Ucbm; Icm; Ibm; Pd

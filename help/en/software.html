@@ -6,9 +6,86 @@
     <link href="../styles.css" rel=stylesheet type="text/css">
   </head>
   <body class="normal">
-    <b class="title1">II. Software</b>
+    <b class="title1">II. Software</b><br>
     <br>
+    With the program, the characteristics of bipolar transistors can be measured,
+    their input and output characteristics can be drawn and selected based on
+    h21e.<br>
     <br>
+    <b class="title3">Operating modes and measuring voltages</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <tr><td align="left">operation mode M0</td><td align="left">Stand-by</td></tr>
+        <tr><td align="left">operation mode M1</td><td align="left">Measuring collector-emitter breakdown voltage</td></tr>
+        <tr><td align="left">operation mode M2</td><td align="left">Measuring collector-base breakdown voltage</td></tr>
+        <tr><td align="left">operation mode M3</td><td align="left">Measuring emitter-base cutoff current</td></tr>
+        <tr><td align="left">operation mode M4</td><td align="left">Measuring collector-base cutoff current</td></tr>
+        <tr><td align="left">operation mode M5</td><td align="left">Measuring collector-emitter cutoff current</td></tr>
+        <tr><td align="left">operation mode M6</td><td align="left">Measuring and plotting Ube/Ib characteristic curve</td></tr>
+        <tr><td align="left">operation mode M7</td><td align="left">Measuring and plotting Uce/Ic characteristic curves</td></tr>
+        <tr><td align="left">operation mode M8</td><td align="left">Selection by h<sub>21e</sub></td></tr>
+      </tbody>
+    </table>
+    <br>
+    The software consists of two parts: the user program with a
+    graphical interface and a command-line program that communicates with the
+    hardware. This program only runs during the measurement. The data is
+    transferred from the management program via command line parameters, from the
+    background program with a temporary file (/tmp/ctt.tmp).<br>
+    <br>
+    <b class="title3">Passed data from application to backend program</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <td align="center"><b>Mode</b></td><td align="center"><b>Operation</b></td><td align="center"><b>Passed data</b></td></tr>
+        <td align="center">M0</td><td align="left">Stand-by</td><td align="left">m0; n/p</td></tr>
+        <td align="center">M1</td><td align="left">BU<sub>ce</sub></td><td align="left">m1; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M2</td><td align="left">BU<sub>cb</sub></td><td align="left">m2; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M3</td><td align="left">I<sub>eb0</sub></td><td align="left">m3; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M4</td><td align="left">I<sub>cb0</sub></td><td align="left">m4; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M5</td><td align="left">I<sub>ce0</sub></td><td align="left">m5; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M6</td><td align="left">Input diagram</td><td align="left">m6; n/p; Uce; Ibmax; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M7</td><td align="left">Output diagram</td><td align="left">m7; n/p; Ib1; Ib2; Ib3; Ib4; Ucemax; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M8</td><td align="left">Selection by h<sub>21e</sub></td><td align="left">m8; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+      </tbody>
+    </table>
+    <br>
+    <b class="title3">Call of the backend program (command line parameters)</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <td align="center"><b>Mode</b></td><td align="center"><b>Operation</b></td><td align="center"><b>Command line</b></td></tr>
+        <td align="center">M0</td><td align="left">Stand-by</td><td align="left"><code> $ backend m0 n/p 0   0     0   0   0      0    0    0   0   0</code> </td></tr>
+        <td align="center">M1</td><td align="left">BU<sub>ce</sub></td><td align="left"><code> $ backend m1 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M2</td><td align="left">BU<sub>cb</sub></td><td align="left"><code> $ backend m2 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M3</td><td align="left">I<sub>eb0</sub></td><td align="left"><code> $ backend m3 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M4</td><td align="left">I<sub>cb0</sub></td><td align="left"><code> $ backend m4 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M5</td><td align="left">I<sub>ce0</sub></td><td align="left"><code> $ backend m5 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M6</td><td align="left">Input diagram</td><td align="left"><code> $ backend m6 n/p Uce Ibmax 0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M7</td><td align="left">Output diagram</td><td align="left"><code> $ backend m7 n/p Ib1 Ib2   Ib3 Ib4 Ucemax Ucem Ucbm Icm Ibm Pd</code></td></tr>
+        <td align="center">M8</td><td align="left">Selection by h<sub>21e</sub></td><td align="left"><code> $ backend m8 n/p 0   0     0   0   0      Ucem Ucbm Icm Ibm Pd</code></td></tr>
+      </tbody>
+    </table>
+    <br>
+    <b class="title3">Passed data from backend program to application</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <td align="center"><b>Mode</b></td><td align="center"><b>Operation</b></td><td align="center"><b>Result</b></td><td align="center"><b>Number of lines</b></td></tr>
+        <td align="center">M0</td><td align="left">Stand-by</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+        <td align="center">M1</td><td align="left">BU<sub>ce</sub></td><td align="center">BU<sub>ce</sub></td><td align="center">1</td></tr>
+        <td align="center">M2</td><td align="left">BU<sub>cb</sub></td><td align="center">BU<sub>cb</sub></td><td align="center">2</td></tr>
+        <td align="center">M3</td><td align="left">I<sub>eb0</sub></td><td align="center">I<sub>eb0</sub></td><td align="center">3</td></tr>
+        <td align="center">M4</td><td align="left">I<sub>cb0</sub></td><td align="center">I<sub>cb0</sub></td><td align="center">4</td></tr>
+        <td align="center">M5</td><td align="left">I<sub>ce0</sub></td><td align="center">I<sub>ce0</sub></td><td align="center">5</td></tr>
+        <td align="center">M6</td><td align="left">Input diagram</td><td align="center">(U<sub>be</sub>;I<sub>b</sub>)</td><td align="center">(7;8)...(45;46)</td></tr>
+        <td align="center">M7</td><td align="left">Output diagram</td><td align="center">(U<sub>ce</sub>;I<sub>c</sub>)</td><td align="center">(47;48)...(205;206)</td></tr>
+        <td align="center">M8</td><td align="left">Selection by h<sub>21e</sub></td><td align="center">h<sub>21e</sub></td><td align="center">6</td></tr>
+      </tbody>
+    </table>
+    <br>
+    <i>Note:</i> There is in the /tmp/ctt.tmp file.<br>
     <br>
     <a href="index.html">Back to the Contents</a>
   </body>
