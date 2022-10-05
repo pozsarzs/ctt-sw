@@ -6,19 +6,68 @@
     <link href="../styles.css" rel=stylesheet type="text/css">
   </head>
   <body class="normal">
-    <b class="title1">II. A szoftver</b>
+    <b class="title1">II. A szoftver</b><br>
     <br>
     A programmal bipoláris tranzisztorok jellemzői mérhetőek, be- és kimeneti
-    karakterisztikája rajzoltatható meg  és válogathatunk vele h21e alapján.<br>
+    karakterisztikája rajzoltatható meg  és válogathatunk vele h<sub>21e</sub> alapján.<br>
+    <br>
+    <b class="title3">Működési módok</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <tr><td align="left">M0 üzemmód</td><td align="left">Készenlét</td></tr>
+        <tr><td align="left">M1 üzemmód</td><td align="left">Kollektor-emitter letörési feszültség mérése</td></tr>
+        <tr><td align="left">M2 üzemmód</td><td align="left">Kollektor-bázis letörési feszültség mérése</td></tr>
+        <tr><td align="left">M3 üzemmód</td><td align="left">Emitter-bázis visszáram mérése</td></tr>
+        <tr><td align="left">M4 üzemmód</td><td align="left">Kollektor-bázis visszáram mérése</td></tr>
+        <tr><td align="left">M5 üzemmód</td><td align="left">Kollektor-emitter visszáram mérése</td></tr>
+        <tr><td align="left">M6 üzemmód</td><td align="left">U<sub>be</sub>/I<sub>b</sub> karakterisztika mérése és rajzolása</td></tr>
+        <tr><td align="left">M7 üzemmód</td><td align="left">U<sub>ce</sub>/I<sub>c</sub> karakterisztika mérése és rajzolása</td></tr>
+        <tr><td align="left">M8 üzemmód</td><td align="left">Válogatás h<sub>21e</sub> alapján</td></tr>
+      </tbody>
+    </table>
+    <br>
     A szoftver két részből áll: a grafikus felületű kezelőprogramból és egy
     parancssoros  programból, ami a hardverrel tartja a kapcsolatot. Ez a program
     csak a mérés alatt fut. Az adatok átadása a kezelőprogramtól a parancssori
     paramétereken keresztül, a háttérprogramtól egy ideiglenes fájllal
     (/tmp/ctt.tmp) történik.<br>
-
-
-
     <br>
+    <b class="title3">A kzelőprogram által a háttérprogramnak átadott adatok</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <td align="center"><b>Mód</b></td><td align="center"><b>Művelet</b></td><td align="center"><b>Átadott adat</b></td></tr>
+        <td align="center">M0</td><td align="left">Készenlét</td><td align="left">m0; n/p</td></tr>
+        <td align="center">M1</td><td align="left">BU<sub>ce</sub></td><td align="left">m1; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M2</td><td align="left">BU<sub>cb</sub></td><td align="left">m2; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M3</td><td align="left">I<sub>eb0</sub></td><td align="left">m3; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M4</td><td align="left">I<sub>cb0</sub></td><td align="left">m4; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M5</td><td align="left">I<sub>ce0</sub></td><td align="left">m5; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M6</td><td align="left">Bemeneti karakterisztika</td><td align="left">m6; n/p; Uce; Ibmax; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M7</td><td align="left">Kimeneti karakterisztika</td><td align="left">m7; n/p; Ib1; Ib2; Ib3; Ib4; Ucemax; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+        <td align="center">M8</td><td align="left">Válogatás h<sub>21e</sub> alapján</td><td align="left">m8; n/p; Ucem; Ucbm; Icm; Ibm; Pd</td></tr>
+      </tbody>
+    </table>
+    <br>
+    <b class="title3">A háttérprogram által a kezelőprogramnak átadott adatok</b><br>
+    <br>
+    <table width="100%" border="1" cellspacing="0" cellpadding="6">
+      <tbody>
+        <td align="center"><b>Mód</b></td><td align="center"><b>Művelet</b></td><td align="center"><b>Eredmény</b></td><td align="center"><b>Sorszám</b></td></tr>
+        <td align="center">M0</td><td align="left">Készenlét</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+        <td align="center">M1</td><td align="left">BU<sub>ce</sub></td><td align="center">BU<sub>ce</sub></td><td align="center">1</td></tr>
+        <td align="center">M2</td><td align="left">BU<sub>cb</sub></td><td align="center">BU<sub>cb</sub></td><td align="center">2</td></tr>
+        <td align="center">M3</td><td align="left">I<sub>eb0</sub></td><td align="center">I<sub>eb0</sub></td><td align="center">3</td></tr>
+        <td align="center">M4</td><td align="left">I<sub>cb0</sub></td><td align="center">I<sub>cb0</sub></td><td align="center">4</td></tr>
+        <td align="center">M5</td><td align="left">I<sub>ce0</sub></td><td align="center">I<sub>ce0</sub></td><td align="center">5</td></tr>
+        <td align="center">M6</td><td align="left">Bemeneti karakterisztika</td><td align="center">(U<sub>be</sub>;I<sub>b</sub>)</td><td align="center">(7;8)...(45;46)</td></tr>
+        <td align="center">M7</td><td align="left">Kimeneti karakterisztika</td><td align="center">(U<sub>ce</sub>;I<sub>c</sub>)</td><td align="center">(47;48)...(205;206)</td></tr>
+        <td align="center">M8</td><td align="left">Válogatás h<sub>21e</sub> alapján</td><td align="center">h<sub>21e</sub></td><td align="center">6</td></tr>
+      </tbody>
+    </table>
+    <br>
+    <i>Megjegyzés:</i> Az eredmények a /tmp/ctt.tmp fájlban találhatók.<br>
     <br>
     <a href="index.html">Vissza a tartalomjegyzékhez</a>
   </body>
