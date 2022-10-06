@@ -14,26 +14,32 @@
 
 {
  Usage:
-   ctt-backend mode polarity parameter1 parameter2...parameter6
+   ctt-backend mode polarity parameter1...parameter10
+     mode:       m0..m8
+     polarity:   n | p
+     parameters: numbers (see later)
 
  Halt codes:
-   1: manual run
-   2: temporary file write error
+   0: Normal exit
+   1: Bad or bad number of parameters
+   2: Cannot write temporary file
 }
 
 {$DEFINE DEMO}
+{$DEFINE DEBUG}
 
 program backend;
 
 uses
   SysUtils;
 
+type
+  TInputArray = array[1..12] of string;
+  TOutputArray = array[1..206] of string;
+
 var
   b: byte;                                                   // general variable
-  polarity: char;                                                     // NPN/PNP
-  parameters: array[2..6] of integer;                              // input data
-  puffer: array[1..206] of string;                              // output puffer
-  s: string;                                                 // general variable
+  parameters: TInputArray;                                   // input parameters
 
 {$I config.pp}
 
@@ -45,10 +51,52 @@ var
   cdecl; external 'libc';
 
   // operation modes
-  procedure mode1;
+  // M0 | Stand-by
+  function mode0(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m0         p[7]:    0
+      p[2]:    n | p      p[8]:    0
+      p[3]:    0          p[9]:    0
+      p[4]:    0          p[10]:   0
+      p[5]:    0          p[11]:   0
+      p[6]:    0          p[12]:   0
+  }
   begin
+    for b := 1 to 206 do
+      mode0[b] := '0';
+  {$IFNDEF DEMO}
+    // Place of the real measurement process
+  {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode0[b] + ' ');
+    writeln;
+  {$ENDIF}
+  end;
+
+
+  // M1 | BUce
+  function mode1(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m1         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    0          p[9]:    Ucbm
+      p[4]:    0          p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
+  begin
+    for b := 1 to 206 do
+      mode1[b] := '0';
   {$IFDEF DEMO}
-    puffer[1] := IntToStr(random(99) + 1);
+    mode1[1] := IntToStr(random(99) + 1);
   {$ELSE}
     {
       Measurement process:
@@ -66,12 +114,34 @@ var
     }
     // Place of the real measurement process
   {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode1[b] + ' ');
+    writeln;
+  {$ENDIF}
   end;
 
-  procedure mode2;
+  // M2 | BUcb
+  function mode2(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m2         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    0          p[9]:    Ucbm
+      p[4]:    0          p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
   begin
+    for b := 1 to 206 do
+      mode2[b] := '0';
   {$IFDEF DEMO}
-    puffer[2] := IntToStr(random(99) + 1);
+    mode2[2] := IntToStr(random(99) + 1);
   {$ELSE}
     {
       Measurement process:
@@ -86,15 +156,37 @@ var
         write $00 to -SL7 (Uout=0 V)
         read lower bits from -SL3
         read higher and status bits from -SL4
-    }
     // Place of the real measurement process
+    }
+  {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode2[b] + ' ');
+    writeln;
   {$ENDIF}
   end;
 
-  procedure mode3;
+  // M3 | Ieb0
+  function mode3(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m3         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    0          p[9]:    Ucbm
+      p[4]:    0          p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
   begin
+    for b := 1 to 206 do
+      mode3[b] := '0';
   {$IFDEF DEMO}
-    puffer[3] := IntToStr(random(99) + 1);
+    mode3[3] := IntToStr(random(99) + 1);
   {$ELSE}
     {
       Measurement process:
@@ -112,12 +204,34 @@ var
     }
     // Place of the real measurement process
   {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode3[b] + ' ');
+    writeln;
+  {$ENDIF}
   end;
 
-  procedure mode4;
+  // M4 | Icb0
+  function mode4(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m4         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    0          p[9]:    Ucbm
+      p[4]:    0          p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
   begin
+    for b := 1 to 206 do
+      mode4[b] := '0';
   {$IFDEF DEMO}
-    puffer[4] := IntToStr(random(99) + 1);
+    mode4[4] := IntToStr(random(99) + 1);
   {$ELSE}
     {
       Measurement process:
@@ -135,12 +249,34 @@ var
     }
     // Place of the real measurement process
   {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode4[b] + ' ');
+    writeln;
+  {$ENDIF}
   end;
 
-  procedure mode5;
+  // M5 | Ice0
+  function mode5(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m5         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    0          p[9]:    Ucbm
+      p[4]:    0          p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
   begin
+    for b := 1 to 206 do
+      mode5[b] := '0';
   {$IFDEF DEMO}
-    puffer[5] := IntToStr(random(99) + 1);
+    mode5[5] := IntToStr(random(99) + 1);
   {$ELSE}
     {
       Measurement process:
@@ -158,45 +294,120 @@ var
     }
     // Place of the real measurement process
   {$ENDIF}
-  end;
-
-  procedure mode6;
-  begin
-  {$IFDEF DEMO}
-    for b := 1 to 40 do
-      puffer[b + 6] := idemo[b];
-  {$ELSE}
-    // tényleges mérés
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode5[b] + ' ');
+    writeln;
   {$ENDIF}
   end;
 
-  procedure mode7;
+  // M6 | Input diagram
+  function mode6(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m6         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    Uce        p[9]:    Ucbm
+      p[4]:    Ibmax      p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
   begin
+    for b := 1 to 206 do
+      mode6[b] := '0';
   {$IFDEF DEMO}
     for b := 1 to 40 do
-      puffer[b + 46] := o1demo[b];
-    for b := 1 to 40 do
-      puffer[b + 86] := o2demo[b];
-    for b := 1 to 40 do
-      puffer[b + 126] := o3demo[b];
-    for b := 1 to 40 do
-      puffer[b + 166] := o4demo[b];
+      mode6[b + 6] := idemo[b];
   {$ELSE}
-    // tényleges mérés
+    // Place of the real measurement process
+  {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode6[b] + ' ');
+    writeln;
   {$ENDIF}
   end;
 
-  procedure mode8;
+  // M7 | Output diagram
+  function mode7(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m7         p[7]:    Ucemax
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    Ib1        p[9]:    Ucbm
+      p[4]:    Ib2        p[10]:   Icm
+      p[5]:    Ib3        p[11]:   Ibm
+      p[6]:    Ib4        p[12]:   Pd
+  }
   begin
+    for b := 1 to 206 do
+      mode7[b] := '0';
   {$IFDEF DEMO}
-    puffer[6] := IntToStr(random(150) + 25);
+    for b := 1 to 40 do
+    begin
+      mode7[b + 46] := o1demo[b];
+      mode7[b + 86] := o2demo[b];
+      mode7[b + 126] := o3demo[b];
+      mode7[b + 166] := o4demo[b];
+    end;
   {$ELSE}
-    // tényleges mérés
+    // Place of the real measurement process
+  {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode7[b] + ' ');
+    writeln;
+  {$ENDIF}
+  end;
+
+  // M8 | Selection by h21e
+  function mode8(p: TInputArray): TOutputArray;
+  {
+    parameters:
+      p[1]:    m8         p[7]:    0
+      p[2]:    n | p      p[8]:    Ucem
+      p[3]:    0          p[9]:    Ucbm
+      p[4]:    0          p[10]:   Icm
+      p[5]:    0          p[11]:   Ibm
+      p[6]:    0          p[12]:   Pd
+  }
+  begin
+    for b := 1 to 206 do
+      mode8[b] := '0';
+  {$IFDEF DEMO}
+    mode8[6] := IntToStr(random(150) + 25);
+  {$ELSE}
+    // Place of the real measurement process
+  {$ENDIF}
+  {$IFDEF DEBUG}
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    Write('Output: ');
+    for b := 1 to 206 do
+      Write(mode8[b] + ' ');
+    writeln;
   {$ENDIF}
   end;
 
   // save result to temp file
-  function savedata: boolean;
+  function savedata(o: TOutputArray): boolean;
   var
     t: Text;
   begin
@@ -206,10 +417,7 @@ var
     rewrite(t);
     writeln(t, 'CTT_v' + VERSION);
     for b := 1 to 206 do
-    begin
-      s := puffer[b];
-      writeln(t, s);
-    end;
+      writeln(t, o[b]);
     Close(t);
   {$I+}
     if ioresult <> 0 then
@@ -220,41 +428,56 @@ begin
   {$IFDEF DEMO}
   randomize;
   {$ENDIF}
-  for b := 1 to 206 do
-    puffer[b] := '0';
-  for b := 2 to 6 do
-    parameters[b] := 0;
-  if paramcount > 1 then
+  if paramcount = 12 then
+    for b := 1 to 12 do
+      parameters[b] := ParamStr(b);
+  case parameters[1] of
+    'm0': if not savedata(mode0(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm1': if not savedata(mode1(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm2': if not savedata(mode2(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm3': if not savedata(mode3(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm4': if not savedata(mode4(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm5': if not savedata(mode5(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm6': if not savedata(mode6(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm7': if not savedata(mode7(parameters)) then
+        b := 1
+      else
+        b := 0;
+    'm8': if not savedata(mode8(parameters)) then
+        b := 1
+      else
+        b := 0;
+    else
+      writeln('ERROR #1: Bad or bad number of parameters.');
+      writeln;
+      writeln('Usage: ctt-backend mode polarity parameter1...parameter10');
+      halt(1);
+  end;
+  if b = 1 then
   begin
-    // input data
-    polarity := ParamStr(2)[1];
-    for b := 2 to 6 do
-      if ParamStr(b + 1) <> '' then
-        parameters[b] := StrToInt(ParamStr(b + 1));
-    // operation mode
-    if ParamStr(1) = 'm1' then
-      mode1;
-    if ParamStr(1) = 'm2' then
-      mode2;
-    if ParamStr(1) = 'm3' then
-      mode3;
-    if ParamStr(1) = 'm4' then
-      mode4;
-    if ParamStr(1) = 'm5' then
-      mode5;
-    if ParamStr(1) = 'm6' then
-      mode6;
-    if ParamStr(1) = 'm7' then
-      mode7;
-    if ParamStr(1) = 'm8' then
-      mode8;
-    if savedata = False then
-      halt(2);
-  end
-  else
-  begin
-    writeln('Do not run this file manually!');
-    halt(1);
+    writeln('ERROR #2: Cannot write temporary file: ' + DIR_TEMP + 'ctt.tmp');
+    halt(2);
   end;
   halt(0);
 end.
