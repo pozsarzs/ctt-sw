@@ -23,15 +23,19 @@
    0: Normal exit
    1: Bad or bad number of parameters
    2: Cannot write temporary file
+   3: Cannot read configuration file
 }
 
-{$DEFINE DEMO}
+{--$DEFINE DEMO}
 {$DEFINE DEBUG}
 
 program backend;
 
 uses
-  SysUtils;
+  SysUtils,
+  convert,
+  dos,
+  lptiolnx;
 
 type
   TInputArray = array[1..12] of string;
@@ -39,7 +43,11 @@ type
 
 var
   b: byte;                                                   // general variable
+  baseaddress: char;
   parameters: TInputArray;                                   // input parameters
+
+const
+  EQID = 1;
 
 {$I config.pp}
 
@@ -47,8 +55,59 @@ var
   {$I demodata.pp}
 {$ENDIF}
 
-  function ioperm(from: cardinal; num: cardinal; turn_on: integer): integer;
-  cdecl; external 'libc';
+  // Load configuration
+  procedure loadcfg;
+  var
+    conffile: byte;
+    exepath, p: shortstring;
+    s: string;
+    t: Text;
+    userdir: string;
+  begin
+    fsplit(ParamStr(0), exepath, p, p);
+    userdir := getenvironmentvariable('HOME');
+    userdir := userdir + DIR_CONFIG;
+    conffile := 0;
+    if FSearch('ctt.conf', exepath) <> '' then
+      conffile := 1;
+    if FSearch('cttrc', userdir) <> '' then
+      conffile := 2;
+    case conffile of
+      1: assignfile(t, exepath + 'ctt.conf');
+      2: assignfile(t, userdir + 'cttrc');
+      3: assignfile(t, exepath + 'ctt.cfg');
+      4: assignfile(t, userdir + 'cttrc');
+      else
+      begin
+        writeln('ERROR #3: Cannot read configuration file!');
+        halt(3);
+      end;
+    end;
+    try
+      reset(t);
+      repeat
+        readln(t, s);
+        if s[1] + s[2] + s[3] = 'BA=' then
+          baseaddress := s[4];
+        if (baseaddress <> '1') and (baseaddress <> '2') and (baseaddress <> '3') then
+          baseaddress := '1';
+      until (EOF(t));
+      closefile(t);
+    except
+      writeln('ERROR #3: Cannot read configuration file!');
+      halt(3);
+    end;
+  end;
+
+  //  PXWrite procedure with debug message
+  procedure procpxwrite(db, sl: byte);
+  begin
+  {$IFDEF DEBUG}
+    writeln('- write $' + deztohex(IntToStr(db)) + ' to -SL' + IntToStr(sl));
+  {$ENDIF}
+    PXWrite(EQID, sl, db);
+  end;
+
 
   // operation modes
   // M0 | Stand-by
@@ -65,21 +124,31 @@ var
   begin
     for b := 1 to 206 do
       mode0[b] := '0';
-  {$IFNDEF DEMO}
-    // Place of the real measurement process
-  {$ENDIF}
   {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
     Write('Input:  ');
     for b := 1 to 12 do
       Write(p[b] + ' ');
     writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
+  {$IFNDEF DEMO}
+    // Measurement process
+    writeln('Operations:');
+    if p[2] = 'n' then
+      procpxwrite($A0, 0)
+    else
+      procpxwrite($E0, 0);
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+  {$ENDIF}
+  {$IFDEF DEBUG}
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode0[b] + ' ');
     writeln;
   {$ENDIF}
   end;
-
 
   // M1 | BUce
   function mode1(p: TInputArray): TOutputArray;
@@ -95,30 +164,34 @@ var
   begin
     for b := 1 to 206 do
       mode1[b] := '0';
-  {$IFDEF DEMO}
-    mode1[1] := IntToStr(random(99) + 1);
-  {$ELSE}
-    {
-      Measurement process:
-        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        write $A1 or $E1 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
-        write $00 to -SL5 (start A/D converter)
-        wait for D7 from -SL4
-        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        read lower bits from -SL3
-        read higher and status bits from -SL4
-    }
-    // Place of the real measurement process
-  {$ENDIF}
   {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
     Write('Input:  ');
     for b := 1 to 12 do
       Write(p[b] + ' ');
     writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
+  {$IFDEF DEMO}
+    mode1[1] := IntToStr(random(99) + 1);
+  {$ELSE}
+    // Measurement process
+    writeln('Operations:');
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+    if p[2] = 'n' then
+      procpxwrite($A1, 0)
+    else
+      procpxwrite($E1, 0);
+    procpxwrite($00, 5);
+
+   // wait for D7 from -SL4
+   // read lower bits from -SL3
+   // read higher and status bits from -SL4
+
+
+  {$ENDIF}
+  {$IFDEF DEBUG}
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode1[b] + ' ');
@@ -428,6 +501,8 @@ begin
   {$IFDEF DEMO}
   randomize;
   {$ENDIF}
+  loadcfg;
+  SetPXPort(StrToInt(baseaddress));
   if paramcount = 12 then
     for b := 1 to 12 do
       parameters[b] := ParamStr(b);

@@ -24,6 +24,7 @@ fpflag		= -T@os@ \
                   -O1 \
                   -ve \
                   -Fu./convert/ \
+                  -Fu./lptio/ \
                   -Fu./synapse/ \
                   -Fu@lcldir@/../components/lazutils/lib/@architecture@-@os@/ \
                   -Fu@lcldir@/../packager/units/@architecture@-@os@/ \

@@ -652,7 +652,7 @@ end;
 procedure makeuserdir;
 begin
   userdir := getenvironmentvariable('HOME');
-  userdir := userdir + '/.ctt/';
+  userdir := userdir + DIR_CONFIG;
   try
     mkdir(userdir);
   except
