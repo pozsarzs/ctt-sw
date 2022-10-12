@@ -16,7 +16,7 @@
  Usage:
    ctt-backend mode polarity parameter1...parameter10
      mode:       m0..m8
-     polarity:   n | p
+     polarity:   n/p
      parameters: numbers (see later)
 
  Halt codes:
@@ -34,6 +34,7 @@ program backend;
 uses
   SysUtils,
   convert,
+  crt,
   dos,
   lptiolnx;
 
@@ -42,9 +43,9 @@ type
   TOutputArray = array[1..206] of string;
 
 var
-  b: byte;                                                   // general variable
+  b: byte;
   baseaddress: char;
-  parameters: TInputArray;                                   // input parameters
+  parameters: TInputArray;
 
 const
   EQID = 1;
@@ -108,18 +109,25 @@ const
     PXWrite(EQID, sl, db);
   end;
 
+  //  PXRead function with debug message
+  function procpxread(sl: byte): byte;
+  var
+    db: byte;
+  begin
+    db := PXRead(EQID, sl);
+  {$IFDEF DEBUG}
+    writeln('- read $' + deztohex(IntToStr(db)) + ' from -SL' + IntToStr(sl));
+  {$ENDIF}
+    procpxread := db;
+  end;
 
-  // operation modes
+  // Measurement processes
   // M0 | Stand-by
   function mode0(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m0         p[7]:    0
-      p[2]:    n | p      p[8]:    0
-      p[3]:    0          p[9]:    0
-      p[4]:    0          p[10]:   0
-      p[5]:    0          p[11]:   0
-      p[6]:    0          p[12]:   0
+     p[1]: m0      p[4]: 0       p[7]: 0       p[10]: 0
+     p[2]: n/p     p[5]: 0       p[8]: 0       p[11]: 0
+     p[3]: 0       p[6]: 0       p[9]: 0       p[12]: 0
   }
   begin
     for b := 1 to 206 do
@@ -133,7 +141,6 @@ const
     writeln('Port:   LPT #' + baseaddress);
   {$ENDIF}
   {$IFNDEF DEMO}
-    // Measurement process
     writeln('Operations:');
     if p[2] = 'n' then
       procpxwrite($A0, 0)
@@ -153,13 +160,9 @@ const
   // M1 | BUce
   function mode1(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m1         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    0          p[9]:    Ucbm
-      p[4]:    0          p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m1      p[4]: 0       p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: 0       p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
@@ -175,7 +178,6 @@ const
   {$IFDEF DEMO}
     mode1[1] := IntToStr(random(99) + 1);
   {$ELSE}
-    // Measurement process
     writeln('Operations:');
     procpxwrite($00, 6);
     procpxwrite($00, 7);
@@ -184,12 +186,22 @@ const
     else
       procpxwrite($E1, 0);
     procpxwrite($00, 5);
-
-   // wait for D7 from -SL4
-   // read lower bits from -SL3
-   // read higher and status bits from -SL4
-
-
+    b := 0;
+    repeat
+      delay(1000);
+      if ($7F or procpxread(4)) = $FF then
+        b := 255
+    until (b = 10) or (b = 255);
+    if b = 255 then
+      mode1[1] := '0'
+    else
+      mode1[1] := IntToStr((($0F and procpxread(3)) * 256) + procpxread(4));
+    if p[2] = 'n' then
+      procpxwrite($A0, 0)
+    else
+      procpxwrite($E0, 0);
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
   {$ENDIF}
   {$IFDEF DEBUG}
     Write('Output: ');
@@ -202,41 +214,50 @@ const
   // M2 | BUcb
   function mode2(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m2         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    0          p[9]:    Ucbm
-      p[4]:    0          p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m2      p[4]: 0       p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: 0       p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode2[b] := '0';
-  {$IFDEF DEMO}
-    mode2[2] := IntToStr(random(99) + 1);
-  {$ELSE}
-    {
-      Measurement process:
-        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        write $A2 or $E2 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
-        write $00 to -SL5 (start A/D converter)
-        wait for D7 from -SL4
-        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        read lower bits from -SL3
-        read higher and status bits from -SL4
-    // Place of the real measurement process
-    }
-  {$ENDIF}
   {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
     Write('Input:  ');
     for b := 1 to 12 do
       Write(p[b] + ' ');
     writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
+  {$IFDEF DEMO}
+    mode2[2] := IntToStr(random(99) + 1);
+  {$ELSE}
+    writeln('Operations:');
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+    if p[2] = 'n' then
+      procpxwrite($A2, 0)
+    else
+      procpxwrite($E2, 0);
+    procpxwrite($00, 5);
+    b := 0;
+    repeat
+      delay(1000);
+      if ($7F or procpxread(4)) = $FF then
+        b := 255
+    until (b = 10) or (b = 255);
+    if b = 255 then
+      mode2[2] := '0'
+    else
+      mode2[2] := IntToStr((($0F and procpxread(3)) * 256) + procpxread(4));
+    if p[2] = 'n' then
+      procpxwrite($A0, 0)
+    else
+      procpxwrite($E0, 0);
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+  {$ENDIF}
+  {$IFDEF DEBUG}
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode2[b] + ' ');
@@ -247,41 +268,50 @@ const
   // M3 | Ieb0
   function mode3(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m3         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    0          p[9]:    Ucbm
-      p[4]:    0          p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m3      p[4]: 0       p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: 0       p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode3[b] := '0';
-  {$IFDEF DEMO}
-    mode3[3] := IntToStr(random(99) + 1);
-  {$ELSE}
-    {
-      Measurement process:
-        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        write $A3 or $E3 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
-        write $00 to -SL5 (start A/D converter)
-        wait for D7 from -SL4
-        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        read lower bits from -SL3
-        read higher and status bits from -SL4
-    }
-    // Place of the real measurement process
-  {$ENDIF}
   {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
     Write('Input:  ');
     for b := 1 to 12 do
       Write(p[b] + ' ');
     writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
+  {$IFDEF DEMO}
+    mode3[3] := IntToStr(random(99) + 1);
+  {$ELSE}
+    writeln('Operations:');
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+    if p[2] = 'n' then
+      procpxwrite($A3, 0)
+    else
+      procpxwrite($E3, 0);
+    procpxwrite($00, 5);
+    b := 0;
+    repeat
+      delay(1000);
+      if ($7F or procpxread(4)) = $FF then
+        b := 255
+    until (b = 10) or (b = 255);
+    if b = 255 then
+      mode3[3] := '0'
+    else
+      mode3[3] := IntToStr((($0F and procpxread(3)) * 256) + procpxread(4));
+    if p[2] = 'n' then
+      procpxwrite($A0, 0)
+    else
+      procpxwrite($E0, 0);
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+  {$ENDIF}
+  {$IFDEF DEBUG}
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode3[b] + ' ');
@@ -292,41 +322,50 @@ const
   // M4 | Icb0
   function mode4(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m4         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    0          p[9]:    Ucbm
-      p[4]:    0          p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m4      p[4]: 0       p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: 0       p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode4[b] := '0';
   {$IFDEF DEMO}
     mode4[4] := IntToStr(random(99) + 1);
-  {$ELSE}
-    {
-      Measurement process:
-        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        write $A4 or $E4 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
-        write $00 to -SL5 (start A/D converter)
-        wait for D7 from -SL4
-        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        read lower bits from -SL3
-        read higher and status bits from -SL4
-    }
-    // Place of the real measurement process
-  {$ENDIF}
   {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
     Write('Input:  ');
     for b := 1 to 12 do
       Write(p[b] + ' ');
     writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
+  {$ELSE}
+    writeln('Operations:');
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+    if p[2] = 'n' then
+      procpxwrite($A4, 0)
+    else
+      procpxwrite($E4, 0);
+    procpxwrite($00, 5);
+    b := 0;
+    repeat
+      delay(1000);
+      if ($7F or procpxread(4)) = $FF then
+        b := 255
+    until (b = 10) or (b = 255);
+    if b = 255 then
+      mode4[4] := '0'
+    else
+      mode4[4] := IntToStr((($0F and procpxread(3)) * 256) + procpxread(4));
+    if p[2] = 'n' then
+      procpxwrite($A0, 0)
+    else
+      procpxwrite($E0, 0);
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+  {$ENDIF}
+  {$IFDEF DEBUG}
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode4[b] + ' ');
@@ -337,41 +376,50 @@ const
   // M5 | Ice0
   function mode5(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m5         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    0          p[9]:    Ucbm
-      p[4]:    0          p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m5      p[4]: 0       p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: 0       p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode5[b] := '0';
-  {$IFDEF DEMO}
-    mode5[5] := IntToStr(random(99) + 1);
-  {$ELSE}
-    {
-      Measurement process:
-        write $A0 to -SL0 (low-power, NPN, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        write $A5 or $E5 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M1)
-        write $00 to -SL5 (start A/D converter)
-        wait for D7 from -SL4
-        write $A0 or $E0 to -SL0 (low-power, NPN or PNP, Not enable, Ube, x, M0)
-        write $00 to -SL6 (Uout=0 V)
-        write $00 to -SL7 (Uout=0 V)
-        read lower bits from -SL3
-        read higher and status bits from -SL4
-    }
-    // Place of the real measurement process
-  {$ENDIF}
   {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
     Write('Input:  ');
     for b := 1 to 12 do
       Write(p[b] + ' ');
     writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
+  {$IFDEF DEMO}
+    mode5[5] := IntToStr(random(99) + 1);
+  {$ELSE}
+    writeln('Operations:');
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+    if p[2] = 'n' then
+      procpxwrite($A5, 0)
+    else
+      procpxwrite($E5, 0);
+    procpxwrite($00, 5);
+    b := 0;
+    repeat
+      delay(1000);
+      if ($7F or procpxread(4)) = $FF then
+        b := 255
+    until (b = 10) or (b = 255);
+    if b = 255 then
+      mode5[5] := '0'
+    else
+      mode5[5] := IntToStr((($0F and procpxread(3)) * 256) + procpxread(4));
+    if p[2] = 'n' then
+      procpxwrite($A0, 0)
+    else
+      procpxwrite($E0, 0);
+    procpxwrite($00, 6);
+    procpxwrite($00, 7);
+  {$ENDIF}
+  {$IFDEF DEBUG}
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode5[b] + ' ');
@@ -382,17 +430,21 @@ const
   // M6 | Input diagram
   function mode6(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m6         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    Uce        p[9]:    Ucbm
-      p[4]:    Ibmax      p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m6      p[4]: Ibmax   p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: Uce     p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode6[b] := '0';
+  {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
   {$IFDEF DEMO}
     for b := 1 to 40 do
       mode6[b + 6] := idemo[b];
@@ -400,10 +452,6 @@ const
     // Place of the real measurement process
   {$ENDIF}
   {$IFDEF DEBUG}
-    Write('Input:  ');
-    for b := 1 to 12 do
-      Write(p[b] + ' ');
-    writeln;
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode6[b] + ' ');
@@ -414,17 +462,21 @@ const
   // M7 | Output diagram
   function mode7(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m7         p[7]:    Ucemax
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    Ib1        p[9]:    Ucbm
-      p[4]:    Ib2        p[10]:   Icm
-      p[5]:    Ib3        p[11]:   Ibm
-      p[6]:    Ib4        p[12]:   Pd
+     p[1]: m7      p[4]: Ib2     p[7]: Ucemax  p[10]: Icm
+     p[2]: n/p     p[5]: Ib3     p[8]: Ucem    p[11]: Ibm
+     p[3]: Ib1     p[6]: Ib4     p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode7[b] := '0';
+  {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
   {$IFDEF DEMO}
     for b := 1 to 40 do
     begin
@@ -437,10 +489,6 @@ const
     // Place of the real measurement process
   {$ENDIF}
   {$IFDEF DEBUG}
-    Write('Input:  ');
-    for b := 1 to 12 do
-      Write(p[b] + ' ');
-    writeln;
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode7[b] + ' ');
@@ -451,27 +499,27 @@ const
   // M8 | Selection by h21e
   function mode8(p: TInputArray): TOutputArray;
   {
-    parameters:
-      p[1]:    m8         p[7]:    0
-      p[2]:    n | p      p[8]:    Ucem
-      p[3]:    0          p[9]:    Ucbm
-      p[4]:    0          p[10]:   Icm
-      p[5]:    0          p[11]:   Ibm
-      p[6]:    0          p[12]:   Pd
+     p[1]: m8      p[4]: 0       p[7]: 0       p[10]: Icm
+     p[2]: n/p     p[5]: 0       p[8]: Ucem    p[11]: Ibm
+     p[3]: 0       p[6]: 0       p[9]: Ucbm    p[12]: Pd
   }
   begin
     for b := 1 to 206 do
       mode8[b] := '0';
+  {$IFDEF DEBUG}
+    writeln('Mode:   ' + upcase(p[1]));
+    Write('Input:  ');
+    for b := 1 to 12 do
+      Write(p[b] + ' ');
+    writeln;
+    writeln('Port:   LPT #' + baseaddress);
+  {$ENDIF}
   {$IFDEF DEMO}
     mode8[6] := IntToStr(random(150) + 25);
   {$ELSE}
     // Place of the real measurement process
   {$ENDIF}
   {$IFDEF DEBUG}
-    Write('Input:  ');
-    for b := 1 to 12 do
-      Write(p[b] + ' ');
-    writeln;
     Write('Output: ');
     for b := 1 to 206 do
       Write(mode8[b] + ' ');
